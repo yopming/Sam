@@ -1,0 +1,83 @@
+@import "./module/variable";
+@import "./module/mixin";
+@import "./module/selection";
+@import "./module/normalize";
+@import "./semantic";
+@import "./module/timeline";
+
+#sam {
+    padding-top:33px;
+    .box-sizing(border-box);
+    .sam-header {
+        border-radius:0;
+        margin-bottom:0;
+        position:fixed;
+        top:0;
+        z-index: @headerZindex;
+        width:100%;
+        .item {
+            font-size:0.9rem;
+        }
+        .sam-search {
+            padding:0;
+            margin-right:20px;
+            input {
+                .padding-horizontal(.5em);
+            }
+        }
+    }
+
+    .sam-project,
+    .sam-mail,
+    .sam-topic {
+        height:100%;
+        .column {
+            height:100%;
+            margin:0;
+            overflow-y:auto;
+            &.three {
+                background:#fff;
+                padding-left:0;
+                padding-right:0;
+                .box-shadow(0 0 20px #ccc);
+                .menu {
+                    width: auto;
+                    height:100%;
+                    .box-shadow(none);
+                }
+            }
+            &.thirteen {
+                .padding-horizontal(1.5%);
+            }
+        }
+    }
+
+    .sam-mail,
+    .sam-topic {
+        .items .item {
+            padding:0.5em 0;
+            .image {
+                .square(300px);
+                overflow:hidden;
+                margin:0 auto;
+            }
+        }
+    }
+
+    .sam-topic {
+        .items .item {
+            min-height:175px;
+            .image {
+                height: 107px;
+            }
+        }
+    }
+
+    .sam-timeline {
+        padding:3em;
+        .feed {
+            padding:3em;
+        }
+    }
+
+}

@@ -1,0 +1,26 @@
+<table class="ui table segment">
+    <thead>
+        <tr>
+            <th>工号</th>
+            <th>用户名</th>
+            <th>名字</th>
+            <th>邮件</th>
+            <th>编辑</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in users">
+            <td>{{user.workno}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>
+                <div class="ui tiny buttons">
+                    <a href="#!/user/edit/{{user._id}}" class="ui button positive">编辑</a>
+                    <div class="or"></div>
+                    <a ng-click="deleteUser(user._id)" class="ui button">删除</a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+<div class="ui horizontal divider">
+    职位
+</div>
+<div class="subParameter">
+    <span ng-repeat="position in positions" class="ui black label">
+        {{position.name}}
+        <i class="delete icon" ng-click="deletePosition(position._id)"></i>
+    </span>
+</div>
+
+<div class="ui horizontal divider">状态</div>
+<div class="subParameter">
+    <span ng-repeat="status in statuses" class="ui red label">
+        {{status.name}}
+        <i class="delete icon" ng-click="deleteStatus(status._id)"></i>
+    </span>
+</div>
+
+<div class="ui horizontal divider">渠道</div>
+<div class="subParameter">
+    <span ng-repeat="pipe in pipes" class="ui teal label">
+        {{pipe.name}}
+        <i class="delete icon" ng-click="deletePipe(pipe._id)"></i>
+    </span>
+</div>
+
+<div class="ui horizontal divider">版本</div>
+<div class="subParameter">
+    <span ng-repeat="version in versions" class="ui orange label">
+        {{version.name}}
+        <i class="delete icon" ng-click="deleteVersion(version._id)"></i>
+    </span>
+</div>
+
+<div class="ui horizontal divider">人员</div>
+<div class="subParameter">
+    <table class="ui basic table compact">
+        <tr ng-repeat="personnel in personnels">
+            <td>{{personnel.workno}}</td>
+            <td>{{personnel.name}}</td>
+            <td>{{personnel.domain_account}}</td>
+            <td>{{personnel.position.name}}</td>
+            <td>
+                <i class="delete icon" ng-click="deletePersonnel(personnel._id)"></i>
+            </td>
+        </tr>
+    </table>
+</div>

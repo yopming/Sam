@@ -1,0 +1,14 @@
+<div class="ui attached message">
+    <div class="header">添加职位</div>
+</div>
+
+<form class="ui form attached fluid segment" ng-controller="AdminParameterPositionAddCtrl" ng-submit="positionSave()">
+    <div class="field">
+        <label>名称</label>
+        <input type="text" name="name" ng-model="position.name" required />
+    </div>
+    <button class="ui blue submit button icon labeled">
+        <i class="edit basic icon"></i>
+        添加职位
+    </button>
+</form>

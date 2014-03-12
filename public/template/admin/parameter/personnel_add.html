@@ -1,0 +1,30 @@
+<div class="ui attached message">
+    <div class="header">添加人员</div>
+</div>
+
+<form class="ui form attached fluid segment" ng-controller="AdminParameterPersonnelAddCtrl" ng-submit="personnelSave()">
+    <div class="field">
+        <label>工号</label>
+        <input type="text" name="workno" ng-model="personnel.workno" required />
+    </div>
+    <div class="field">
+        <label>名称</label>
+        <input type="text" name="name" ng-model="personnel.name" required />
+    </div>
+    <div class="field">
+        <label>域账号邮箱</label>
+        <input type="text" name="domain_account" ng-model="personnel.domain_account" required />
+    </div>
+    <div class="field">
+        <label>职位</label>
+        <select name="position" ng-model="personnel.position">
+            <option ng-repeat="position in positions" value="{{position._id}}">
+                {{position.name}}
+            </option>
+        </select>
+    </div>
+    <button class="ui blue submit button icon labeled">
+        <i class="edit basic icon"></i>
+        添加人员
+    </button>
+</form>

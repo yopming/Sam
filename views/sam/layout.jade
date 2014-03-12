@@ -1,0 +1,56 @@
+doctype
+html
+    head
+        title Sam :: 
+            block subtitle
+        link(rel='stylesheet', href='/css/sam.css')
+
+    body#sam
+        //- header
+        div.ui.orange.inverted.menu.sam-header
+            div.ui.dropdown.item
+                i.block.layout.icon 
+                |项目
+                i.icon.dropdown
+                div.menu
+                    a.item(href='#') 官网
+                    a.item(href='#') 渠道
+                    a.item(href='#') 触屏站
+                    a.item(href='#') 移动APP
+            div.ui.dropdown.item
+                i.tasks.icon 
+                |运营
+                i.icon.dropdown
+                div.menu
+                    a.item(href='#') 邮件
+                    a.item(href='#') 专题
+            div.ui.dropdown.item
+                i.text.file.icon 
+                |参考
+                i.icon.dropdown
+                div.menu
+                    a.item(href='#') 视觉规范
+                    a.item(href='#') Gandolf视觉稿
+                    a.item(href='#') 交互规范
+                    a.item(href='#') Jingwei前端文档
+            a.item
+                i.time.icon
+                | 时间线
+
+            div.right.menu
+                div.item.sam-search
+                    form(action='#', method='POST')
+                        div.ui.mini.action.input
+                            input(type='text', placeholder='Type to search')
+                            div.ui.button(type='submit') Go
+                a.item
+                    i.sign.out.icon
+                    | 登入
+
+        //- body
+        block substance
+
+        script(src='/js/chives/jquery.min.js')
+        script(src='/js/chives/semantic.js')
+        script(src='/js/sam/sam.js')
+        block subscript

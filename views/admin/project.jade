@@ -1,0 +1,46 @@
+extends ./admin
+
+block facility
+    div.ui.attached.message
+        div.header
+            添加项目
+    form.ui.form.attached.fluid.segment
+        div.field
+            label 名称
+            input(type='text')
+        div.field
+            label JIRA地址
+            input(type='text')
+        div.field
+            label Gandolf地址
+            input(type='text')
+        div.field
+            label 状态
+            div.ui.selection.dropdown
+                input(type='hidden', name='')
+                div.text 交互设计中
+                i.dropdown.icon
+                div.menu
+                    div.item(data-value='') 已上A1
+                    div.item(data-value='') 已上线2
+                    div.item(data-value='') 已上线3
+                    div.item(data-value='') 已上线4
+        div.three.fields
+            div.field
+                label 交互设计师
+                input(type='text', placeholder='交互')
+            div.field
+                label 视觉设计师
+                input(type='text', placeholder='视觉')
+            div.field
+                label 前端设计师
+                input(type='text', placeholder='前端')
+        div.field
+            label 所属版本
+            input(type='text')
+        div.field
+            label 开始时间
+            input(type='text')
+        div.ui.blue.submit.button.icon.labeled
+            i.edit.basic.icon
+            |添加

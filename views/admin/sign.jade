@@ -1,0 +1,34 @@
+extends ./layout_admin
+
+block subtitle
+    | Admin
+
+block substance
+    div#sam-sign.ui.grid
+        div.five.wide.column
+        div.six.wide.column
+            h2.ui.header
+                | Sam
+                div.sub.header
+                    |Consolidated management
+                div.sub.header
+                    |Neighborly to modify and delightfully to view
+            div.ui.form.segment.piled
+                form(action='', method='POST')
+                    div.field
+                        label 用户
+                        div.ui.left.labeled.icon.input
+                            input(type='text')
+                            i.user.icon
+                    div.field
+                        label 密码
+                        div.ui.left.labeled.icon.input
+                            input(type='password')
+                            i.lock.icon
+                    div.ui.error.message
+                        div.header
+                            |We noticed some issues
+                    button.ui.red.submit.button(type='submit')
+                        i.meh.icon
+                        |登录
+        div.five.wide.column

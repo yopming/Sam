@@ -1,0 +1,122 @@
+@import "./module/variable";
+@import "./module/mixin";
+@import "./module/normalize";
+@import "./semantic";
+
+html {
+    background:url(../img/starry.jpg) no-repeat center center fixed;
+    .background-size(cover);
+    body {
+        background:none;
+        height:100%;
+        .box-sizing(border-box);
+    }
+}
+
+#sam-sign {
+    .ui.header {
+        margin-top:170px;
+        color:#fff;
+        .sub {
+            color:#efefef;
+        }
+    }
+    .form {
+        margin-top:30px;
+        .margin-vertical(auto);
+        .button:hover {
+            .meh:before {
+                content: "\f118";
+            }
+        }
+    }
+
+}
+
+
+#sam-admin {
+    width:1200px;
+    height:100%;
+    min-height:710px;
+    .margin-vertical(auto);
+    .box-shadow(0 0 2px 1px rgba(0,0,0,.25));
+
+    .ui.grid {
+        height:100%;
+    }
+
+    .leftSide,
+    .rightSide {
+        margin:0;
+        padding:0;
+        height:100%;
+    }
+
+    .leftSide {
+        background:#293541;
+        position:relative;
+        .brand {
+            height:50px;
+            line-height:50px;
+            background:#f05940;
+            font-size:24px;
+            padding-left:23px;
+            color:#fff;
+        }
+        .navigator {
+            .menu {
+                .box-sizing(border-box);
+                margin-top:10px;
+                padding:0 10px;
+            }
+            .item {
+                color:#8d959e;
+                font-weight:bold;
+            }
+            .active.item {
+                background:#34404c;
+                color:#fff;
+            }
+        }
+        .userBar {
+            position:absolute;
+            bottom:0;
+            width:208px;
+            padding:5px 0 10px 23px;
+            &,
+            .item {
+                font-size:14px;
+                border:none;
+                &,
+                i {
+                    color:#fff;
+                }
+                &:hover {
+                    color:#aaa;
+                }
+            }
+        }
+    }
+    .rightSide {
+        background:#f2f3f8;
+        overflow-y:auto;
+        .facility {
+            padding:15px;
+        }
+    }
+
+    .subParameter {
+        padding-bottom:20px;
+    }
+}
+
+
+
+@media screen and (min-height:800px) {
+    body {
+        padding-top:30px;
+    }
+    #sam-admin {
+        height:90%;
+    }
+}

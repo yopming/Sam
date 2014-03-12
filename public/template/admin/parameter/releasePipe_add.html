@@ -1,0 +1,15 @@
+<div class="ui attached message">
+    <div class="header">添加发布渠道</div>
+</div>
+
+<form class="ui form attached fluid segment" ng-controller="AdminParameterReleasePipeAddCtrl" ng-submit="pipeSave()">
+    <div class="field">
+        <label>名称</label>
+        <input type="text" name="name" ng-model="pipe.name" required />
+    </div>
+    <button class="ui blue submit button icon labeled">
+        <i class="edit basic icon"></i>
+        添加发布渠道
+    </button>
+</form>
+

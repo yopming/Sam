@@ -1,0 +1,20 @@
+<div class="ui header dividing">筛选</div>
+<div class="ui tertiary form segment">
+    <div class="field">
+        <label>关键字 （JIRA号，名称，相关人等）来进行特定项目的筛选进行后续操作</label>
+        <div class="ui left labeled icon innput circular">
+            <i class="search icon"></i>
+            <input type="text" placeholder="#" />
+        </div>
+    </div>
+</div>
+
+<div class="ui selection list">
+    <div class="item" ng-repeat="project in projects">
+        <i class="block layout icon"></i>
+        <div class="content">
+            <div class="header">{{project.name}}</div>
+            <div class="description">{{project.status}}</div>
+        </div>
+    </div>
+</div>

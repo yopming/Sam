@@ -1,0 +1,103 @@
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+    &:before {
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 3px;
+        background-color: #eeeeee;
+        margin-left: -1.5px;
+        left:145px;
+    }
+    > li {
+        margin-bottom: 20px;
+        position: relative;
+        &:before,
+        &:after {
+            content: " ";
+            display: table;
+        }
+        &:after {
+            clear:both;
+        }
+        .timeline-node {
+            float:left;
+            font-size:14px;
+            width:120px;
+            position:relative;
+            top:17px;
+            color:#666;
+        }
+        .timeline-panel {
+            border: 1px solid #d4d4d4;
+            border-radius: 2px;
+            padding: 20px;
+            position: relative;
+            -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+            margin-left:200px;
+            &:before {
+                position: absolute;
+                display: inline-block;
+                border-top: 15px solid transparent;
+                border-left: 0 solid #ccc;
+                border-right: 15px solid #ccc;
+                border-bottom: 15px solid transparent;
+                content: " ";
+                top: 13px;
+                left: -15px;
+                right: auto;
+            }
+            &:after {
+                position: absolute;
+                display: inline-block;
+                border-top: 14px solid transparent;
+                border-left: 0 solid #fff;
+                border-right: 14px solid #fff;
+                border-bottom: 14px solid transparent;
+                content: " ";
+                top: 14px;
+                left: -14px;
+                right: auto;
+            }
+        }
+        .timeline-badge {
+            float:left;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1.4em;
+            text-align: center;
+            margin-left: -25px;
+            z-index: 100;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+            margin-left: 0;
+            .icon {
+                margin-right:0;
+                opacity:1;
+                background:#fff;
+            }
+        }
+    }
+    .timeline-title {
+        font-size:16px;
+        margin-top:0;
+        color: inherit;
+    }
+    .timeline-body {
+        > p,
+        > ul {
+            margin-bottom:0;
+        }
+        > p + p {
+            margin-top:5px;
+        }
+    }
+
+}
