@@ -15,6 +15,9 @@ var app = express();
 // routes
 var routes_sam = require('./routes/sam/route.js');
 var routes_admin = require('./routes/admin/route.js');
+var routes_api_project = require('./routes/api/project.js');
+var routes_api_topic = require('./routes/api/topic.js');
+var routes_api_mail = require('./routes/api/mail.js');
 var routes_api_user = require('./routes/api/user.js');
 var routes_api_position = require('./routes/api/position.js');
 var routes_api_personnel = require('./routes/api/personnel.js');
@@ -54,18 +57,7 @@ if ('development' == app.get('env')) {
 app.get('/sign', routes_admin.sign);
 app.get('/admin', routes_admin.admin);
 app.get('/admin/sift', routes_admin.admin_sift);
-/*
-app.get('/admin/project', routes_admin.admin_project);
-app.get('/admin/mail', routes_admin.admin_mail);
-app.get('/admin/topic', routes_admin.admin_topic);
-app.get('/admin/user', routes_admin.admin_user);
-app.get('/admin/parameter', routes_admin.admin_parameter);
-app.get('/admin/parameter/position', routes_admin.admin_parameter_position);
-app.get('/admin/parameter/personnel', routes_admin.admin_parameter_personnel);
-app.get('/admin/parameter/projectStatus', routes_admin.admin_parameter_projectStatus);
-app.get('/admin/parameter/projectVersion', routes_admin.admin_parameter_projectVersion);
-app.get('/admin/parameter/releasePipe', routes_admin.admin_parameter_releasePipe);
-*/
+
 app.get('/admin/password_edit', routes_admin.admin_password_edit);
 
 app.get('/', routes_sam.index);
@@ -77,6 +69,24 @@ app.get('/reference', routes_sam.reference);
 app.get('/timeline', routes_sam.timeline);
 
 // APIs
+app.get('/api/project/all', routes_api_project.index);
+app.get('/api/project/:project_id', routes_api_project.indexOne);
+app.post('/api/project/add', routes_api_project.create);
+app.post('/api/project/destroy/:project_id', routes_api_project.destroy);
+app.post('/api/project/update/:project_id', routes_api_project.update);
+
+app.get('/api/topic/all', routes_api_topic.index);
+app.get('/api/topic/:topic_id', routes_api_topic.indexOne);
+app.post('/api/topic/add', routes_api_topic.create);
+app.post('/api/topic/destroy/:topic_id', routes_api_topic.destroy);
+app.post('/api/topic/update/:topic_id', routes_api_topic.update);
+
+app.get('/api/mail/all', routes_api_mail.index);
+app.get('/api/mail/:mail_id', routes_api_mail.indexOne);
+app.post('/api/mail/add', routes_api_mail.create);
+app.post('/api/mail/destroy/:mail_id', routes_api_mail.destroy);
+app.post('/api/mail/update/:mail_id', routes_api_mail.update);
+
 app.get('/api/user/all', routes_api_user.index);
 app.get('/api/user/:user_id', routes_api_user.indexOne);
 app.post('/api/user/add', routes_api_user.create);

@@ -20,8 +20,8 @@ var projectSchema = new Schema ({
     personnel_fe    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
     personnel_ga    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
     personnel_ia    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-    start_time      : Date,
-    end_time        : Date,
+    start_time      : String,
+    end_time        : String,
     jira_uri        : String,
     gandolf_uri     : String,
     related_version : {type: Schema.Types.ObjectId, ref: 'ProjectVersion'},
@@ -34,7 +34,7 @@ var mailSchema = new Schema({
     name         : {type: String, unique: true},
     personnel_fe : {type: Schema.Types.ObjectId, ref: 'Personnel'},
     personnel_ga : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-    release_time : Date,
+    release_time : String,
     head_image   : String,
     created      : {type: Date, default: Date.now}
 });
@@ -45,7 +45,7 @@ var topicSchema = new Schema({
     name         : {type: String, unique: true},
     personnel_fe : {type: Schema.Types.ObjectId, ref: 'Personnel'},
     personnel_ga : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-    release_time : Date,
+    release_time : String,
     head_image   : String,
     belong_to    : {type: Schema.Types.ObjectId, ref: 'ReleasePipe'},
     created      : {type: Date, default: Date.now}

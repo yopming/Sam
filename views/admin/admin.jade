@@ -19,40 +19,31 @@ html(ng-app="admin")
                         |Admin
                     div.navigator
                         div.ui.vertical.menu.fluid.secondary
-                            a.item(href="#!/sift", ng-class="{'active': tog==1}",ng-click="tog=1")
+                            a.item(href="#!/sift")
                                 i.bullseye.icon
                                 | 筛选
-                            div.item
+                            a.item(href="#!/project")
                                 i.block.layout.icon
                                 | 项目
-                                div.menu
-                                    a.item(href="#!/project", ng-class="{'active': tog==21}", ng-click="tog=21") 添加项目
-                            div.item
+                            a.item(href="#!/mail")
                                 i.mail.icon
                                 | 邮件
-                                div.menu
-                                    a.item(href="#!/mail", ng-class="{'active': tog==31}", ng-click="tog=31") 添加邮件
-                            div.item
+                            a.item(href="#!/topic")
                                 i.tasks.icon
                                 | 专题
-                                div.menu
-                                    a.item(href="#!/topic", ng-class="{'active': tog==41}", ng-click="tog=41") 添加专题
-                            div.item
+                            a.item(href="#!/user")
                                 i.users.icon
                                 | 用户
-                                div.menu
-                                    a.item(href="#!/user", ng-class="{'active': tog==51}", ng-click="tog=51") 用户列表
-                                    a.item(href="#!/user/add", ng-class="{'active': tog==52}", ng-click="tog=52") 添加用户
                             div.item
                                 i.settings.icon
                                 | 参数
                                 div.menu
-                                    a.item(href="#!/parameter", ng-class="{'active': tog==61}", ng-click="tog=61") 参数列表
-                                    a.item(href="#!/parameter/position/add", ng-class="{'active': tog==62}", ng-click="tog=62") 添加职位
-                                    a.item(href="#!/parameter/personnel/add", ng-class="{'active': tog==63}", ng-click="tog=63") 添加人员
-                                    a.item(href="#!/parameter/status/add", ng-class="{'active': tog==64}", ng-click="tog=64") 添加项目状态
-                                    a.item(href="#!/parameter/version/add", ng-class="{'active': tog==65}", ng-click="tog=65") 添加项目版本
-                                    a.item(href="#!/parameter/releasePipe/add", ng-class="{'active': tog==66}", ng-click="tog=66") 添加发布渠道
+                                    a.item(href="#!/parameter") 参数列表
+                                    a.item(href="#!/parameter/position/add") 添加职位
+                                    a.item(href="#!/parameter/personnel/add") 添加人员
+                                    a.item(href="#!/parameter/status/add") 添加项目状态
+                                    a.item(href="#!/parameter/version/add") 添加项目版本
+                                    a.item(href="#!/parameter/releasePipe/add") 添加发布渠道
                     div.userBar
                         div.ui.celled.horizontal.list
                             a.item

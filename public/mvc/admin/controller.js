@@ -1,5 +1,8 @@
 var adminControllers = angular.module('adminControllers', []);
 
+/*
+ * Sift
+ */
 adminControllers.controller('AdminSiftCtrl', ['$scope', '$http',
     function($scope, $http) {
         $http.get('/json/project.json').success(function(data) {
@@ -8,23 +11,98 @@ adminControllers.controller('AdminSiftCtrl', ['$scope', '$http',
     }
 ]);
 
+
+/*
+ * Project
+ */
 adminControllers.controller('AdminProjectCtrl', ['$scope',
     function($scope) {
     }
 ]);
 
-adminControllers.controller('AdminMailCtrl', ['$scope',
+adminControllers.controller('AdminProjectAddCtrl', ['$scope',
     function($scope) {
     }
 ]);
 
+adminControllers.controller('AdminProjectEditCtrl', ['$scope',
+    function($scope) {
+    }
+]);
+
+
+/*
+ * Mail
+ */
+adminControllers.controller('AdminMailCtrl', ['$scope', '$http', '$location',
+    function($scope, $http, $location) {
+        $http.get('/api/mail/all').success(function(data) {
+            $scope.mails = data;
+        });
+
+        $scope.deleteMail = function(id) {
+            $http.post('/api/mail/destroy/' + id).success(function(data) {
+                $scope.mails = data;
+            });
+        };
+    }
+]);
+
+adminControllers.controller('AdminMailAddCtrl', ['$scope', '$http', '$location',
+    function($scope, $http, $location) {
+        $http.get('/api/personnel/all').success(function(data) {
+            $scope.personnels = data;
+        });
+
+        $scope.mailSave = function() {
+            $http.post('/api/mail/add', $scope.mail).success(function(data) {
+                $location.url('/mail');
+            });
+        };
+    }
+]);
+
+adminControllers.controller('AdminMailEditCtrl', ['$scope', '$http', '$routeParams', '$location',
+    function($scope, $http, $routeParams, $location) {
+        var mail_id = $routeParams.id;
+
+        $http.get('/api/mail/' + mail_id).success(function(data) {
+            $scope.mail = data;
+        });
+
+        $scope.mailUpdate = function() {
+            $http.post('/api/mail/update/' + mail_id, $scope.mail).success(function() {
+                $location.url('/mail');
+            });
+        };
+    }
+]);
+
+
+/*
+ * Topic
+ */
 adminControllers.controller('AdminTopicCtrl', ['$scope',
     function($scope) {
     }
 ]);
 
-adminControllers.controller('AdminUserCtrl', ['$scope', '$http', '$routeParams', '$location',
-    function($scope, $http, $routeParams, $location) {
+adminControllers.controller('AdminTopicAddCtrl', ['$scope',
+    function($scope) {
+    }
+]);
+
+adminControllers.controller('AdminTopicEditCtrl', ['$scope',
+    function($scope) {
+    }
+]);
+
+
+/*
+ * User
+ */
+adminControllers.controller('AdminUserCtrl', ['$scope', '$http', '$location',
+    function($scope, $http, $location) {
         $http.get('/api/user/all').success(function(data) {
             $scope.users = data;
         });
@@ -65,6 +143,11 @@ adminControllers.controller('AdminUserEditCtrl', ['$scope', '$http', '$routePara
     }
 ]);
 
+
+
+/*
+ * Parameter
+ */
 adminControllers.controller('AdminParameterCtrl', ['$scope', '$http',
     function($scope, $http) {
         $http.get('/api/position/all').success(function(data) {
@@ -111,6 +194,7 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http',
     }
 ]);
 
+// Parameter Position
 adminControllers.controller('AdminParameterPositionAddCtrl', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
         $scope.positionSave = function() {
@@ -121,6 +205,7 @@ adminControllers.controller('AdminParameterPositionAddCtrl', ['$scope', '$http',
     }
 ]);
 
+// Parameter Personnel
 adminControllers.controller('AdminParameterPersonnelAddCtrl', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
         $http.get('/api/position/all').success(function(data) {
@@ -135,6 +220,7 @@ adminControllers.controller('AdminParameterPersonnelAddCtrl', ['$scope', '$http'
     }
 ]);
 
+// Parameter Status
 adminControllers.controller('AdminParameterStatusAddCtrl', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
         $scope.statusSave = function() {
@@ -145,6 +231,7 @@ adminControllers.controller('AdminParameterStatusAddCtrl', ['$scope', '$http', '
     }
 ]);
 
+// Parameter Version
 adminControllers.controller('AdminParameterVersionAddCtrl', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
         $scope.versionSave = function() {
@@ -155,6 +242,7 @@ adminControllers.controller('AdminParameterVersionAddCtrl', ['$scope', '$http', 
     }
 ]);
 
+// Parameter Release Pipe
 adminControllers.controller('AdminParameterReleasePipeAddCtrl', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
         $scope.pipeSave = function() {

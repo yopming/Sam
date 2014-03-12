@@ -1,0 +1,41 @@
+<div class="ui attached message">
+    <div class="header">
+        添加邮件
+    </div>
+</div>
+<form  class="ui form attached fluid segment" ng-controller="AdminMailAddCtrl" ng-submit="mailSave()">
+    <div class="field">
+        <label>邮件名称</label>
+        <input type="text" name="name" ng-model="mail.name" />
+    </div>
+    <div class="field">
+        <label>头图</label>
+        <input type="file" name="head_image" ng-model="mail.head_image" />
+    </div>
+    <div class="fields two">
+        <div class="field">
+            <label>视觉设计师</label>
+            <select name="personnel_ga" ng-model="mail.personnel_ga">
+                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+                    {{personnel.name}}
+                </option>
+            </select>
+        </div>
+        <div class="field">
+            <label>前端设计师</label>
+            <select name="personnel_fe" ng-model="mail.personnel_fe">
+                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+                    {{personnel.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="field">
+        <label>发布时间</label>
+        <input type="text" name="release_time" ng-model="mail.release_time" />
+    </div>
+    <button class="ui blue submit button icon labeled">
+        <i class="edit basic icon"></i>
+        添加邮件
+    </button>
+</form>
