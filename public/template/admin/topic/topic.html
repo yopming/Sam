@@ -1,53 +1,37 @@
 <div class="ui header dividing">专题</div>
 
-<div class="ui attached message">
-    <div class="header">
-        添加专题
-    </div>
-</div>
-<form  class="ui form attached fluid segment">
-    <div class="field">
-        <label>专题名称</label>
-        <input type="text" />
-    </div>
-    <div class="field">
-        <label>头图</label>
-        <input type="file" />
-    </div>
-    <div class="fields two">
-        <div class="field">
-            <label>视觉设计师</label>
-            <input type="text" />
-        </div>
-        <div class="field">
-            <label>前端设计师</label>
-            <input type="text" />
-        </div>
-    </div>
-    <div class="field">
-        <label>归属</label>
-        <div class="ui selection dropdown">
-            <input type="hidden" name="" />
-            <div class="text">CMS</div>
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                <div class="item" data-value="">CMS</div>
-                <div class="item" data-value="">CMS</div>
-                <div class="item" data-value="">CMS</div>
-            </div>
-        </div>
-    </div>
-    <div class="field">
-        <label>版本</label>
-        <input type="text" />
-    </div>
-    <div class="field">
-        <label>发布时间</label>
-        <input type="text" />
-    </div>
-    <div class="ui blue submit button icon labeled">
-        <i class="edit basic icon"></i>
-        添加专题
-    </div>
-</form>
+<table class="ui table segment">
+    <thead>
+        <tr>
+            <th>名称</th>
+            <th>前端</th>
+            <th>视觉</th>
+            <th>发布时间</th>
+            <th>头图</th>
+            <th>发布渠道</th>
+            <th>编辑</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="topic in topics">
+            <td>{{topic.name}}</td>
+            <td>{{topic.personnel_fe.name}}</td>
+            <td>{{topic.personnel_ga.name}}</td>
+            <td>{{topic.end_time}}</td>
+            <td>{{topic.head_image}}</td>
+            <td>{{topic.belong_to.name}}</td>
+            <td>
+                <div class="ui tiny buttons">
+                    <a href="#!/topic/edit/{{topic._id}}" class="ui button positive">编辑</a>
+                    <div class="or"></div>
+                    <a ng-click="deleteTopic(topic._id)" class="ui button">删除</a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
+<a href="#!/topic/add" class="ui blue submit button icon labeled">
+    <i class="edit basic icon"></i>
+    添加专题
+</a>

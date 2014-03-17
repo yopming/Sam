@@ -14,43 +14,25 @@ var userSchema = new Schema({
 mongoose.model('User', userSchema);
 
 
-var projectSchema = new Schema ({
+// task include: project, mail, topic, etc.
+var taskSchema = new Schema ({
+    category        : String,
+    program         : {type: Schema.Types.ObjectId, ref: 'Program'},
     name            : {type: String, unique: true},
     status          : {type: Schema.Types.ObjectId, ref: 'ProjectStatus'},
     personnel_fe    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
     personnel_ga    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
     personnel_ia    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-    start_time      : String,
-    end_time        : String,
     jira_uri        : String,
     gandolf_uri     : String,
+    belong_to       : {type: Schema.Types.ObjectId, ref: 'ReleasePipe'},
     related_version : {type: Schema.Types.ObjectId, ref: 'ProjectVersion'},
+    head_image      : String,
+    start_time      : String,
+    end_time        : String,
     created         : {type: Date, default: Date.now}
 });
-mongoose.model('Project', projectSchema);
-
-
-var mailSchema = new Schema({
-    name         : {type: String, unique: true},
-    personnel_fe : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-    personnel_ga : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-    release_time : String,
-    head_image   : String,
-    created      : {type: Date, default: Date.now}
-});
-mongoose.model('Mail', mailSchema);
-
-
-var topicSchema = new Schema({
-    name         : {type: String, unique: true},
-    personnel_fe : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-    personnel_ga : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-    release_time : String,
-    head_image   : String,
-    belong_to    : {type: Schema.Types.ObjectId, ref: 'ReleasePipe'},
-    created      : {type: Date, default: Date.now}
-});
-mongoose.model('Topic', topicSchema);
+mongoose.model('Task', taskSchema);
 
 
 /* position,i.e. job type
@@ -72,6 +54,15 @@ var personnelSchema = new Schema({
     position       : {type: mongoose.Schema.Types.ObjectId, ref: 'Position'}
 });
 mongoose.model('Personnel', personnelSchema);
+
+
+/* program
+ * @example: official, channel...
+ */
+var programSchema = new Schema({
+    name: {type: String, unique: true}
+});
+mongoose.model('Program', programSchema);
 
 
 /* task status

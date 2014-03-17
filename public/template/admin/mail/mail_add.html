@@ -4,6 +4,7 @@
     </div>
 </div>
 <form  class="ui form attached fluid segment" ng-controller="AdminMailAddCtrl" ng-submit="mailSave()">
+    <input type="hidden" ng-model="mail.category" name="category" />
     <div class="field">
         <label>邮件名称</label>
         <input type="text" name="name" ng-model="mail.name" />
@@ -32,10 +33,16 @@
     </div>
     <div class="field">
         <label>发布时间</label>
-        <input type="text" name="release_time" ng-model="mail.release_time" />
+        <input type="text" name="release_time" ng-model="mail.end_time" />
     </div>
-    <button class="ui blue submit button icon labeled">
-        <i class="edit basic icon"></i>
+
+    <a href="#!/mail" class="ui animated button">
+        <div class="visible content">返回</div>
+        <div class="hidden content">
+            <i class="left arrow icon"></i>
+        </div>
+    </a>
+    <button class="ui blue submit button right floated">
         添加邮件
     </button>
 </form>

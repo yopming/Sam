@@ -1,0 +1,70 @@
+<div class="ui grid sam-topic">
+
+    <div class="three wide column">
+        <div class="ui vertical menu">
+            <div class="item">
+                <a><b>归属</b></a>
+                <div class="menu">
+                    <a class="item" ng-repeat="pipe in pipes">
+                        {{pipe.name}}
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <a><b>年份</b></a>
+                <div class="menu">
+                    <a class="item">2012</a>
+                    <a class="item">2013</a>
+                    <a class="item">2014</a>
+                </div>
+            </div>
+            <div class="item">
+                <a><b>月份</b></a>
+                <div class="menu">
+                    <a class="item">1月</a>
+                    <a class="item">2月</a>
+                    <a class="item">3月</a>
+                    <a class="item">4月</a>
+                    <a class="item">5月</a>
+                    <a class="item">6月</a>
+                    <a class="item">7月</a>
+                    <a class="item">8月</a>
+                    <a class="item">9月</a>
+                    <a class="item">10月</a>
+                    <a class="item">11月</a>
+                    <a class="item">12月</a>
+                </div>
+            </div>
+            <div class="item">
+                <a><b>设计师</b></a>
+                <div class="menu">
+                    <a class="item" ng-repeat="personnel in personnels">
+                        {{personnel.name}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="thirteen wide column">
+        <div class="ui items">
+            <a class="item" ng-repeat="topic in topics">
+                <div class="image">
+                    <img src="{{topic.head_image}}" />
+                    <span class="like ui corner label">
+                        {{topic.belong_to.name}}
+                    </span>
+                </div>
+                <div class="content">
+                    <div class="meta">{{topic.end_time}}</div>
+                    <div class="name">{{topic.name}}</div>
+                    <div class="description">
+                        <div class="ui label black">{{topic.personnel_ga.name}}</div>
+                        <div class="ui label teal">{{topic.personnel_fe.name}}</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+

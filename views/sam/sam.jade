@@ -1,0 +1,57 @@
+doctype
+html(ng-app="sam")
+    head
+        title Sam :: 
+            block subtitle
+        link(rel='stylesheet', href='/css/sam.css')
+        script(src="/js/chives/angular/angular.min.js")
+        script(src="/js/chives/angular/angular-route.min.js")
+        script(src="/mvc/sam/app.js")
+        script(src="/mvc/sam/controller/project_controller.js")
+        script(src="/mvc/sam/controller/operation_controller.js")
+        script(src="/mvc/sam/controller/reference_controller.js")
+        script(src="/mvc/sam/controller/timeline_controller.js")
+
+    body#sam
+
+        //- header
+        div.ui.orange.inverted.menu.sam-header
+            a.item(href="#!/project")
+                i.block.layout.icon
+                | 项目
+            a.item(href="#!/operation/mail")
+                i.mail.icon
+                | 邮件
+            a.item(href="#!/operation/topic")
+                i.tasks.icon
+                | 专题
+            a.item
+                i.text.file.icon 
+                | 视觉规范
+            a.item
+                i.text.file.icon 
+                | Gandolf视觉稿
+            a.item
+                i.text.file.icon 
+                | 交互规范
+            a.item
+                i.text.file.icon 
+                | Jingwei前端文档
+            a.item(href="#!/timeline")
+                i.time.icon
+                | 时间线
+
+            div.right.menu
+                div.item.sam-search
+                    form(action='#', method='POST')
+                        div.ui.mini.action.input
+                            input(type='text', placeholder='Type to search')
+                            div.ui.button(type='submit') Go
+                a.item
+                    i.sign.out.icon
+                    | 登入
+
+        //- body
+        div.sam-wrap(ng-view)
+
+        script(src='/js/chives/jquery/jquery.min.js')

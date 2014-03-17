@@ -57,11 +57,11 @@ adminApp.config(['$locationProvider', '$routeProvider',
             controller: 'AdminUserCtrl'
         }).
         when('/user/add', {
-            templateUrl: '/template/admin/user/add.html',
+            templateUrl: '/template/admin/user/user_add.html',
             controller: 'AdminUserAddCtrl'
         }).
         when('/user/edit/:id', {
-            templateUrl: '/template/admin/user/edit.html',
+            templateUrl: '/template/admin/user/user_edit.html',
             controller: 'AdminUserEditCtrl'
         }).
 
@@ -76,6 +76,10 @@ adminApp.config(['$locationProvider', '$routeProvider',
         when('/parameter/personnel/add', {
             templateUrl: '/template/admin/parameter/personnel_add.html',
             controller: 'AdminParameterPersonnelAddCtrl'
+        }).
+        when('/parameter/program/add', {
+            templateUrl: '/template/admin/parameter/program_add.html',
+            controller: 'AdminParameterProgramAddCtrl'
         }).
         when('/parameter/status/add', {
             templateUrl: '/template/admin/parameter/status_add.html',

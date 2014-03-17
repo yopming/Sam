@@ -10,6 +10,16 @@
     </span>
 </div>
 
+<div class="ui horizontal divider">
+    应用
+</div>
+<div class="subParameter">
+    <span ng-repeat="program in programs" class="ui blue label">
+        {{program.name}}
+        <i class="delete icon" ng-click="deleteProgram(program._id)"></i>
+    </span>
+</div>
+
 <div class="ui horizontal divider">状态</div>
 <div class="subParameter">
     <span ng-repeat="status in statuses" class="ui red label">
