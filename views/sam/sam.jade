@@ -1,57 +1,62 @@
 doctype
 html(ng-app="sam")
-    head
-        title Sam :: 
-            block subtitle
-        link(rel='stylesheet', href='/css/sam.css')
-        script(src="/js/chives/angular/angular.min.js")
-        script(src="/js/chives/angular/angular-route.min.js")
-        script(src="/mvc/sam/app.js")
-        script(src="/mvc/sam/controller/project_controller.js")
-        script(src="/mvc/sam/controller/operation_controller.js")
-        script(src="/mvc/sam/controller/reference_controller.js")
-        script(src="/mvc/sam/controller/timeline_controller.js")
+  head
+    title Sam
+    link(rel='stylesheet', href='/css/sam.css')
+    script(src="/js/chives/underscore/underscore-min.js")
+    script(src="/js/chives/angular/angular.min.js")
+    script(src="/js/chives/angular/angular-route.min.js")
+    script(src="/js/chives/angular/angular-resource.js")
+    script(src="/mvc/sam/app.js")
+    script(src="/mvc/sam/controller/dashboard_controller.js")
+    script(src="/mvc/sam/controller/project_controller.js")
+    script(src="/mvc/sam/controller/operation_controller.js")
+    script(src="/mvc/sam/controller/reference_controller.js")
+    script(src="/mvc/sam/controller/timeline_controller.js")
+    script(src="/mvc/sam/service/project_service.js")
+    script(src="/mvc/sam/filter/project_filter.js")
+    script(src="/mvc/sam/filter/operation_filter.js")
+    script(src="/mvc/sam/directive/sam_directive.js")
 
-    body#sam
+  body#sam
 
-        //- header
-        div.ui.orange.inverted.menu.sam-header
-            a.item(href="#!/project")
-                i.block.layout.icon
-                | 项目
-            a.item(href="#!/operation/mail")
-                i.mail.icon
-                | 邮件
-            a.item(href="#!/operation/topic")
-                i.tasks.icon
-                | 专题
-            a.item
-                i.text.file.icon 
-                | 视觉规范
-            a.item
-                i.text.file.icon 
-                | Gandolf视觉稿
-            a.item
-                i.text.file.icon 
-                | 交互规范
-            a.item
-                i.text.file.icon 
-                | Jingwei前端文档
-            a.item(href="#!/timeline")
-                i.time.icon
-                | 时间线
+    //- header
+    div.ui.orange.inverted.menu.sam-header
+      a.item(href="#!/", sam-active="active")
+        i.dashboard.icon
+        | 总览
+      a.item(href="#!/project", sam-active="active")
+        i.block.layout.icon
+        | 项目
+      a.item(href="#!/operation/mail", sam-active="active")
+        i.mail.icon
+        | 邮件
+      a.item(href="#!/operation/topic", sam-active="active")
+        i.tasks.icon
+        | 专题
+      a.item(href="#!/timeline", sam-active="active")
+        i.time.icon
+        | 时间线
+      span.menu
+        div.ui.dropdown.item.sam-documents
+          i.icon.text.file
+          | 文档和工具
+          i.dropdown.icon
+          div.menu
+            a.item(href="#", target="_blank") 视觉规范
+            a.item(href="http://design.vemic.com:5000/", target="_blank") Gandolf
+            a.item(href="#", target="_blank") 交互规范
+            a.item(href="http://design.vemicn.com:3570/", target="_blank") Jingwei
 
-            div.right.menu
-                div.item.sam-search
-                    form(action='#', method='POST')
-                        div.ui.mini.action.input
-                            input(type='text', placeholder='Type to search')
-                            div.ui.button(type='submit') Go
-                a.item
-                    i.sign.out.icon
-                    | 登入
+      // div.right.menu
+        // div.item.sam-search
+          // form(action='#', method='POST')
+            // div.ui.mini.action.input
+              // input(type='text', placeholder='Type to search')
+              // div.ui.button(type='submit') Go
+        // a.item(href='/sign')
+          // i.sign.out.icon
+          // | 登入
 
-        //- body
-        div.sam-wrap(ng-view)
-
-        script(src='/js/chives/jquery/jquery.min.js')
+    //- body
+    div.sam-wrap(ng-view)

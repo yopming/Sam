@@ -3,12 +3,14 @@
  */
 
 // mongoose setup
-require('./model/schema.js');
-
 var express = require('express');
 var http = require('http');
 var path = require('path');
 var lessMiddleware = require('less-middleware');
+var flash = require('express-flash');
+
+require('./model/schema.js');
+var helper_auth = require('./helper/auth.js');
 
 var app = express();
 
@@ -25,9 +27,13 @@ var routes_api_status    = require('./routes/api/status.js');
 var routes_api_version   = require('./routes/api/version.js');
 
 // all environments
+app.use(express.bodyParser());
+app.use(express.cookieParser('samauth'));
+app.use(express.session());
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(flash());
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -35,31 +41,32 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
+
 // less-middleware
 // sequence of lessMiddleware and express.static should be like this, not inverse
 app.use(lessMiddleware({
-    src: __dirname + '/public/less',
-    dest: __dirname + '/public/css',
-    prefix: '/css',
-    compress: true,
-    force: true,
-    debug: true
+  src: __dirname + '/public/less',
+  dest: __dirname + '/public/css',
+  prefix: '/css',
+  compress: true,
+  force: true,
+  debug: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // development only
 if ('development' == app.get('env')) {
-    app.use(express.errorHandler());
+  app.use(express.errorHandler());
 }
 
 // route
 app.get('/', routes_sam.index);
 
 app.get('/sign', routes_admin.sign);
-app.get('/admin', routes_admin.admin);
-app.get('/admin/sift', routes_admin.admin_sift);
-
-app.get('/admin/password_edit', routes_admin.admin_password_edit);
+app.post('/signin', routes_admin.signin);
+app.get('/signout', helper_auth.requiredAuth, routes_admin.signout);
+app.get('/admin', helper_auth.requiredAuth, routes_admin.admin);
 
 // APIs
 app.get('/api/task/all', routes_api_task.index);
@@ -103,6 +110,6 @@ app.post('/api/version/destroy/:version_id', routes_api_version.destroy);
 
 // run server
 http.createServer(app).listen(app.get('port'), function(){
-    console.log('Express server listening on port ' + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port'));
 });
 

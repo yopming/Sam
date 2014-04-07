@@ -30,7 +30,9 @@
             <div class="item">
                 <a><b>设计师</b></a>
                 <div class="menu">
-                    <a class="item" ng-repeat="personnel in personnels">
+                    <a class="item" ng-repeat="personnel in personnels"
+                        ng-click="filterMailByAtom(personnel._id)">
+                        <i ng-class="isChecked(personnel._id)"></i>
                         {{personnel.name}}
                     </a>
                 </div>
@@ -40,7 +42,7 @@
 
     <div class="thirteen wide column">
         <div class="ui items">
-            <a class="item" ng-repeat="mail in mails">
+            <a class="item" ng-repeat="mail in filtered = (mails | SamOperationMailFilter:selected_atom)">
                 <div class="image">
                     <img src="{{mail.head_image}}" />
                 </div>

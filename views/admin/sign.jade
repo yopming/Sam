@@ -1,34 +1,31 @@
-extends ./layout_admin
+doctype html
+html(ng-app="admin")
+	head
+		title Sam :: Sign
+		link(rel="stylesheet", href="/css/sam-admin.css")
 
-block subtitle
-    | Admin
+	body
+		div#sam-sign.ui.grid
+			div.five.wide.column
+			div.six.wide.column
+				h2.ui.header Sam
+				div.ui.form.segment.piled
+					form(action='/signin', method='POST')
+						- if (messages.info)
+							div.ui.error.message(style="display:block")
+								div=messages.info
 
-block substance
-    div#sam-sign.ui.grid
-        div.five.wide.column
-        div.six.wide.column
-            h2.ui.header
-                | Sam
-                div.sub.header
-                    |Consolidated management
-                div.sub.header
-                    |Neighborly to modify and delightfully to view
-            div.ui.form.segment.piled
-                form(action='', method='POST')
-                    div.field
-                        label 用户
-                        div.ui.left.labeled.icon.input
-                            input(type='text')
-                            i.user.icon
-                    div.field
-                        label 密码
-                        div.ui.left.labeled.icon.input
-                            input(type='password')
-                            i.lock.icon
-                    div.ui.error.message
-                        div.header
-                            |We noticed some issues
-                    button.ui.red.submit.button(type='submit')
-                        i.meh.icon
-                        |登录
-        div.five.wide.column
+						div.field
+							label Username
+							div.ui.left.labeled.icon.input
+								input(type='text', name='username')
+								i.user.icon
+						div.field
+							label Password
+							div.ui.left.labeled.icon.input
+								input(type='password', name='password')
+								i.lock.icon
+						button.ui.small.red.submit.button(type='submit')
+							i.meh.icon
+							| Sign In
+			div.five.wide.column

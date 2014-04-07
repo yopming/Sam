@@ -5,7 +5,9 @@
             <div class="item">
                 <a><b>归属</b></a>
                 <div class="menu">
-                    <a class="item" ng-repeat="pipe in pipes">
+                    <a class="item" ng-repeat="pipe in pipes"
+                        ng-click="filterTopicByAtom(pipe._id)">
+                        <i ng-class="isChecked(pipe._id)"></i>
                         {{pipe.name}}
                     </a>
                 </div>
@@ -38,7 +40,9 @@
             <div class="item">
                 <a><b>设计师</b></a>
                 <div class="menu">
-                    <a class="item" ng-repeat="personnel in personnels">
+                    <a class="item" ng-repeat="personnel in personnels"
+                        ng-click="filterTopicByAtom(personnel._id)">
+                        <i ng-class="isChecked(personnel._id)"></i>
                         {{personnel.name}}
                     </a>
                 </div>
@@ -48,7 +52,7 @@
 
     <div class="thirteen wide column">
         <div class="ui items">
-            <a class="item" ng-repeat="topic in topics">
+            <a class="item" ng-repeat="topic in filtered = (topics | SamOperationTopicFilter:selected_atom)">
                 <div class="image">
                     <img src="{{topic.head_image}}" />
                     <span class="like ui corner label">

@@ -1,61 +1,57 @@
 doctype html
 html(ng-app="admin")
-    head
-        title Sam :: Admin
-            block subtitle
-        link(rel="stylesheet", href="/css/sam-admin.css")
-        script(src="/js/chives/angular/angular.min.js")
-        script(src="/js/chives/angular/angular-route.min.js")
-        script(src="/mvc/admin/app.js")
-        script(src="/mvc/admin/controller.js")
+  head
+    title Sam :: Admin
+    link(rel="stylesheet", href="/css/sam-admin.css")
+    script(src="/js/chives/angular/angular.min.js")
+    script(src="/js/chives/angular/angular-route.min.js")
+    script(src="/mvc/admin/app.js")
+    script(src="/mvc/admin/controller.js")
+    script(src="/js/chives/angular/ngQuickDate/ng-quick-date.js")
 
-    body
+  body
 
-        div#sam-admin
-            div.ui.grid
-                div.leftSide.three.wide.column
-                    div.brand
-                        |Admin
-                    div.navigator
-                        div.ui.vertical.menu.fluid.secondary
-                            a.item(href="#!/sift")
-                                i.bullseye.icon
-                                | 筛选
-                            a.item(href="#!/project")
-                                i.block.layout.icon
-                                | 项目
-                            a.item(href="#!/mail")
-                                i.mail.icon
-                                | 邮件
-                            a.item(href="#!/topic")
-                                i.tasks.icon
-                                | 专题
-                            a.item(href="#!/user")
-                                i.users.icon
-                                | 用户
-                            div.item
-                                i.settings.icon
-                                | 参数
-                                div.menu
-                                    a.item(href="#!/parameter") 参数列表
-                                    a.item(href="#!/parameter/position/add") 添加职位
-                                    a.item(href="#!/parameter/personnel/add") 添加人员
-                                    a.item(href="#!/parameter/program/add") 添加项目应用
-                                    a.item(href="#!/parameter/status/add") 添加项目状态
-                                    a.item(href="#!/parameter/version/add") 添加项目版本
-                                    a.item(href="#!/parameter/releasePipe/add") 添加发布渠道
-                    div.userBar
-                        div.ui.celled.horizontal.list
-                            a.item
-                                i.key.icon
-                                |修改密码
-                            a.item
-                                i.sign.out.icon
-                                |退出登录
+    div#sam-admin
+      div.topbar
+        div.ui.grid
+          div.three.wide.column.brand
+            a(href="#!/")
+              i.settings.icon
+              | Sam
 
-                div.rightSide.thirteen.wide.column
-                    div.facility
-                        div(ng-view)
+          div.wide.column.ten.navigator
+            div.ui.menu.inverted
+              a.item(href="#!/project")
+                i.block.layout.icon
+                | 项目
+              a.item(href="#!/mail")
+                i.mail.icon
+                | 邮件
+              a.item(href="#!/topic")
+                i.tasks.icon
+                | 专题
+              a.item(href="#!/user")
+                i.users.icon
+                | 用户
+              div.item.parameters.ui.dropdown
+                i.settings.icon
+                | 参数
+                i.icon.dropdown
+                div.menu
+                  a.item(href="#!/parameter") 参数列表
+                  a.item(href="#!/parameter/position/add") 添加职位
+                  a.item(href="#!/parameter/personnel/add") 添加人员
+                  a.item(href="#!/parameter/program/add") 添加项目应用
+                  a.item(href="#!/parameter/status/add") 添加项目状态
+                  a.item(href="#!/parameter/version/add") 添加项目版本
+                  a.item(href="#!/parameter/releasePipe/add") 添加发布渠道
+          div.wide.column.three.userBar
+            div.ui.celled.horizontal.list
+              span.item= current_user.username
+              a.item(href='/signout')
+                i.sign.out.icon
+                |登出
 
-
-        script(src="/js/chives/jquery/jquery.min.js")
+      div.bottle
+        div.facility
+          ng-view(show-default="true")

@@ -1,0 +1,72 @@
+// Bar chart
+.chart-bar {
+  height:300px;
+  border-bottom:1px solid #d8d8d8;
+  margin-bottom:20px;
+  li {
+    float:left;
+    width:40px;
+    padding:0 10px;
+    margin:0 10px;
+    position:relative;
+    height:100%;
+    list-style:none;
+    .legend,
+    .bar {
+      position:absolute;
+      bottom:0;
+    }
+    .legend {
+      display:block;
+      height:20px;
+      text-align:center;
+      width:100%;
+      line-height:20px;
+      overflow:hidden;
+      z-index: @chartBarLegend;
+    }
+    .bar {
+      display:block;
+      height:100%;
+      width:100%;
+      background:#ccc;
+      z-index: @chartBarBar;
+      .border-radius(2px 2px 0 0);
+    }
+
+    &.blue {
+      .bar {
+        background:#6ecff5;
+      }
+    }
+    &.red {
+      .bar {
+        background:#ef4d6d;
+      }
+    }
+    &.green {
+      .bar {
+        background:#a1cf64;
+      }
+    }
+    &.purple {
+      .bar {
+        background:#564f8a;
+      }
+    }
+    &.dark {
+      .bar {
+        background:#5c6166;
+      }
+    }
+  }
+}
+
+
+// Line chart
+.chart-line {
+}
+
+// Pie chart
+.chart-pie {
+}

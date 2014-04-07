@@ -2,121 +2,130 @@
 @import "./module/mixin";
 @import "./module/normalize";
 @import "./semantic";
+@import "./module/datepicker";
 
 html {
-    background:url(../img/starry.jpg) no-repeat center center fixed;
-    .background-size(cover);
-    body {
-        background:none;
-        height:100%;
-        .box-sizing(border-box);
-    }
+  background:url(../img/starry.jpg) no-repeat center center fixed;
+  .background-size(cover);
+  body {
+    background:none;
+    height:100%;
+    .box-sizing(border-box);
+  }
 }
 
 #sam-sign {
-    .ui.header {
-        margin-top:170px;
-        color:#fff;
-        .sub {
-            color:#efefef;
-        }
+  .ui.header {
+    margin-top:170px;
+    color:#fff;
+  }
+  .form {
+    margin-top:30px;
+    .margin-vertical(auto);
+    .button:hover {
+    .meh:before {
+      content: "\f118";
+      }
     }
-    .form {
-        margin-top:30px;
-        .margin-vertical(auto);
-        .button:hover {
-            .meh:before {
-                content: "\f118";
-            }
-        }
-    }
-
+  }
 }
 
 
 #sam-admin {
-    width:1200px;
+  width:900px;
+  height:100%;
+  min-height:750px;
+  font-size:13px;
+  .margin-vertical(auto);
+  .ui.grid {
     height:100%;
-    min-height:710px;
-    .margin-vertical(auto);
-    .box-shadow(0 0 2px 1px rgba(0,0,0,.25));
-
-    .ui.grid {
-        height:100%;
+  }
+  .topbar {
+    @deepcolor: #293541;
+    @topbarHeight: 50px;
+    background: @deepcolor;
+    .brand,
+    .navigator,
+    .userBar {
+      line-height: @topbarHeight;
     }
-
-    .leftSide,
-    .rightSide {
-        margin:0;
-        padding:0;
-        height:100%;
-    }
-
-    .leftSide {
-        background:#293541;
-        position:relative;
-        .brand {
-            height:50px;
-            line-height:50px;
-            background:#f05940;
-            font-size:24px;
-            padding-left:23px;
-            color:#fff;
+    .brand {
+      height: @topbarHeight;
+      background:#f05940;
+      font-size:24px;
+      padding-left:23px;
+      color:#fff;
+      a {
+        text-decoration:none;
+        color:#fff;
+        &:hover {
+          color:#eee;
         }
-        .navigator {
-            .menu {
-                .box-sizing(border-box);
-                margin-top:10px;
-                padding:0 10px;
-            }
-            .item {
-                color:#8d959e;
-                font-weight:bold;
-            }
-            .active.item {
-                background:#34404c;
-                color:#fff;
+      }
+    }
+    .navigator {
+      .inverted.ui.menu {
+        background: @deepcolor;
+        > .item {
+          font-size:14px;
+          height:34px;
+          margin: 8px 0;
+          padding:0 0.9em;
+          line-height: 34px;
             }
         }
-        .userBar {
-            position:absolute;
-            bottom:0;
-            width:208px;
-            padding:5px 0 10px 23px;
-            &,
-            .item {
-                font-size:14px;
-                border:none;
-                &,
-                i {
-                    color:#fff;
-                }
-                &:hover {
-                    color:#aaa;
+        .active.item {
+          background:#34404c;
+          color:#fff;
+        }
+        .parameters {
+          .menu {
+            display:none;
+            }
+            &:hover {
+              .menu {
+                display:block;
                 }
             }
         }
     }
-    .rightSide {
-        background:#f2f3f8;
-        overflow-y:auto;
-        .facility {
-            padding:15px;
+    .userBar {
+      &,
+      .item {
+        font-size:14px;
+        border:none;
+        &,
+        i {
+          color:#bbb;
+            }
+            &:hover {
+              color:#aaa;
+            }
         }
     }
-
-    .subParameter {
-        padding-bottom:20px;
+  }
+  .bottle {
+    height:700px;
+    background:#f2f3f8;
+    overflow-y:auto;
+    .box-shadow(0 0 2px 1px rgba(0,0,0,.45));
+    .facility {
+      padding:15px;
     }
+  }
+  .subParameter {
+    padding-bottom:20px;
+  }
 }
 
 
 
 @media screen and (min-height:800px) {
-    body {
-        padding-top:30px;
-    }
-    #sam-admin {
-        height:90%;
-    }
+  body {
+    padding-top:30px;
+  }
+  #sam-admin {
+    height:90%;
+  }
 }
+

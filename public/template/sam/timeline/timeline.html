@@ -1,22 +1,34 @@
 <div class="sam-timeline">
-    <div class="ui segment feed stacked">
-        <ul class="timeline">
-            <li ng-repeat="timeline in timelines">
-                <div class="timeline-node">
-                    {{timeline.end_time}}
-                </div>
-                <div class="timeline-badge" ng-switch on="timeline.category">
-                    <i class="icon block layout circular inverted teal" ng-switch-when="project"></i>
-                    <i class="icon mail circular inverted blue" ng-switch-when="mail"></i>
-                    <i class="icon tasks circular inverted red" ng-switch-when="topic"></i>
-                </div>
-                <div class="timeline-panel">
-                    <div class="timeline-title">{{timeline.name}}</div>
-                    <div class="timeline-body">
-                        {{timeline.category}}
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+  <div class="ui segment stacked">
+    <ul class="timeline">
+      <li ng-repeat="timeline in timelines" ng-if="timeline.end_time">
+
+        <div class="timeline-node">
+          {{timeline.end_time}}
+        </div>
+
+        <div class="timeline-badge" ng-switch on="timeline.category">
+          <i class="icon block layout circular inverted teal" ng-switch-when="project"></i>
+          <i class="icon mail circular inverted blue" ng-switch-when="mail"></i>
+          <i class="icon tasks circular inverted red" ng-switch-when="topic"></i>
+        </div>
+
+        <div class="timeline-panel">
+          <div class="timeline-title">{{timeline.name}}</div>
+          <div class="timeline-body">
+            <span class="ui tiny label" ng-if="timeline.personnel_ia">
+              {{timeline.personnel_ia.name}}
+            </span>
+            <span class="ui label" ng-if="timeline.personnel_ga">
+              {{timeline.personnel_ga.name}}
+            </span>
+            <span class="ui label" ng-if="timeline.personnel_fe">
+              {{timeline.personnel_fe.name}}
+            </span>
+          </div>
+        </div>
+
+      </li>
+    </ul>
+  </div>
 </div>

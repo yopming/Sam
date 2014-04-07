@@ -1,85 +1,87 @@
 <div class="ui attached message">
-    <div class="header">
-        添加项目
-    </div>
+  <div class="header">
+    添加项目
+  </div>
 </div>
 
 <form class="ui form attached fluid segment" ng-controller="AdminProjectAddCtrl" ng-submit="projectSave()">
-    <input type="hidden" ng-model="project.category" name="category" />
+  <input type="hidden" ng-model="project.category" name="category" />
+  <div class="field">
+    <label>项目应用</label>
+    <select name="program" ng-model="project.program" />
+      <option ng-repeat="program in programs" value="{{program._id}}">
+      {{program.name}}
+      </option>
+    </select>
+  </div>
+  <div class="field">
+    <label>名称</label>
+    <input type="text" name="name" ng-model="project.name" />
+  </div>
+  <div class="field">
+    <label>JIRA地址</label>
+    <input type="text" name="jira_uri" ng-model="project.jira_uri" />
+  </div>
+  <div class="field">
+    <label>Gandolf地址</label>
+    <input type="text" name="gandolf_uri" ng-model="project.gandolf_uri" />
+  </div>
+  <div class="field">
+    <label>状态</label>
+    <select name="status" ng-model="project.status">
+      <option ng-repeat="status in statuses" value="{{status._id}}">
+      {{status.name}}
+      </option>
+    </select>
+  </div>
+  <div class="field">
+    <label>开始时间</label>
+    <quick-datepicker ng-model="project.start_time" icon-class="icon calendar"
+      placeholder="点击选取时间" date-format="yyyy-M-d"
+      disable-timepicker="true" disable-clear-button="true"></quick-datepicker>
+  </div>
+  <div class="three fields">
     <div class="field">
-        <label>项目应用</label>
-        <select name="program" ng-model="project.program" />
-            <option ng-repeat="program in programs" value="{{program._id}}">
-                {{program.name}}
-            </option>
-        </select>
-    </div>
-    <div class="field">
-        <label>名称</label>
-        <input type="text" name="name" ng-model="project.name" />
-    </div>
-    <div class="field">
-        <label>JIRA地址</label>
-        <input type="text" name="jira_uri" ng-model="project.jira_uri" />
-    </div>
-    <div class="field">
-        <label>Gandolf地址</label>
-        <input type="text" name="gandolf_uri" ng-model="project.gandolf_uri" />
-    </div>
-    <div class="field">
-        <label>状态</label>
-        <select name="status" ng-model="project.status">
-            <option ng-repeat="status in statuses" value="{{status._id}}">
-                {{status.name}}
-            </option>
-        </select>
-    </div>
-    <div class="three fields">
-        <div class="field">
-            <label>交互设计师</label>
-            <select name="personnel_ga" ng-model="project.personnel_ia">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-        <div class="field">
-            <label>视觉设计师</label>
-            <select name="personnel_ga" ng-model="project.personnel_ga">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-        <div class="field">
-            <label>前端设计师</label>
-            <select name="personnel_ga" ng-model="project.personnel_fe">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
+      <label>交互设计师</label>
+      <select name="personnel_ga" ng-model="project.personnel_ia">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
     </div>
     <div class="field">
-        <label>所属版本</label>
-        <select name="related_version" ng-model="project.related_version">
-            <option ng-repeat="version in versions" value="{{version._id}}">
-                {{version.name}}
-            </option>
-        </select>
+      <label>视觉设计师</label>
+      <select name="personnel_ga" ng-model="project.personnel_ga">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
     </div>
     <div class="field">
-        <label>开始时间</label>
-        <input type="text" name="start_time" ng-model="project.start_time" />
+      <label>前端设计师</label>
+      <select name="personnel_ga" ng-model="project.personnel_fe">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
     </div>
+  </div>
+  <div class="field">
+    <label>所属版本</label>
+    <select name="related_version" ng-model="project.related_version">
+      <option ng-repeat="version in versions" value="{{version._id}}">
+      {{version.name}}
+      </option>
+    </select>
+  </div>
 
-    <a href="#!/project" class="ui animated button">
-        <div class="visible content">返回</div>
-        <div class="hidden content">
-            <i class="left arrow icon"></i>
-        </div>
-    </a>
-    <button class="ui blue submit button right floated">
-        添加项目
-    </button>
+  <a href="#!/project" class="ui animated button">
+    <div class="visible content">返回</div>
+    <div class="hidden content">
+      <i class="left arrow icon"></i>
+    </div>
+  </a>
+  <button class="ui blue submit button right floated">
+    添加项目
+  </button>
 </form>
