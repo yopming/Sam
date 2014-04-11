@@ -2,7 +2,8 @@ var adminApp = angular.module('admin', [
   'ngRoute',
   'adminControllers',
   'ngQuickDate',
-  'flow'
+  'flow',
+  'ui.bootstrap.datetimepicker'
 ]);
 
 adminApp.config(['$locationProvider', '$routeProvider', 'ngQuickDateDefaultsProvider', 'flowFactoryProvider',
