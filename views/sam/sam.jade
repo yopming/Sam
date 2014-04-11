@@ -48,15 +48,18 @@ html(ng-app="sam")
             a.item(href="#", target="_blank") 交互规范
             a.item(href="http://design.vemicn.com:3570/", target="_blank") Jingwei
 
-      // div.right.menu
+      div.right.menu
         // div.item.sam-search
           // form(action='#', method='POST')
             // div.ui.mini.action.input
               // input(type='text', placeholder='Type to search')
               // div.ui.button(type='submit') Go
-        // a.item(href='/sign')
-          // i.sign.out.icon
-          // | 登入
+        if current_user
+          a.item(href='/admin')= current_user.username
+        else
+          a.item(href='/sign')
+            i.sign.out.icon
+            | 登入
 
     //- body
     div.sam-wrap(ng-view)

@@ -1,23 +1,22 @@
-// Bar chart
 .chart-bar {
   height:300px;
   border-bottom:1px solid #d8d8d8;
-  margin-bottom:20px;
+  margin-bottom:30px !important;
   li {
     float:left;
-    width:40px;
-    padding:0 10px;
-    margin:0 10px;
+    width:60px;
     position:relative;
     height:100%;
     list-style:none;
-    .legend,
     .bar {
       position:absolute;
       bottom:0;
     }
     .legend {
       display:block;
+      position:absolute;
+      bottom:-20px;
+      font-size:14px;
       height:20px;
       text-align:center;
       width:100%;
@@ -31,7 +30,6 @@
       width:100%;
       background:#ccc;
       z-index: @chartBarBar;
-      .border-radius(2px 2px 0 0);
     }
 
     &.blue {
