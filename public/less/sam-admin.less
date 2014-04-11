@@ -23,8 +23,8 @@ html {
     margin-top:30px;
     .margin-vertical(auto);
     .button:hover {
-    .meh:before {
-      content: "\f118";
+      .meh:before {
+        content: "\f118";
       }
     }
   }
@@ -72,22 +72,22 @@ html {
           margin: 8px 0;
           padding:0 0.9em;
           line-height: 34px;
-            }
         }
-        .active.item {
-          background:#34404c;
-          color:#fff;
+      }
+      .active.item {
+        background:#34404c;
+        color:#fff;
+      }
+      .parameters {
+        .menu {
+          display:none;
         }
-        .parameters {
+        &:hover {
           .menu {
-            display:none;
-            }
-            &:hover {
-              .menu {
-                display:block;
-                }
-            }
+            display:block;
+          }
         }
+      }
     }
     .userBar {
       &,
@@ -97,11 +97,11 @@ html {
         &,
         i {
           color:#bbb;
-            }
-            &:hover {
-              color:#aaa;
-            }
         }
+        &:hover {
+          color:#aaa;
+        }
+      }
     }
   }
   .bottle {
@@ -116,8 +116,27 @@ html {
   .subParameter {
     padding-bottom:20px;
   }
-}
 
+  .upload-drop {
+    .square(320px);
+    border:4px dashed #ddd;
+    line-height:300px;
+    text-align:center;
+    margin-bottom:10px;
+    img {
+      .box-shadow(0 2px 4px rgba(0,0,0,.75));
+      max-width:300px;
+      max-height:300px;
+      vertical-align:middle;
+    }
+    &.mini {
+      height:130px;
+      img {
+        max-height:107px;
+      }
+    }
+  }
+}
 
 
 @media screen and (min-height:800px) {

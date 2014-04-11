@@ -51,3 +51,7 @@ exports.admin_sift = function(req, res) {
 exports.admin_password_edit = function(req, res) {
   res.render('admin/password_edit');
 };
+
+// upload
+exports.admin_upload = function(req, res) {
+};

@@ -105,21 +105,21 @@ adminControllers.controller('AdminMailCtrl', ['$scope', '$http', '$location',
     }
 ]);
 
-adminControllers.controller('AdminMailAddCtrl', ['$scope', '$http', '$location',
-    function($scope, $http, $location) {
-        $scope.mail = {};
-        $scope.mail.category = 'mail';
+adminControllers.controller('AdminMailAddCtrl', ['$scope', '$http', '$location', 
+  function($scope, $http, $location) {
+    $scope.mail = {};
+    $scope.mail.category = 'mail';
 
-        $http.get('/api/personnel/all').success(function(data) {
-            $scope.personnels = data;
-        });
+    $http.get('/api/personnel/all').success(function(data) {
+      $scope.personnels = data;
+    });
 
-        $scope.mailSave = function() {
-            $http.post('/api/task/mail/add', $scope.mail).success(function(data) {
-                $location.url('/mail');
-            });
-        };
-    }
+    $scope.mailSave = function() {
+      $http.post('/api/task/mail/add', $scope.mail).success(function(data) {
+        $location.url('/mail');
+      });
+    };
+  }
 ]);
 
 adminControllers.controller('AdminMailEditCtrl', ['$scope', '$http', '$routeParams', '$location',
@@ -276,7 +276,7 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http',
         $http.get('/api/version/all').success(function(data) {
             $scope.versions = data;
         });
-        
+
         $scope.deletePosition = function(id) {
             $http.post('/api/position/destroy/' + id).success(function(data) {
                 $scope.positions = data;

@@ -1,48 +1,57 @@
 <div class="ui attached message">
-    <div class="header">
-        添加邮件
-    </div>
+  <div class="header">
+    添加邮件
+  </div>
 </div>
-<form  class="ui form attached fluid segment" ng-controller="AdminMailAddCtrl" ng-submit="mailSave()">
-    <input type="hidden" ng-model="mail.category" name="category" />
+<form class="ui form attached fluid segment" ng-controller="AdminMailAddCtrl" ng-submit="mailSave()">
+  <input type="hidden" ng-model="mail.category" name="category" />
+  <div class="field">
+    <label>邮件名称</label>
+    <input type="text" name="name" ng-model="mail.name" />
+  </div>
+  <div class="field">
+    <label>头图</label>
+    <div class="upload-drop" ng-hide="$flow.files.length">
+      拖拽图片上传
+    </div>
+    <div class="upload-drop" ng-show="$flow.files.length">
+      <img flow-img="$flow.files[0]" />
+    </div>
+    <label>只接受png，jpg，jpeg，gif格式的图片</label>
+    <div class="ui tiny button" ng-hide="$flow.files.length" flow-btn>选择图片</div>
+    <div class="ui tiny button" ng-show="$flow.files.length" flow-btn>更换图片</div>
+    <div class="ui tiny button negative" ng-show="$flow.files.length" ng-click="$flow.cancel()">删除</div>
+  </div>
+  <div class="fields two">
     <div class="field">
-        <label>邮件名称</label>
-        <input type="text" name="name" ng-model="mail.name" />
+      <label>视觉设计师</label>
+      <select name="personnel_ga" ng-model="mail.personnel_ga">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
     </div>
     <div class="field">
-        <label>头图</label>
-        <input type="file" name="head_image" ng-model="mail.head_image" />
+      <label>前端设计师</label>
+      <select name="personnel_fe" ng-model="mail.personnel_fe">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
     </div>
-    <div class="fields two">
-        <div class="field">
-            <label>视觉设计师</label>
-            <select name="personnel_ga" ng-model="mail.personnel_ga">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-        <div class="field">
-            <label>前端设计师</label>
-            <select name="personnel_fe" ng-model="mail.personnel_fe">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-    </div>
-    <div class="field">
-        <label>发布时间</label>
-        <input type="text" name="release_time" ng-model="mail.end_time" />
-    </div>
+  </div>
+  <div class="field">
+    <label>发布时间</label>
+    <input type="text" name="release_time" ng-model="mail.end_time" />
+  </div>
 
-    <a href="#!/mail" class="ui animated button">
-        <div class="visible content">返回</div>
-        <div class="hidden content">
-            <i class="left arrow icon"></i>
-        </div>
-    </a>
-    <button class="ui blue submit button right floated">
-        添加邮件
-    </button>
+  <a href="#!/mail" class="ui animated button">
+    <div class="visible content">返回</div>
+    <div class="hidden content">
+      <i class="left arrow icon"></i>
+    </div>
+  </a>
+  <button class="ui blue submit button right floated">
+    添加邮件
+  </button>
 </form>
