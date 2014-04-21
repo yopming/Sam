@@ -50,11 +50,11 @@ exports.indexOne = function(req, res) {
 };
 
 exports.categoryIndex = function(req, res) {
-    Task.find({category: req.params.category}).populate(populater).exec(function(err, tasks) {
-        if (err)
-            res.send('Error: ' + err);
-         res.json(tasks);
-    });
+  Task.find({category: req.params.category}).populate(populater).exec(function(err, tasks) {
+    if (err)
+      res.send('Error: ' + err);
+    res.json(tasks);
+  });
 };
 
 exports.create = function(req, res) {
@@ -96,7 +96,6 @@ exports.update = function(req, res) {
         task.gandolf_uri     = req.body.gandolf_uri;
         task.belong_to       = req.body.belong_to;
         task.related_version = req.body.related_version;
-        task.head_image      = req.body.head_image;
         task.start_time      = req.body.start_time;
         task.end_time        = req.body.end_time;
 

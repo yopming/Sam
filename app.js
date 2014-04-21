@@ -25,9 +25,12 @@ var routes_api_program   = require('./routes/api/program.js');
 var routes_api_pipe      = require('./routes/api/pipe.js');
 var routes_api_status    = require('./routes/api/status.js');
 var routes_api_version   = require('./routes/api/version.js');
+var routes_api_tribute   = require('./routes/api/tribute.js');
 
 // all environments
-app.use(express.bodyParser());
+app.use(express.bodyParser({
+  limit: '5mb'
+}));
 app.use(express.cookieParser('samauth'));
 app.use(express.session());
 app.set('port', process.env.PORT || 3000);
@@ -66,7 +69,9 @@ app.get('/', routes_sam.index);
 app.get('/sign', routes_admin.sign);
 app.post('/signin', routes_admin.signin);
 app.get('/signout', helper_auth.requiredAuth, routes_admin.signout);
-app.get('/admin', helper_auth.requiredAuth, routes_admin.admin);
+// app.get('/admin', helper_auth.requiredAuth, routes_admin.admin);
+// temporary remov auth requirement
+app.get('/admin', routes_admin.admin);
 
 // APIs
 app.get('/api/task/all', routes_api_task.index);
@@ -106,6 +111,8 @@ app.post('/api/status/destroy/:status_id', routes_api_status.destroy);
 app.get('/api/version/all', routes_api_version.index);
 app.post('/api/version/add', routes_api_version.create);
 app.post('/api/version/destroy/:version_id', routes_api_version.destroy);
+
+app.post('/api/tribute/add', routes_api_tribute.create);
 
 
 // run server

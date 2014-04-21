@@ -1,13 +1,12 @@
 var adminApp = angular.module('admin', [
   'ngRoute',
   'adminControllers',
-  'ngQuickDate',
-  'flow',
-  'ui.bootstrap.datetimepicker'
+  'datePicker',
+  'angularFileUpload'
 ]);
 
-adminApp.config(['$locationProvider', '$routeProvider', 'ngQuickDateDefaultsProvider', 'flowFactoryProvider',
-  function($locationProvider, $routeProvider, ngQuickDateDefaultsProvider, flowFactoryProvider) {
+adminApp.config(['$locationProvider', '$routeProvider',
+  function($locationProvider, $routeProvider) {
 
     $locationProvider.html5Mode(false).hashPrefix('!');
 
@@ -99,26 +98,6 @@ adminApp.config(['$locationProvider', '$routeProvider', 'ngQuickDateDefaultsProv
     }).
     otherwise({
       redirectTo: '/'
-    });
-
-    ngQuickDateDefaultsProvider.set({
-      closeButtonHtml: '',
-      nextLinkHtml: '<i class="icon right arrow"></i>',
-      prevLinkHtml: '<i class="icon left arrow"></i>',
-      dayAbbreviations: ["日", "一", "二", "三", "四", "五", "六"]
-    });
-
-    flowFactoryProvider.defaults = {
-      target: '/upload',
-      permanentErrors: [404, 500, 501],
-      maxChunkRetries: 1,
-      chunkRetryInterval: 5000,
-      simultaneousUploads: 4,
-      singleFile: true
-    };
-
-    flowFactoryProvider.on('catchAll', function(event) {
-      console.log('catchAll', arguments);
     });
 
   }

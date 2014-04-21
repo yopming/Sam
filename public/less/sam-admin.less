@@ -3,7 +3,6 @@
 @import "./module/normalize";
 @import "./module/semantic";
 @import "./module/datepicker";
-@import "./module/datetimepicker";
 
 html {
   background:url(../img/starry.jpg) no-repeat center center fixed;
@@ -123,7 +122,7 @@ html {
     border:4px dashed #ddd;
     line-height:300px;
     text-align:center;
-    margin-bottom:10px;
+    padding:5px;
     img {
       .box-shadow(0 2px 4px rgba(0,0,0,.75));
       max-width:300px;
@@ -134,6 +133,37 @@ html {
       height:130px;
       img {
         max-height:107px;
+      }
+    }
+    &.hover {
+      border-color:#aaa;
+    }
+  }
+  .upload-drop-pointing {
+    text-transform:none;
+  }
+  .upload-drop-width {
+    .border-radius(0);
+    width:338px;
+  }
+  .uploaded-image {
+    max-width:300px;
+    max-height:300px;
+  }
+
+  .tooltip-image {
+    img {
+      display:none;
+    }
+    &:hover {
+      position:relative;
+      overflow:show;
+      img {
+        display:block;
+        position:absolute;
+        top:13px;
+        left:2px;
+        .box-shadow(0 2px 4px rgba(0,0,0,.78));
       }
     }
   }

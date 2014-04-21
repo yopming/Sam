@@ -1,37 +1,41 @@
 <div class="ui header dividing">专题</div>
 
 <table class="ui table segment">
-    <thead>
-        <tr>
-            <th>名称</th>
-            <th>前端</th>
-            <th>视觉</th>
-            <th>发布时间</th>
-            <th>头图</th>
-            <th>发布渠道</th>
-            <th>编辑</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="topic in topics">
-            <td>{{topic.name}}</td>
-            <td>{{topic.personnel_fe.name}}</td>
-            <td>{{topic.personnel_ga.name}}</td>
-            <td>{{topic.end_time}}</td>
-            <td>{{topic.head_image}}</td>
-            <td>{{topic.belong_to.name}}</td>
-            <td>
-                <div class="ui tiny buttons">
-                    <a href="#!/topic/edit/{{topic._id}}" class="ui button positive">编辑</a>
-                    <div class="or"></div>
-                    <a ng-click="deleteTopic(topic._id)" class="ui button">删除</a>
-                </div>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>前端</th>
+      <th>视觉</th>
+      <th>发布时间</th>
+      <th>头图</th>
+      <th>发布渠道</th>
+      <th>编辑</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="topic in topics">
+    <td>{{topic.name}}</td>
+    <td>{{topic.personnel_fe.name}}</td>
+    <td>{{topic.personnel_ga.name}}</td>
+    <td>{{topic.end_time}}</td>
+    <td>
+      <i class="icon photo tooltip-image">
+        <img class="uploaded-image" ng-src="/uploads/{{topic.head_image}}" />
+      </i>
+    </td>
+    <td>{{topic.belong_to.name}}</td>
+    <td>
+      <div class="ui tiny buttons">
+        <a href="#!/topic/edit/{{topic._id}}" class="ui button positive">编辑</a>
+        <div class="or"></div>
+        <a ng-click="deleteTopic(topic._id)" class="ui button">删除</a>
+      </div>
+    </td>
+  </tr>
+  </tbody>
 </table>
 
 <a href="#!/topic/add" class="ui blue submit button icon labeled">
-    <i class="edit basic icon"></i>
-    添加专题
+  <i class="edit basic icon"></i>
+  添加专题
 </a>

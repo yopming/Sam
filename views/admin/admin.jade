@@ -1,13 +1,12 @@
 doctype html
-html(ng-app="admin", flow-init, flow-file-added="!!{png:1, gif:1, jpg:1, jpeg:1}[$file.getExtension()]", flow-files-submitted="$flow.upload()")
+html(ng-app="admin")
   head
     title Sam :: Admin
     link(rel="stylesheet", href="/css/sam-admin.css")
     script(src="/js/chives/angular/angular.min.js")
     script(src="/js/chives/angular/angular-route.min.js")
-    script(src="/js/chives/angular/ng-quickdate/ng-quick-date.js")
-    script(src="/js/chives/angular/ng-bootstrap-datetimepicker/datetimepicker.js")
-    script(src="/js/chives/angular/ng-flow/ng-flow-standalone.js")
+    script(src="/js/chives/ng-datepicker/ng-datepicker.js")
+    script(src="/js/chives/angular-file-upload/angular-file-upload.js")
     script(src="/mvc/admin/app.js")
     script(src="/mvc/admin/controller.js")
 
@@ -49,7 +48,7 @@ html(ng-app="admin", flow-init, flow-file-added="!!{png:1, gif:1, jpg:1, jpeg:1}
                   a.item(href="#!/parameter/releasePipe/add") 添加发布渠道
           div.wide.column.four.userBar
             div.ui.celled.horizontal.list
-              span.item= current_user.username
+              // span.item= current_user.username
               a.item(href='/signout')
                 i.sign.out.icon
                 |登出

@@ -1,48 +1,60 @@
 <div class="ui attached message">
-    <div class="header">
-        添加邮件
-    </div>
+  <div class="header">
+    编辑邮件
+  </div>
 </div>
 <form  class="ui form attached fluid segment" ng-controller="AdminMailEditCtrl" ng-submit="mailUpdate()">
-    <input type="hidden" ng-model="mail.category" name="category" />
-    <div class="field">
-        <label>邮件名称</label>
-        <input type="text" name="name" ng-model="mail.name" />
-    </div>
-    <div class="field">
-        <label>头图</label>
-        <input type="file" name="head_image" ng-model="mail.head_image" />
-    </div>
-    <div class="fields two">
-        <div class="field">
-            <label>视觉设计师</label>
-            <select name="personnel_ga" ng-model="mail.personnel_ga">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-        <div class="field">
-            <label>前端设计师</label>
-            <select name="personnel_fe" ng-model="mail.personnel_fe">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-    </div>
-    <div class="field">
-        <label>发布时间</label>
-        <input type="text" name="release_time" ng-model="mail.end_time" />
-    </div>
 
-    <a href="#!/mail" class="ui animated button">
-        <div class="visible content">返回</div>
-        <div class="hidden content">
-            <i class="left arrow icon"></i>
-        </div>
-    </a>
-    <button class="ui blue submit button right floated">
-        编辑邮件
-    </button>
+  <input type="hidden" ng-model="mail.category" name="category" />
+
+  <div class="field">
+    <label>邮件名称</label>
+    <input type="text" name="name" ng-model="mail.name" />
+  </div>
+
+  <div class="field">
+    <label>头图</label>
+    <input ng-file-select type="file" />
+    <input type="text" class="ng-hide" ng-model="mail.head_image" />
+    <p>如果不修改头图，请保持当前状态。</p>
+  </div>
+
+  <div class="field">
+    <label>视觉设计师</label>
+    <select name="personnel_ga" ng-model="mail.personnel_ga">
+      <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+      {{personnel.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>前端设计师</label>
+    <select name="personnel_fe" ng-model="mail.personnel_fe">
+      <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+      {{personnel.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="fields two">
+    <div class="field">
+      <label>发布时间</label>
+      <div class="ui input">
+        <input type="datetime" date-time ng-model="mail.end_time" max-view="year" min-view="date" format="yyyy-MM-dd" />
+      </div>
+    </div>
+  </div>
+
+  <a href="#!/mail" class="ui animated button">
+    <div class="visible content">返回</div>
+    <div class="hidden content">
+      <i class="left arrow icon"></i>
+    </div>
+  </a>
+
+  <button class="ui blue submit button right floated">
+    编辑邮件
+  </button>
+
 </form>

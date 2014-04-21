@@ -3,6 +3,8 @@
  * GET
  */
 
+var fs = require('fs');
+var hash = require('crypto').createHash('md5');
 var authenticate = require('../../helper/auth.js').authenticate;
 
 // sign
@@ -14,10 +16,9 @@ exports.sign = function(req, res) {
   }
 };
 
-exports.signin = function(req, res) {
+exports.signin = function(req, res, next) {
   authenticate(req.body.username, req.body.password, function(err, user) {
     if (user) {
-      console.log('signed');
       req.session.regenerate(function() {
         req.session.user = user;
         res.redirect('/admin');
@@ -50,8 +51,4 @@ exports.admin_sift = function(req, res) {
 // modify password
 exports.admin_password_edit = function(req, res) {
   res.render('admin/password_edit');
-};
-
-// upload
-exports.admin_upload = function(req, res) {
 };

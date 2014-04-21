@@ -1,197 +1,234 @@
-.quickdate {
-  display: inline-block;
-  position: relative;
+.clearfix {
+  *zoom: 1;
 }
-.quickdate-button div,
-.quickdate-action-link div {
-  display: inline;
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
 }
-.quickdate-popup {
-  z-index: 10;
-  background-color: #fff;
-  border: solid 1px #000;
-  text-align: center;
-  width: 250px;
-  display: none;
-  position: absolute;
-  padding: 5px;
+
+.clearfix:after {
+  clear: both;
 }
-.quickdate-popup.open {
+
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.input-block-level {
   display: block;
-}
-.quickdate-close {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: #333;
-  font-size: 110%;
-  margin-top: -6px;
-  text-decoration: none;
-}
-.quickdate-close:hover {
-  text-decoration: underline;
-}
-.quickdate-close:hover,
-.quickdate-close:visited {
-  color: #333;
-}
-.quickdate-calendar-header {
-  display: block;
-  padding: 2px 0;
-  margin-bottom: 5px;
-  text-align: center;
-}
-.quickdate-month {
-  display: inline-block;
-}
-a.quickdate-prev-month {
-  float: left;
-}
-a.quickdate-next-month {
-  float: right;
-}
-.quickdate-text-inputs {
-  display:none;
-  text-align: left;
-  margin-bottom: 5px;
-}
-.quickdate-input-wrapper {
-  width: 48%;
-  display: inline-block;
-}
-input.quickdate-date-input,
-input.quickdate-time-input {
-  width: 100px;
-  margin: 0;
-  height: auto;
-  padding: 2px 3px;
-}
-table.quickdate-calendar {
-  border-collapse: collapse;
-  border-spacing: 0;
   width: 100%;
-  margin-top: 5px;
-}
-table.quickdate-calendar th,
-table.quickdate-calendar td {
-  padding: 5px;
-}
-table.quickdate-calendar td:hover {
-  cursor: pointer;
-}
-.quickdate-popup-footer {
-  text-align: right;
-  display: block;
-}
-.quickdate input.ng-invalid {
-  border: 1px solid #dd3b30;
-}
-.quickdate input.ng-invalid:focus {
-  outline-color: #dd3b30;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.quickdate {
+[date-picker-wrapper] {
+  position: relative !important;
   display: inline-block;
-  vertical-align: bottom;
-  font-size: 15px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border:1px solid #d8d8d8;
+  background:#efefef;
 }
-.quickdate input,
-.quickdate select {
-  font-size: 13px;
+
+[date-time-append] [date-picker] {
+  position: relative;
+  margin-right: -1000px;
+  margin-bottom: -1000px;
 }
-.quickdate-button {
-  background: #ffffff;
-  color: #333333;
-  border: solid 1px #cccccc;
-  box-shadow: outset 0 1px 1px rgba(0, 0, 0, 0.075);
-  border-radius: 4px;
-  padding: 4px 8px;
-  display: inline-block;
-  text-decoration: none;
-}
-.quickdate-button:hover {
-  text-decoration: underline;
-}
-.quickdate-button:hover i {
-  text-decoration: none;
-}
-.quickdate-button i {
-  padding-right: 4px;
-}
-.quickdate-popup {
-  color: #333333;
-  font-size: 15px;
-  background-color: #fafafa;
-  border: solid 1px #dddddd;
-  border-radius: 3px;
-  -webkit-box-shadow: 0px 10px 30px rgba(25, 25, 25, 0.92);
-  -moz-box-shadow: 0px 10px 30px rgba(25, 25, 25, 0.92);
-  box-shadow: 0px 10px 30px rgba(25, 25, 25, 0.92);
-}
-.quickdate-action-link:visited,
-.quickdate-action-link:hover {
-  color: #333333;
-}
-.quickdate-next-month i {
-  padding-left: 10px;
-}
-.quickdate-prev-month i {
-  padding-right: 10px;
-}
-table.quickdate-calendar {
-  border: solid 1px #ccc;
-  background-color: #ffffff;
-}
-table.quickdate-calendar th,
-table.quickdate-calendar td {
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-}
-table.quickdate-calendar td:hover {
-  background-color: #e6e6e6;
-}
-table.quickdate-calendar td.other-month {
-  background-color: #dbdbdb;
-  color: #808080;
-}
-table.quickdate-calendar td.other-month:hover {
-  background-color: #c7c7c7;
-}
-table.quickdate-calendar td.disabled-date {
-  background-color: inherit;
+
+[date-range] [date-picker] .after.before {
   color: #ffffff;
-}
-table.quickdate-calendar td.disabled-date:hover {
-  background-color: inherit;
-  cursor: default;
-}
-table.quickdate-calendar td.selected {
-  background-color: #b0ccde;
-  font-weight: bold;
-}
-table.quickdate-calendar td.is-today {
-  color: #b58922;
-  font-weight: bold;
-}
-table.quickdate-calendar td.is-today.disabled-date {
-  color: #929292;
-  font-weight: normal;
-}
-.quickdate-popup-footer {
-  margin: 3px 1px 0;
-}
-.quickdate-clear {
-  display: inline-block;
-  padding: 2px 4px;
-  background-color: #ffffff;
-  color: #333333;
-  border: solid 1px #cccccc;
-  box-shadow: outset 0 1px 1px rgba(0, 0, 0, 0.075);
-  border-radius: 4px;
-  text-decoration: none;
-}
-.quickdate-clear:hover {
-  background-color: #f2f2f2;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #499dcd;
+  *background-color: #2f6ab4;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f6ab4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f6ab4));
+  background-image: -webkit-linear-gradient(top, #5bc0de, #2f6ab4);
+  background-image: -o-linear-gradient(top, #5bc0de, #2f6ab4);
+  background-image: linear-gradient(to bottom, #5bc0de, #2f6ab4);
+  background-repeat: repeat-x;
+  border-color: #2f6ab4 #2f6ab4 #1f4677;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f6ab4', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
+[date-range] [date-picker] .after.before:hover,
+[date-range] [date-picker] .after.before:active,
+[date-range] [date-picker] .after.before.active,
+[date-range] [date-picker] .after.before.disabled,
+[date-range] [date-picker] .after.before[disabled] {
+  color: #ffffff;
+  background-color: #2f6ab4;
+  *background-color: #2a5ea0;
+}
+
+[date-range] [date-picker] .after.before:active,
+[date-range] [date-picker] .after.before.active {
+  background-color: #24528c \9;
+}
+
+[date-picker] {
+  padding: 4px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+       -o-user-select: none;
+          user-select: none;
+}
+
+[date-picker] table {
+  margin: 0;
+}
+
+[date-picker] td,
+[date-picker] th {
+  width: 20px;
+  height: 20px;
+  padding: 4px 5px;
+  text-align: center;
+  border: none;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+[date-picker] .switch {
+  width: 145px;
+}
+
+[date-picker] span {
+  display: block;
+  float: left;
+  width: 23%;
+  height: 26px;
+  margin: 1%;
+  line-height: 25px;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+[date-picker] span:hover {
+  background: #eeeeee;
+}
+
+[date-picker] span.disabled,
+[date-picker] span.disabled:hover {
+  color: #999999;
+  cursor: default;
+  background: none;
+}
+
+[date-picker] .active,
+[date-picker] .now {
+  color: #ffffff;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  *background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+[date-picker] .active:hover,
+[date-picker] .now:hover,
+[date-picker] .active:active,
+[date-picker] .now:active,
+[date-picker] .active.active,
+[date-picker] .now.active,
+[date-picker] .active.disabled,
+[date-picker] .now.disabled,
+[date-picker] .active[disabled],
+[date-picker] .now[disabled] {
+  color: #ffffff;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
+
+[date-picker] .active:active,
+[date-picker] .now:active,
+[date-picker] .active.active,
+[date-picker] .now.active {
+  background-color: #003399 \9;
+}
+
+[date-picker] .now {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #ee735b;
+  *background-color: #ee905b;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #ee905b);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#ee905b));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #ee905b);
+  background-image: -o-linear-gradient(top, #ee5f5b, #ee905b);
+  background-image: linear-gradient(to bottom, #ee5f5b, #ee905b);
+  background-repeat: repeat-x;
+  border-color: #ee905b #ee905b #e56218;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffee905b', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+[date-picker] .now:hover,
+[date-picker] .now:active,
+[date-picker] .now.active,
+[date-picker] .now.disabled,
+[date-picker] .now[disabled] {
+  color: #ffffff;
+  background-color: #ee905b;
+  *background-color: #ec8044;
+}
+
+[date-picker] .now:active,
+[date-picker] .now.active {
+  background-color: #e9712d \9;
+}
+
+[date-picker] .disabled {
+  color: #999999 !important;
+  cursor: default;
+  background: none;
+}
+
+[date-picker] [ng-switch-when="year"] span,
+[date-picker] [ng-switch-when="month"] span,
+[date-picker] [ng-switch-when="minutes"] span {
+  height: 54px;
+  line-height: 54px;
+}
+
+[date-picker] [ng-switch-when="date"] td {
+  padding: 0;
+}
+
+[date-picker] [ng-switch-when="date"] span {
+  width: 100%;
+  height: 26px;
+  line-height: 26px;
+}
+
+[date-picker] th:hover,
+[date-picker] [ng-switch-when="date"] td span:hover {
+  cursor: pointer;
+  background: #eeeeee;
+}

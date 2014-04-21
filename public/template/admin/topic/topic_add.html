@@ -1,57 +1,66 @@
 <div class="ui attached message">
-    <div class="header">
-        添加专题
-    </div>
+  <div class="header">
+    添加专题
+  </div>
 </div>
-<form  class="ui form attached fluid segment" ng-controller="AdminTopicAddCtrl" ng-submit="topicSave()">
-    <input type="hidden" ng-model="topic.category" name="category" />
-    <div class="field">
-        <label>专题名称</label>
-        <input type="text" name="name" ng-model="topic.name" required />
-    </div>
-    <div class="field">
-        <label>头图</label>
-        <input type="file" name="head_image" ng-model="topic.head_image" />
-    </div>
-    <div class="fields two">
-        <div class="field">
-            <label>视觉设计师</label>
-            <select name="personnel_ga" ng-model="topic.personnel_ga">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-        <div class="field">
-            <label>前端设计师</label>
-            <select name="personnel_fe" ng-model="topic.personnel_fe">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-    </div>
-    <div class="field">
-        <label>归属</label>
-        <select name="belong_to" ng-model="topic.belong_to">
-            <option ng-repeat="pipe in pipes" value="{{pipe._id}}">
-                {{pipe.name}}
-            </option>
-        </select>
-    </div>
-    <div class="field">
-        <label>发布时间</label>
-        <input type="text" name="release_time" ng-model="topic.end_time" />
-    </div>
 
-    <a href="#!/topic" class="ui animated button">
-        <div class="visible content">返回</div>
-        <div class="hidden content">
-            <i class="left arrow icon"></i>
-        </div>
-    </a>
-    <button class="ui blue submit button right floated">
-        添加专题
-    </button>
+<form  class="ui form attached fluid segment" ng-controller="AdminTopicAddCtrl" ng-submit="topicSave()">
+
+  <input type="hidden" ng-model="topic.category" name="category" />
+
+  <div class="field">
+    <label>专题名称</label>
+    <input type="text" name="name" ng-model="topic.name" required />
+  </div>
+
+  <div class="field">
+    <label>头图</label>
+    <input ng-file-select type="file" />
+    <input type="text" class="ng-hide" ng-model="topic.head_image" />
+  </div>
+
+  <div class="field">
+    <label>视觉设计师</label>
+    <select name="personnel_ga" ng-model="topic.personnel_ga">
+      <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+      {{personnel.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>前端设计师</label>
+    <select name="personnel_fe" ng-model="topic.personnel_fe">
+      <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+      {{personnel.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>归属</label>
+    <select name="belong_to" ng-model="topic.belong_to">
+      <option ng-repeat="pipe in pipes" value="{{pipe._id}}">
+      {{pipe.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>发布时间</label>
+    <input type="text" name="release_time" ng-model="topic.end_time" />
+  </div>
+
+  <a href="#!/topic" class="ui animated button">
+    <div class="visible content">返回</div>
+    <div class="hidden content">
+      <i class="left arrow icon"></i>
+    </div>
+  </a>
+
+  <button class="ui blue submit button right floated">
+    添加专题
+  </button>
+
 </form>
 
