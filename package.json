@@ -13,6 +13,7 @@
     "connect-mongo": "*",
     "connect-flash": "*",
     "express-flash": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "moment" : "*"
   }
 }
