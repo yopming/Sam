@@ -1,162 +1,112 @@
-.clearfix {
-  *zoom: 1;
-  &:before,
-  &:after {
-    display: table;
-    line-height: 0;
+@pickadateBorder:#d8d8d8;
+[pickadate] {
+  margin-top:10px;
+}
+.pickadate {
+  width:350px;
+  padding:10px 15px;
+  border:1px solid @pickadateBorder;
+  position:relative;
+  &:before {
+    position:absolute;
     content: "";
+    border-left:1px solid @pickadateBorder;
+    border-top:1px solid @pickadateBorder;
+    .rotate(45deg);
+    .square(8px);
+    top:-5px;
+    left:15px;
+    background:#fff;
   }
-  &:after {
-    clear:both;
-  }
-}
-
-.hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-
-.input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-[date-picker-wrapper] {
-  position: relative !important;
-  display: inline-block;
-  border:1px solid #d8d8d8;
-  background:#efefef;
-
-  [date-time-append] {
-    [date-picker] {
-      position: relative;
-      margin-right: -1000px;
-      margin-bottom: -1000px;
-    }
-  }
-
-  [date-range] {
-    [date-picker] {
-      .after.before {
-        color: #ffffff;
-        background-color: #499dcd;
-        &:hover,
-        &:active,
-        &.active,
-        &.disabled,
-        &[disabled] {
-          color: #ffffff;
-          background-color: #2f6ab4;
-        }
-      }
-    }
-  }
-
-  [date-picker] {
-    padding: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    table {
-      margin: 0;
-      td,
-      th {
-        width: 20px;
-        height: 20px;
-        padding: 4px 5px;
-        text-align: center;
-        border: none;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-      }
-    }
-    .switch {
-      width: 145px;
-    }
-    span {
-      display: block;
-      float: left;
-      width: 23%;
-      height: 26px;
-      margin: 1%;
-      line-height: 25px;
-      cursor: pointer;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      &.disabled,
-      &.disabled:hover {
-        color: #999999;
-        cursor: default;
-        background: none;
-      }
-      &:hover {
-        background:#ddd;
-      }
-    }
-    .active,
-    .now {
-      color: #ffffff;
-      background-color: #6ECFF5;
-      &:hover,
-      &:active,
-      &.active,
-      &.disabled,
-      &[disabled] {
-        color: #ffffff;
-        background-color: #1AB8F3;
-      }
-    }
-    .now {
-      color: #ffffff;
-      background-color: #ee735b;
-      &:hover,
-      &:active,
-      &.active,
-      &.disabled,
-      &[disabled] {
-        color: #ffffff;
-        background-color: #ee905b;
-      }
-    }
-    .disabled {
-      color: #999999 !important;
-      cursor: default;
-      background: none;
-    }
-    [ng-switch-when="year"] span,
-    [ng-switch-when="month"] span,
-    [ng-switch-when="minutes"] span {
-      height: 54px;
-      line-height: 54px;
-    }
-    [ng-switch-when="date"] td {
-      padding: 0;
+  .border-radius(3px);
+  .pickadate-header {
+    position: relative;
+    .pickadate-centered-heading {
+      font-weight: normal;
+      text-align: center;
+      font-size: 1em;
+      margin: 13px 0 13px 0;
     }
 
-    [ng-switch-when="date"] span {
+    .pickadate-controls {
+      position: absolute;
+      z-index: 10;
       width: 100%;
-      height: 26px;
-      line-height: 26px;
+      .pickadate-next {
+        float: right;
+      }
+      a {
+        text-decoration: none;
+        font-size: 0.9em;
+      }
     }
+  }
+  .pickadate-main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    .pickadate-cell {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      li {
+        display: block;
+        float: left;
+        border: 1px solid #DCDCDC;
+        border-width: 0 1px 1px 0;
+        width: 14.285%;
+        padding: 1.3% 0 1.3% 0;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        &:nth-child(7n+0) {
+          border-right: 1px solid #DCDCDC;
+        }
+        &:nth-child(1),
+        &:nth-child(8),
+        &:nth-child(15),
+        &:nth-child(22),
+        &:nth-child(29),
+        &:nth-child(36) {
+          border-left: 1px solid #DCDCDC;
+        }
+        &.pickadate-disabled,
+        &.pickadate-disabled a {
+          color: #DCDCDC;
+        }
 
-    th:hover,
-    [ng-switch-when="date"] td span:hover {
-      cursor: pointer;
+        &.pickadate-enabled {
+          cursor: pointer;
+          font-size: 12px;
+          color: #666666;
+        }
+
+        &.pickadate-today {
+          background-color: #eaeaea;
+        }
+
+        &.pickadate-active {
+          background-color: #b52a00;
+          color: white;
+        }
+
+        &.pickadate-head {
+          border-top: 1px solid #DCDCDC;
+          background: #f3f3f3;
+          &:nth-child(1),
+          &:nth-child(7) {
+            background: #f3f3f3;
+          }
+        }
+
+      }
+    }
+  }
+  a {
+    &:visited {
+      color: #666666;
     }
   }
 }
-

@@ -30,8 +30,8 @@ var taskSchema = new Schema ({
   belong_to       : {type: Schema.Types.ObjectId, ref: 'ReleasePipe'},
   related_version : {type: Schema.Types.ObjectId, ref: 'ProjectVersion'},
   head_image      : String,
-  start_time      : Date,
-  end_time        : Date,
+  start_time      : String,
+  end_time        : String,
   created         : {type: Date, default: Date.now}
 });
 mongoose.model('Task', taskSchema);

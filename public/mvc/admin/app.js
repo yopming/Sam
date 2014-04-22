@@ -1,7 +1,7 @@
 var adminApp = angular.module('admin', [
   'ngRoute',
   'adminControllers',
-  'datePicker',
+  'pickadate',
   'angularFileUpload'
 ]);
 

@@ -40,9 +40,8 @@
   <div class="fields two">
     <div class="field">
       <label>发布时间</label>
-      <div class="ui input">
-        <input type="datetime" date-time ng-model="mail.end_time" max-view="year" min-view="date" format="yyyy-MM-dd" />
-      </div>
+      <input type="text" readonly ng-model="mail.end_time" placeholder="点击下面日历选择日期" />
+      <div pickadate ng-model="mail.end_time"></div>
     </div>
   </div>
 

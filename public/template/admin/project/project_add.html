@@ -5,7 +5,9 @@
 </div>
 
 <form class="ui form attached fluid segment" ng-controller="AdminProjectAddCtrl" ng-submit="projectSave()">
+
   <input type="hidden" ng-model="project.category" name="category" />
+
   <div class="field">
     <label>项目应用</label>
     <select name="program" ng-model="project.program" />
@@ -14,18 +16,22 @@
       </option>
     </select>
   </div>
+
   <div class="field">
     <label>名称</label>
     <input type="text" name="name" ng-model="project.name" />
   </div>
+
   <div class="field">
     <label>JIRA地址</label>
     <input type="text" name="jira_uri" ng-model="project.jira_uri" />
   </div>
+
   <div class="field">
     <label>Gandolf地址</label>
     <input type="text" name="gandolf_uri" ng-model="project.gandolf_uri" />
   </div>
+
   <div class="field">
     <label>状态</label>
     <select name="status" ng-model="project.status">
@@ -34,12 +40,7 @@
       </option>
     </select>
   </div>
-  <div class="field">
-    <label>开始时间</label>
-    <quick-datepicker ng-model="project.start_time" icon-class="icon calendar"
-      placeholder="点击选取时间" date-format="yyyy-M-d"
-      disable-timepicker="true" disable-clear-button="true"></quick-datepicker>
-  </div>
+
   <div class="three fields">
     <div class="field">
       <label>交互设计师</label>
@@ -66,6 +67,7 @@
       </select>
     </div>
   </div>
+
   <div class="field">
     <label>所属版本</label>
     <select name="related_version" ng-model="project.related_version">
@@ -75,13 +77,21 @@
     </select>
   </div>
 
+  <div class="field">
+    <label>开始时间</label>
+    <input type="text" readonly ng-model="project.start_time" placeholder="点击下面日历选择日期" />
+    <div pickadate ng-model="project.start_time"></div>
+  </div>
+
   <a href="#!/project" class="ui animated button">
     <div class="visible content">返回</div>
     <div class="hidden content">
       <i class="left arrow icon"></i>
     </div>
   </a>
+
   <button class="ui blue submit button right floated">
     添加项目
   </button>
+
 </form>

@@ -1,90 +1,104 @@
 <div class="ui attached message">
-    <div class="header">
-        编辑项目
-    </div>
+  <div class="header">
+    编辑项目
+  </div>
 </div>
 
 <form class="ui form attached fluid segment" ng-controller="AdminProjectEditCtrl" ng-submit="projectUpdate()">
-    <input type="hidden" ng-model="project.category" name="category" />
-    <div class="field">
-        <label>项目应用</label>
-        <select name="program" ng-model="project.program" />
-            <option ng-repeat="program in programs" value="{{program._id}}">
-                {{program.name}}
-            </option>
-        </select>
-    </div>
-    <div class="field">
-        <label>名称</label>
-        <input type="text" name="name" ng-model="project.name" />
-    </div>
-    <div class="field">
-        <label>JIRA地址</label>
-        <input type="text" name="jira_uri" ng-model="project.jira_uri" />
-    </div>
-    <div class="field">
-        <label>Gandolf地址</label>
-        <input type="text" name="gandolf_uri" ng-model="project.gandolf_uri" />
-    </div>
-    <div class="field">
-        <label>状态</label>
-        <select name="status" ng-model="project.status">
-            <option ng-repeat="status in statuses" value="{{status._id}}">
-                {{status.name}}
-            </option>
-        </select>
-    </div>
-    <div class="three fields">
-        <div class="field">
-            <label>交互设计师</label>
-            <select name="personnel_ga" ng-model="project.personnel_ia">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-        <div class="field">
-            <label>视觉设计师</label>
-            <select name="personnel_ga" ng-model="project.personnel_ga">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-        <div class="field">
-            <label>前端设计师</label>
-            <select name="personnel_ga" ng-model="project.personnel_fe">
-                <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-                    {{personnel.name}}
-                </option>
-            </select>
-        </div>
-    </div>
-    <div class="field">
-        <label>所属版本</label>
-        <select name="related_version" ng-model="project.related_version">
-            <option ng-repeat="version in versions" value="{{version._id}}">
-                {{version.name}}
-            </option>
-        </select>
-    </div>
-    <div class="field">
-        <label>开始时间</label>
-        <input type="text" name="start_time" ng-model="project.start_time" />
-    </div>
-    <div class="field">
-        <label>结束时间</label>
-        <input type="text" name="end_time" ng-model="project.end_time" />
-    </div>
 
-    <a href="#!/project" class="ui animated button">
-        <div class="visible content">返回</div>
-        <div class="hidden content">
-            <i class="left arrow icon"></i>
-        </div>
-    </a>
-    <button class="ui blue submit button right floated">
-        编辑项目
-    </button>
+  <input type="hidden" ng-model="project.category" name="category" />
+
+  <div class="field">
+    <label>项目应用</label>
+    <select name="program" ng-model="project.program" />
+      <option ng-repeat="program in programs" value="{{program._id}}">
+      {{program.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>名称</label>
+    <input type="text" name="name" ng-model="project.name" />
+  </div>
+
+  <div class="field">
+    <label>JIRA地址</label>
+    <input type="text" name="jira_uri" ng-model="project.jira_uri" />
+  </div>
+
+  <div class="field">
+    <label>Gandolf地址</label>
+    <input type="text" name="gandolf_uri" ng-model="project.gandolf_uri" />
+  </div>
+
+  <div class="field">
+    <label>状态</label>
+    <select name="status" ng-model="project.status">
+      <option ng-repeat="status in statuses" value="{{status._id}}">
+      {{status.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="three fields">
+    <div class="field">
+      <label>交互设计师</label>
+      <select name="personnel_ga" ng-model="project.personnel_ia">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
+    </div>
+    <div class="field">
+      <label>视觉设计师</label>
+      <select name="personnel_ga" ng-model="project.personnel_ga">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
+    </div>
+    <div class="field">
+      <label>前端设计师</label>
+      <select name="personnel_ga" ng-model="project.personnel_fe">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>所属版本</label>
+    <select name="related_version" ng-model="project.related_version">
+      <option ng-repeat="version in versions" value="{{version._id}}">
+      {{version.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>开始时间</label>
+    <input type="text" readonly ng-model="project.start_time" placeholder="点击下面日历选择日期" />
+    <div pickadate ng-model="project.start_time"></div>
+  </div>
+
+  <div class="field">
+    <label>结束时间</label>
+    <input type="text" readonly ng-model="project.end_time" placeholder="点击下面日历选择日期" />
+    <div pickadate ng-model="project.end_time"></div>
+  </div>
+
+  <a href="#!/project" class="ui animated button">
+    <div class="visible content">返回</div>
+    <div class="hidden content">
+      <i class="left arrow icon"></i>
+    </div>
+  </a>
+
+  <button class="ui blue submit button right floated">
+    编辑项目
+  </button>
+
 </form>
 
