@@ -93,6 +93,7 @@ exports.update = function(req, res) {
         task.personnel_ga    = req.body.personnel_ga;
         task.personnel_ia    = req.body.personnel_ia;
         task.jira_uri        = req.body.jira_uri;
+        task.ix_uri          = req.body.ix_uri;
         task.gandolf_uri     = req.body.gandolf_uri;
         task.belong_to       = req.body.belong_to;
         task.related_version = req.body.related_version;

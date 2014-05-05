@@ -63,6 +63,7 @@
           <th>状态</th>
           <th>版本</th>
           <th>JIRA地址</th>
+          <th>交互稿地址</th>
           <th>Gandolf地址</th>
           <th>相关人</th>
           <th>开始时间</th>
@@ -74,8 +75,21 @@
         <td>{{project.name}}</td>
         <td>{{project.status.name}}</td>
         <td>{{project.related_version.name}}</td>
-        <td>{{project.jira_uri}}</td>
-        <td>{{project.gandolf_uri}}</td>
+        <td>
+          <a href="{{project.jira_uri}}" target="_blank">
+            {{project.jira_uri}}
+          </a>
+        </td>
+        <td>
+          <a href="{{project.ix_uri}}" target="_blank">
+            {{project.ix_uri}}
+          </a>
+        </td>
+        <td>
+          <a href="{{project.gandolf_uri}}" target="_blank">
+            {{project.gandolf_uri}}
+          </a>
+        </td>
         <td>
           {{project.personnel_ia.name}}
           <br>
