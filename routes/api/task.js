@@ -85,20 +85,23 @@ exports.destroy = function(req, res) {
 
 exports.update = function(req, res) {
     Task.findById(req.params.task_id, function(err, task) {
-        task.category        = req.body.category;
-        task.program         = req.body.program;
-        task.name            = req.body.name;
-        task.status          = req.body.status;
-        task.personnel_fe    = req.body.personnel_fe;
-        task.personnel_ga    = req.body.personnel_ga;
-        task.personnel_ia    = req.body.personnel_ia;
-        task.jira_uri        = req.body.jira_uri;
-        task.ix_uri          = req.body.ix_uri;
-        task.gandolf_uri     = req.body.gandolf_uri;
-        task.belong_to       = req.body.belong_to;
-        task.related_version = req.body.related_version;
-        task.start_time      = req.body.start_time;
-        task.end_time        = req.body.end_time;
+        task.category           = req.body.category;
+        task.program            = req.body.program;
+        task.name               = req.body.name;
+        task.status             = req.body.status;
+        task.personnel_fe       = req.body.personnel_fe;
+        task.personnel_ga       = req.body.personnel_ga;
+        task.personnel_ia       = req.body.personnel_ia;
+        task.jira_uri           = req.body.jira_uri;
+        task.ix_uri             = req.body.ix_uri;
+        task.gandolf_uri        = req.body.gandolf_uri;
+        task.topic_deploy_uri   = req.body.topic_deploy_uri;
+        task.topic_graphic_uri  = req.body.topic_graphic_uri;
+        task.mail_graphic_uri   = req.body.mail_graphic_uri;
+        task.belong_to          = req.body.belong_to;
+        task.related_version    = req.body.related_version;
+        task.start_time         = req.body.start_time;
+        task.end_time           = req.body.end_time;
 
         task.save(function(err, task, count) {
             if (err)

@@ -12,12 +12,22 @@
     <label>专题名称</label>
     <input type="text" name="name" ng-model="topic.name" required />
   </div>
-
+  
   <div class="field">
     <label>头图</label>
     <input ng-file-select type="file" />
     <input type="text" class="ng-hide" ng-model="topic.head_image" />
   </div>
+
+  <div class="field">
+    <label>专题Url</label>
+    <input type="text" name="" ng-model="topic.topic_deploy_uri" />
+  </div>
+
+  <div class="field">
+    <label>视觉稿地址</label>
+    <input type="text" name="" required ng-model="topic.topic_graphic_uri" />
+  </div>  
 
   <div class="field">
     <label>视觉设计师</label>

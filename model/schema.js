@@ -18,22 +18,25 @@ mongoose.model('User', userSchema);
 
 // task include: project, mail, topic, etc.
 var taskSchema = new Schema ({
-  category        : String,
-  program         : {type: Schema.Types.ObjectId, ref: 'Program'},
-  name            : {type: String, unique: true},
-  status          : {type: Schema.Types.ObjectId, ref: 'ProjectStatus'},
-  personnel_fe    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-  personnel_ga    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-  personnel_ia    : {type: Schema.Types.ObjectId, ref: 'Personnel'},
-  jira_uri        : String,
-  ix_uri          : String,
-  gandolf_uri     : String,
-  belong_to       : {type: Schema.Types.ObjectId, ref: 'ReleasePipe'},
-  related_version : {type: Schema.Types.ObjectId, ref: 'ProjectVersion'},
-  head_image      : String,
-  start_time      : String,
-  end_time        : String,
-  created         : {type: Date, default: Date.now}
+  category          : String,
+  program           : {type: Schema.Types.ObjectId, ref: 'Program'},
+  name              : {type: String, unique: true},
+  status            : {type: Schema.Types.ObjectId, ref: 'ProjectStatus'},
+  personnel_fe      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
+  personnel_ga      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
+  personnel_ia      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
+  jira_uri          : String,
+  ix_uri            : String,
+  gandolf_uri       : String,
+  topic_deploy_uri  : String,
+  topic_graphic_uri : String,
+  mail_graphic_uri  : String,
+  belong_to         : {type: Schema.Types.ObjectId, ref: 'ReleasePipe'},
+  related_version   : {type: Schema.Types.ObjectId, ref: 'ProjectVersion'},
+  head_image        : String,
+  start_time        : String,
+  end_time          : String,
+  created           : {type: Date, default: Date.now}
 });
 mongoose.model('Task', taskSchema);
 
@@ -96,4 +99,4 @@ mongoose.model('ReleasePipe', releasePipeSchema);
 
 
 // connect
-mongoose.connect('mongodb://127.0.0.1/sam');
+mongoose.connect('mongodb://192.168.28.107/sam');

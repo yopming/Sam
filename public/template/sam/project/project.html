@@ -62,9 +62,9 @@
           <th>名称</th>
           <th>状态</th>
           <th>版本</th>
-          <th>JIRA地址</th>
-          <th>交互稿地址</th>
-          <th>Gandolf地址</th>
+          <th>JIRA</th>
+          <th>交互稿</th>
+          <th>视觉稿</th>
           <th>相关人</th>
           <th>开始时间</th>
           <th>结束时间</th>
@@ -76,18 +76,18 @@
         <td>{{project.status.name}}</td>
         <td>{{project.related_version.name}}</td>
         <td>
-          <a href="{{project.jira_uri}}" target="_blank">
+          <a href="http://jira.vemic.com/browse/{{project.jira_uri}}"  ng-if="project.jira_uri" target="_blank">
             {{project.jira_uri}}
           </a>
         </td>
         <td>
-          <a href="{{project.ix_uri}}" target="_blank">
-            {{project.ix_uri}}
+          <a href="{{project.ix_uri}}" ng-if="project.ix_uri" target="_blank">
+            查看
           </a>
         </td>
         <td>
-          <a href="{{project.gandolf_uri}}" target="_blank">
-            {{project.gandolf_uri}}
+          <a href="{{project.gandolf_uri}}" ng-if="project.gandolf_uri" target="_blank">
+            查看
           </a>
         </td>
         <td>

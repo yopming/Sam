@@ -22,17 +22,17 @@
     <td>{{project.program.name}}</td>
     <td>{{project.name}}</td>
     <td>
-      <a href="{{project.jira_uri}}" target="_blank">
+      <a href="{{project.jira_uri}}" ng-if="project.jira_uri"  target="_blank">
         查看
       </a>
     </td>
     <td>
-      <a href="{{project.ix_uri}}" target="_blank">
+      <a href="{{project.ix_uri}}" ng-if="project.ix_uri" target="_blank">
         查看
       </a>
     </td>
     <td>
-      <a href="{{project.gandolf_uri}}" target="_blank">
+      <a href="{{project.gandolf_uri}}" ng-if="project.gandolf_uri" target="_blank">
         查看
       </a>
     </td>
