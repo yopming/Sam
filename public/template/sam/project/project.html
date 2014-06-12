@@ -91,11 +91,9 @@
           </a>
         </td>
         <td>
-          {{project.personnel_ia.name}}
-          <br>
-          {{project.personnel_ga.name}}
-          <br>
-          {{project.personnel_fe.name}}
+          <div ng-if="project.personnel_ia">{{project.personnel_ia.name}}</div>
+          <div ng-if="project.personnel_ga.name">{{project.personnel_ga.name}}</div>
+          <div ng-if="project.personnel_fe.name">{{project.personnel_fe.name}}</div>
         </td>
         <td>{{project.start_time}}</td>
         <td>{{project.end_time}}</td>
