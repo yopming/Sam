@@ -11,6 +11,7 @@ html(ng-app="admin")
     script(src="/js/chives/moment/moment-with-langs.js")
     script(src="/mvc/admin/app.js")
     script(src="/mvc/admin/controller.js")
+    script(src="/mvc/admin/directive.js")
 
   body
 
@@ -24,16 +25,16 @@ html(ng-app="admin")
 
           div.wide.column.nine.navigator
             div.ui.menu.inverted
-              a.item(href="#!/project")
+              a.item(href="#!/project", admin-active="active")
                 i.block.layout.icon
                 | 项目
-              a.item(href="#!/mail")
+              a.item(href="#!/mail", admin-active="active")
                 i.mail.icon
                 | 邮件
-              a.item(href="#!/topic")
+              a.item(href="#!/topic", admin-active="active")
                 i.tasks.icon
                 | 专题
-              a.item(href="#!/user")
+              a.item(href="#!/user", admin-active="active")
                 i.users.icon
                 | 用户
               div.item.parameters.ui.dropdown

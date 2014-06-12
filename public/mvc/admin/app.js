@@ -2,7 +2,8 @@ var adminApp = angular.module('admin', [
   'ngRoute',
   'adminControllers',
   'pickadate',
-  'angularFileUpload'
+  'angularFileUpload',
+  'adminDirectives'
 ]);
 
 adminApp.config(['$locationProvider', '$routeProvider',

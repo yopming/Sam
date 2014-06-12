@@ -22,9 +22,12 @@ html(ng-app="sam")
 
     //- header
     div.ui.orange.inverted.menu.sam-header
+      // a.item(href="#!/", sam-active="active")
+        // i.dashboard.icon
+        // | 总览
       a.item(href="#!/", sam-active="active")
-        i.dashboard.icon
-        | 总览
+        i.time.icon
+        | 时间线
       a.item(href="#!/project", sam-active="active")
         i.block.layout.icon
         | 项目
@@ -34,9 +37,6 @@ html(ng-app="sam")
       a.item(href="#!/operation/topic", sam-active="active")
         i.tasks.icon
         | 专题
-      a.item(href="#!/timeline", sam-active="active")
-        i.time.icon
-        | 时间线
       span.menu
         div.ui.dropdown.item.sam-documents
           i.icon.text.file

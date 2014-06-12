@@ -1,14 +1,14 @@
-var samDirectives = angular.module('samDirectives', []);
+var adminDirectives = angular.module('adminDirectives', []);
 
 /*
- * Detect tab active class
+ * Detect the tab active class
  */
-samDirectives.directive('samActive', ['$location',
+adminDirectives.directive('adminActive', ['$location',
   function($location) {
     return {
       restrict: 'A',
       link: function postLink(scope, element, attrs, controller) {
-        var classname = attrs.samActive;
+        var classname = attrs.adminActive;
         var path = attrs.href;
         path = path.substring(2); // '#!'
         scope.location = $location;
