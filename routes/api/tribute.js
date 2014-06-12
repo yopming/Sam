@@ -19,6 +19,7 @@ exports.create = function(req, res) {
     }
 
     fs.writeFile(uploadPath, data, function(err) {
+      console.log(uploadPath);
       if (!err) {
         res.send(path.basename(_filePath));
       } else {

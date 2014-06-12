@@ -251,6 +251,7 @@ adminControllers.controller('AdminTopicEditCtrl', ['$scope', '$http', '$routePar
     });
 
     uploader.bind('success', function(event, item, progress) {
+      console.log(item);
       $scope.topic.head_image = item.response;
     });
   }
