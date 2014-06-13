@@ -22,8 +22,8 @@
     <td>{{project.program.name}}</td>
     <td>{{project.name}}</td>
     <td>
-      <a href="{{project.jira_uri}}" ng-if="project.jira_uri"  target="_blank">
-        查看
+      <a href="http://jira.vemic.com/browse/{{project.jira_uri}}" ng-if="project.jira_uri"  target="_blank">
+        {{project.jira_uri}}
       </a>
     </td>
     <td>
