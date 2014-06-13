@@ -25,6 +25,7 @@ var taskSchema = new Schema ({
   personnel_fe      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
   personnel_ga      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
   personnel_ia      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
+  personnel_pd      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
   jira_uri          : String,
   ix_uri            : String,
   gandolf_uri       : String,

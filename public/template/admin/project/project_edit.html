@@ -46,10 +46,19 @@
     </select>
   </div>
 
-  <div class="three fields">
+  <div class="four fields">
+    <div class="field">
+      <label>产品</label>
+      <select ng-model="project.personnel_pd" value="{{project.personnel_pd}}">
+        <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
+        {{personnel.name}}
+        </option>
+      </select>
+    </div>
+
     <div class="field">
       <label>交互设计师</label>
-      <select name="personnel_ga" ng-model="project.personnel_ia">
+      <select ng-model="project.personnel_ia" value="project.personnel_ia">
         <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
         {{personnel.name}}
         </option>
@@ -57,7 +66,7 @@
     </div>
     <div class="field">
       <label>视觉设计师</label>
-      <select name="personnel_ga" ng-model="project.personnel_ga">
+      <select ng-model="project.personnel_ga" value="project.personnel_ga">
         <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
         {{personnel.name}}
         </option>
@@ -65,7 +74,7 @@
     </div>
     <div class="field">
       <label>前端设计师</label>
-      <select name="personnel_ga" ng-model="project.personnel_fe">
+      <select ng-model="project.personnel_fe" value="project.personnel_fe">
         <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
         {{personnel.name}}
         </option>

@@ -65,7 +65,8 @@
           <th>JIRA</th>
           <th>交互稿</th>
           <th>视觉稿</th>
-          <th>相关人</th>
+          <th>产品</th>
+          <th>设计师</th>
           <th>开始时间</th>
           <th>结束时间</th>
         </tr>
@@ -90,6 +91,7 @@
             查看
           </a>
         </td>
+        <td><div ng-if="project.personnel_ia">{{project.personnel_pd.name}}</div></td>
         <td>
           <div ng-if="project.personnel_ia">{{project.personnel_ia.name}}</div>
           <div ng-if="project.personnel_ga.name">{{project.personnel_ga.name}}</div>

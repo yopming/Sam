@@ -19,6 +19,7 @@ var populater = [
     'personnel_fe',
     'personnel_ga',
     'personnel_ia',
+    'personnel_pd',
     'belong_to',
     'related_version'
 ];
@@ -92,6 +93,7 @@ exports.update = function(req, res) {
         task.personnel_fe       = req.body.personnel_fe;
         task.personnel_ga       = req.body.personnel_ga;
         task.personnel_ia       = req.body.personnel_ia;
+        task.personnel_pd       = req.body.personnel_pd;
         task.jira_uri           = req.body.jira_uri;
         task.ix_uri             = req.body.ix_uri;
         task.gandolf_uri        = req.body.gandolf_uri;
