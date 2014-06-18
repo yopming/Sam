@@ -29,6 +29,8 @@ var taskSchema = new Schema ({
   jira_uri          : String,
   ix_uri            : String,
   gandolf_uri       : String,
+  topic_cover       : String,
+  mail_cover        : String,
   topic_deploy_uri  : String,
   topic_graphic_uri : String,
   mail_graphic_uri  : String,

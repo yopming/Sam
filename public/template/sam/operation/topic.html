@@ -54,7 +54,7 @@
     <div class="ui items">
       <div class="item" ng-repeat="topic in filtered = (topics | SamOperationTopicFilter:selected_atom)">
         <div class="image">
-          <img src="{{topic.head_image}}" />
+          <img src="{{topic.topic_cover}}" />
           <span class="like ui corner label">
             {{topic.belong_to.name}}
           </span>
