@@ -44,7 +44,7 @@
     <div class="ui items">
       <a class="item" ng-repeat="mail in filtered = (mails | SamOperationMailFilter:selected_atom)">
         <div class="image">
-          <img src="{{mail.head_image}}" />
+          <img src="{{mail.mail_cover}}" />
         </div>
         <div class="content">
           <div class="meta">{{mail.end_time}}</div>
@@ -58,4 +58,5 @@
     </div>
   </div>
 </div>
+
 

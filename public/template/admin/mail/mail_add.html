@@ -20,12 +20,15 @@
     <input type="text" ng-model="mail.mail_graphic_uri" />
   </div>
   
-  <div class="field">
+ <!--  <div class="field">
     <label>头图</label>
     <input ng-file-select type="file" />
     <input type="text" class="ng-hide" ng-model="mail.head_image" />
+  </div> -->
+  <div class="field">
+    <label>头图</label>
+    <input type="text" ng-model="mail.mail_cover" />
   </div>
-
   <div class="field">
     <label>视觉设计师</label>
     <select name="personnel_ga" ng-model="mail.personnel_ga">
@@ -64,3 +67,4 @@
   </button>
 
 </form>
+

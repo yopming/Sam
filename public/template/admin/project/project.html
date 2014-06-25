@@ -41,13 +41,17 @@
     <td>{{project.end_time}}</td>
     <td>{{project.personnel_pd.name}}</td>
     <td>
-      {{project.personnel_ia.name}}
-      <br>
-      {{project.personnel_ga.name}}
-      <br>
-      {{project.personnel_fe.name}}
+      <div ng-if="project.personnel_ia.name">
+        {{project.personnel_ia.name}}
+      </div>
+      <div ng-if="project.personnel_ga.name">
+        {{project.personnel_ga.name}}
+      </div>
+      <div ng-if="project.personnel_fe.name">
+        {{project.personnel_fe.name}}
+      </div>
     </td>
-    <td>{{project.related_version.name}}</td>
+    <td>{{project.related_version}}</td>
     <td>
       <div class="ui tiny buttons">
         <a href="#!/project/edit/{{project._id}}" class="ui button positive">编辑</a>

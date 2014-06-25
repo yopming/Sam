@@ -20,8 +20,7 @@ var populater = [
     'personnel_ga',
     'personnel_ia',
     'personnel_pd',
-    'belong_to',
-    'related_version'
+    'belong_to'
 ];
 
 
@@ -54,6 +53,7 @@ exports.categoryIndex = function(req, res) {
   Task.find({category: req.params.category}).populate(populater).exec(function(err, tasks) {
     if (err)
       res.send('Error: ' + err);
+    console.log(tasks);
     res.json(tasks);
   });
 };
@@ -97,8 +97,10 @@ exports.update = function(req, res) {
         task.jira_uri           = req.body.jira_uri;
         task.ix_uri             = req.body.ix_uri;
         task.gandolf_uri        = req.body.gandolf_uri;
+        task.topic_cover        = req.body.topic_cover;
         task.topic_deploy_uri   = req.body.topic_deploy_uri;
         task.topic_graphic_uri  = req.body.topic_graphic_uri;
+        task.mail_cover         = req.body.mail_cover;
         task.mail_graphic_uri   = req.body.mail_graphic_uri;
         task.belong_to          = req.body.belong_to;
         task.related_version    = req.body.related_version;
@@ -116,3 +118,4 @@ exports.update = function(req, res) {
         });
     });
 };
+

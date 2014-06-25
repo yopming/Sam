@@ -17,11 +17,16 @@
     <input type="text" ng-model="mail.mail_graphic_uri" />
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <label>头图</label>
     <input ng-file-select type="file" />
     <input type="text" class="ng-hide" ng-model="mail.head_image" />
     <p>如果不修改头图，请保持当前状态。</p>
+  </div> -->
+
+  <div class="field">
+    <label>头图</label>
+    <input type="text" ng-model="mail.mail_cover" />
   </div>
 
   <div class="field">
@@ -62,3 +67,4 @@
   </button>
 
 </form>
+

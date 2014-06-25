@@ -48,6 +48,10 @@ adminControllers.controller('AdminProjectAddCtrl', ['$scope', '$http', '$locatio
     });
 
     $scope.projectSave = function() {
+      // join two separated parameter: the version number consists of year and month and a solid string
+      if ($scope.project.related_version_year != undefined && $scope.project.related_version_month != undefined) {
+        $scope.project.related_version = 'INS_PD_' + $scope.project.related_version_year + $scope.project.related_version_month;
+      }
       $http.post('/api/task/project/add', $scope.project).success(function(data) {
         $location.url('/project');
       });
@@ -429,3 +433,4 @@ adminControllers.controller('AdminParameterReleasePipeAddCtrl', ['$scope', '$htt
     };
   }
 ]);
+
