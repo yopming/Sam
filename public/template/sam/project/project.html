@@ -71,11 +71,11 @@
           <th>结束时间</th>
         </tr>
       </thead>
-      <tr ng-repeat="project in filtered = (projects | SamProjectFilter:selected_atom)">
+      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version.name' | SamProjectFilter:selected_atom)">
         <td>{{project.program.name}}</td>
         <td>{{project.name}}</td>
         <td>{{project.status.name}}</td>
-        <td>{{project.related_version.name}}</td>
+        <td>{{project.related_version}}</td>
         <td>
           <a href="http://jira.vemic.com/browse/{{project.jira_uri}}"  ng-if="project.jira_uri" target="_blank">
             {{project.jira_uri}}
