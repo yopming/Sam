@@ -38,7 +38,20 @@
 
 <div class="ui horizontal divider">人员</div>
 <div class="subParameter">
-    <table class="ui basic table compact">
+    <table class="ui segment table">
+        <tr>
+          <th>
+            <a href="" ng-click="reverse=!reverse; order('workno', reverse)">工号</a>
+          </th>
+          <th>姓名</th>
+          <th>
+            <a href="" ng-click="reverse=!reverse; order('domain_account', reverse)">域账号</a>
+          </th>
+          <th>
+            <a href="" ng-click="reverse=!reverse; order('position.name', reverse)">职位</a>
+          </th>
+          <th>删除</th>
+        </tr>
         <tr ng-repeat="personnel in personnels">
             <td>{{personnel.workno}}</td>
             <td>{{personnel.name}}</td>

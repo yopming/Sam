@@ -306,8 +306,8 @@ adminControllers.controller('AdminUserEditCtrl', ['$scope', '$http', '$routePara
 /*
  * Parameter
  */
-adminControllers.controller('AdminParameterCtrl', ['$scope', '$http',
-  function($scope, $http) {
+adminControllers.controller('AdminParameterCtrl', ['$scope', '$http', '$filter',
+  function($scope, $http, $filter) {
     $http.get('/api/position/all').success(function(data) {
       $scope.positions = data;
     });
@@ -323,6 +323,12 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http',
     $http.get('/api/pipe/all').success(function(data) {
       $scope.pipes = data;
     });
+
+    // personnel order
+    var orderBy = $filter('orderBy');
+    $scope.order = function(predicate, reverse) {
+      $scope.personnels = orderBy($scope.personnels, predicate, reverse);
+    };
 
     $scope.deletePosition = function(id) {
       $http.post('/api/position/destroy/' + id).success(function(data) {
