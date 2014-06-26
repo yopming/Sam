@@ -13,12 +13,6 @@
     <input type="text" name="name" ng-model="topic.name" />
   </div>
 
-  <!-- <div class="field">
-    <label>头图</label>
-    <input ng-file-select type="file" />
-    <input type="text" class="ng-hide" ng-model="topic.head_image" />
-    <p>如果不修改头图，请保持当前状态。</p>
-  </div> -->
   <div class="field">
     <label>头图</label>
     <input type="text" ng-model="topic.topic_cover" />
@@ -36,29 +30,21 @@
 
   <div class="field">
     <label>视觉设计师</label>
-    <select name="personnel_ga" ng-model="topic.personnel_ga">
-      <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-      {{personnel.name}}
-      </option>
+    <select ng-model="topic.personnel_ga"
+      ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '视觉设计师'}">
     </select>
   </div>
 
   <div class="field">
     <label>前端设计师</label>
-    <select name="personnel_fe" ng-model="topic.personnel_fe">
-      <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-      {{personnel.name}}
-      </option>
+    <select ng-model="topic.personnel_fe"
+      ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '前端设计师'}">
     </select>
   </div>
 
   <div class="field">
     <label>归属</label>
-    <select name="belong_to" ng-model="topic.belong_to">
-      <option ng-repeat="pipe in pipes" value="{{pipe._id}}">
-      {{pipe.name}}
-      </option>
-    </select>
+    <select ng-model="topic.belong_to" ng-options="pipe._id as pipe.name for pipe in pipes"></select>
   </div>
 
   <div class="field">

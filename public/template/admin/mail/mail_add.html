@@ -29,21 +29,18 @@
     <label>头图</label>
     <input type="text" ng-model="mail.mail_cover" />
   </div>
+
   <div class="field">
     <label>视觉设计师</label>
-    <select name="personnel_ga" ng-model="mail.personnel_ga">
-      <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-      {{personnel.name}}
-      </option>
+    <select ng-model="mail.personnel_ga"
+      ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '视觉设计师'}">
     </select>
   </div>
 
   <div class="field">
     <label>前端设计师</label>
-    <select name="personnel_fe" ng-model="mail.personnel_fe">
-      <option ng-repeat="personnel in personnels" value="{{personnel._id}}">
-      {{personnel.name}}
-      </option>
+    <select ng-model="mail.personnel_fe"
+      ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '前端设计师'}">
     </select>
   </div>
 
