@@ -11,6 +11,10 @@ html {
     background:none;
     .box-sizing(border-box);
   }
+  &,
+  body {
+    height:100%;
+  }
 }
 
 #sam-sign {
@@ -31,68 +35,70 @@ html {
 
 
 #sam-admin {
+  height:100%;
   .margin-vertical(auto);
   font-size:13px;
   max-width:1600px;
-  .topbar {
-    @deepcolor: #293541;
-    @topbarHeight: 50px;
-    background: @deepcolor;
-    .ui.grid {
-      margin-left:0 !important;
-      margin-right:0 !important;
+  .fence {
+    .clearfix();
+    .yard-3,
+    .yard-13 {
+      float:left;
+    }
+    .yard-3 {
+      width:14%;
+    }
+    .yard-13 {
+      width:86%;
+    }
+  }
+
+  @deepcolor: #293541;
+  .bottle {
+    .box-shadow(0 0 2px 1px rgba(0,0,0,.45));
+    height:100%;
+    background:#f2f3f8;
+    overflow-y:auto;
+
+    .yard-3 {
+      height:100%;
+      background:@deepcolor;
+      position:relative;
     }
     .brand,
-    .navigator,
-    .userBar {
-      line-height: @topbarHeight;
+    .userBar,
+    .navigator {
+      border-right:1px solid #e6e6e6;
     }
+
     .brand {
-      height: @topbarHeight;
+      height: 50px;;
       background:#f05940;
       font-size:24px;
-      padding-left:23px;
+      padding-left:14px;
       color:#fff;
       a {
         text-decoration:none;
         color:#fff;
+        line-height:50px;
         &:hover {
           color:#eee;
         }
       }
     }
-    .navigator {
-      .inverted.ui.menu {
-        background: @deepcolor;
-        > .item {
-          font-size:14px;
-          height:34px;
-          margin: 8px 0;
-          padding:0 0.9em;
-          line-height: 34px;
-        }
-      }
-      .active.item {
-        background:#34404c;
-        color:#fff;
-      }
-      .parameters {
-        .menu {
-          display:none;
-        }
-        &:hover {
-          .menu {
-            display:block;
-          }
-        }
-      }
-    }
+
     .userBar {
-      text-align:right;
+      position:absolute;
+      bottom:0;
+      height:50px;
+      line-height:50px;
+      overflow:hidden;
       &,
       .item {
         font-size:14px;
         border:none;
+        padding-top:0;
+        padding-bottom:0;
         &,
         i {
           color:#bbb;
@@ -102,12 +108,23 @@ html {
         }
       }
     }
-  }
-  .bottle {
-    /* height:700px; */
-    background:#f2f3f8;
-    overflow-y:auto;
-    .box-shadow(0 0 2px 1px rgba(0,0,0,.45));
+
+    .navigator {
+      .ui.menu {
+        .border-radius(0);
+        .box-shadow(none);
+        background:@deepcolor;
+        width:auto;
+      }
+      .item {
+        color:#bbb;
+      }
+      .active.item {
+        .border-radius(0);
+        background:#34404c;
+        color:#fff;
+      }
+    }
     .facility {
       padding:15px 15px 50px;
     }

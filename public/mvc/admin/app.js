@@ -73,27 +73,23 @@ adminApp.config(['$locationProvider', '$routeProvider',
       templateUrl: '/template/admin/parameter/parameter.html',
       controller: 'AdminParameterCtrl'
     }).
-    when('/parameter/position/add', {
+    when('/position-add', {
       templateUrl: '/template/admin/parameter/position_add.html',
       controller: 'AdminParameterPositionAddCtrl'
     }).
-    when('/parameter/personnel/add', {
+    when('/personnel-add', {
       templateUrl: '/template/admin/parameter/personnel_add.html',
       controller: 'AdminParameterPersonnelAddCtrl'
     }).
-    when('/parameter/program/add', {
+    when('/program-add', {
       templateUrl: '/template/admin/parameter/program_add.html',
       controller: 'AdminParameterProgramAddCtrl'
     }).
-    when('/parameter/status/add', {
+    when('/status-add', {
       templateUrl: '/template/admin/parameter/status_add.html',
       controller: 'AdminParameterStatusAddCtrl'
     }).
-    when('/parameter/version/add', {
-      templateUrl: '/template/admin/parameter/version_add.html',
-      controller: 'AdminParameterVersionAddCtrl'
-    }).
-    when('/parameter/releasePipe/add', {
+    when('/releasePipe-add', {
       templateUrl: '/template/admin/parameter/releasePipe_add.html',
       controller: 'AdminParameterReleasePipeAddCtrl'
     }).

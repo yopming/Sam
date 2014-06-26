@@ -16,15 +16,15 @@ html(ng-app="admin")
   body
 
     div#sam-admin
-      div.topbar
-        div.ui.grid
-          div.three.wide.column.brand
+      div.bottle.fence
+        div.yard-3
+          div.brand
             a(href="#!/")
               i.settings.icon
               | Sam
 
-          div.wide.column.nine.navigator
-            div.ui.menu.inverted
+          div.navigator
+            div.ui.menu.vertical
               a.item(href="#!/project", admin-active="active")
                 i.block.layout.icon
                 | 项目
@@ -37,23 +37,23 @@ html(ng-app="admin")
               a.item(href="#!/user", admin-active="active")
                 i.users.icon
                 | 用户
-              div.item.parameters.ui.dropdown
+              div.item.header
                 i.settings.icon
                 | 参数
-                i.icon.dropdown
                 div.menu
-                  a.item(href="#!/parameter") 参数列表
-                  a.item(href="#!/parameter/position/add") 添加职位
-                  a.item(href="#!/parameter/personnel/add") 添加人员
-                  a.item(href="#!/parameter/program/add") 添加项目应用
-                  a.item(href="#!/parameter/releasePipe/add") 添加发布渠道
-          div.wide.column.four.userBar
+                  a.item(href="#!/parameter", admin-active="active") 参数列表
+                  a.item(href="#!/position-add", admin-active="active") 添加职位
+                  a.item(href="#!/personnel-add", admin-active="active") 添加人员
+                  a.item(href="#!/program-add", admin-active="active") 添加项目应用
+                  a.item(href="#!/releasePipe-add", admin-active="active") 添加发布渠道
+
+          div.userBar
             div.ui.celled.horizontal.list
               // span.item= current_user.username
               a.item(href='/signout')
                 i.sign.out.icon
                 |登出
 
-      div.bottle
-        div.facility
-          ng-view(show-default="true")
+        div.yard-13
+          div.facility
+            ng-view(show-default="true")
