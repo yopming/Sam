@@ -43,10 +43,6 @@ adminControllers.controller('AdminProjectAddCtrl', ['$scope', '$http', '$locatio
       $scope.statuses = data;
     });
 
-    $http.get('/api/version/all').success(function(data) {
-      $scope.versions = data;
-    });
-
     $scope.projectSave = function() {
       // join two separated parameter: the version number consists of year and month and a solid string
       if ($scope.project.related_version_year != undefined && $scope.project.related_version_month != undefined) {
@@ -75,15 +71,15 @@ adminControllers.controller('AdminProjectEditCtrl', ['$scope', '$http', '$routeP
       $scope.statuses = data;
     });
 
-    $http.get('/api/version/all').success(function(data) {
-      $scope.versions = data;
-    });
-
     $http.get('/api/task/' + project_id).success(function(data) {
       $scope.project = data;
     });
 
     $scope.projectUpdate = function() {
+      if ($scope.project.related_version_year != undefined && $scope.project.related_version_month != undefined) {
+        $scope.project.related_version = 'INS_PD_' + $scope.project.related_version_year + $scope.project.related_version_month;
+      }
+
       $http.post('/api/task/project/update/' + project_id, $scope.project).success(function() {
         $location.url('/project');
       });
@@ -327,9 +323,6 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http',
     $http.get('/api/pipe/all').success(function(data) {
       $scope.pipes = data;
     });
-    $http.get('/api/version/all').success(function(data) {
-      $scope.versions = data;
-    });
 
     $scope.deletePosition = function(id) {
       $http.post('/api/position/destroy/' + id).success(function(data) {
@@ -354,11 +347,6 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http',
     $scope.deleteStatus = function(id) {
       $http.post('/api/status/destroy/' + id).success(function(data) {
         $scope.statuses = data;
-      });
-    };
-    $scope.deleteVersion = function(id) {
-      $http.post('/api/version/destroy/' + id).success(function(data) {
-        $scope.versions = data;
       });
     };
   }
@@ -406,17 +394,6 @@ adminControllers.controller('AdminParameterStatusAddCtrl', ['$scope', '$http', '
   function($scope, $http, $location) {
     $scope.statusSave = function() {
       $http.post('/api/status/add', $scope.status).success(function(data) {
-        $location.url('/parameter');
-      });
-    };
-  }
-]);
-
-// Parameter Version
-adminControllers.controller('AdminParameterVersionAddCtrl', ['$scope', '$http', '$location',
-  function($scope, $http, $location) {
-    $scope.versionSave = function() {
-      $http.post('/api/version/add', $scope.version).success(function(data) {
         $location.url('/parameter');
       });
     };

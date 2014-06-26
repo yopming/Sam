@@ -8,7 +8,6 @@ samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProje
         $scope.programs = SamProjectService.getPrograms();
         $scope.statuses = SamProjectService.getStatuses();
         $scope.personnels = SamProjectService.getPersonnels();
-        // $scope.versions = SamProjectService.getVersions();
 
         $http.get('/api/task/project/all').success(function(data) {
             $scope.projects = data;
