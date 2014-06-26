@@ -72,7 +72,14 @@
         </tr>
       </thead>
       <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectFilter:selected_atom)">
-        <td>{{project.program.name}}</td>
+        <td>
+          <span ng-if="project.program.name == '官网'" class="cate_icon_o"></span>
+          <span ng-if="project.program.name == '网站联盟'" class="cate_icon_u"></span>
+          <span ng-if="project.program.name == '触屏站'" class="cate_icon_t"></span>
+          <span ng-if="project.program.name == '易保易赔'" class="cate_icon_c"></span>
+          <span ng-if="project.program.name == 'App-旅游保险'" class="cate_icon_m"></span>
+          {{project.program.name}}
+        </td>
         <td>{{project.name}}</td>
         <td>{{project.status.name}}</td>
         <td>{{project.related_version}}</td>
