@@ -67,13 +67,14 @@
       <div class="item">
         <a><b>所属版本</b></a>
         <div class="menu">
-          <a class="item" ng-repeat="version in versions"
+          <a class="item" ng-repeat="version in versions track by $index"
             ng-click="filterProjectsByAtom(version._id, 'version')">
             <i ng-class="isChecked(version._id, 'version')"></i>
-            {{version.name}}
+            {{version._id}}
           </a>
         </div>
       </div>
+      <!--
       <div class="item">
         <a><b>开始时间</b></a>
         <div class="menu">
@@ -83,6 +84,7 @@
           </div>
         </div>
       </div>
+      -->
     </div>
   </div>
 

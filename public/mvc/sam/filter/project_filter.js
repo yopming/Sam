@@ -48,18 +48,6 @@ samProjectFilters.filter('SamProjectSideFilter', [
 
         // meaningful creteria exists
         angular.forEach(_projects, function(proj) {
-
-
-          console.log(packagedAngularEquals(packagedGetAttr(proj.program, '_id'), selected_atom.program.id)); 
-          console.log(packagedAngularEquals(packagedGetAttr(proj.status, '_id'), selected_atom.status.id));
-          console.log(packagedAngularEquals(packagedGetAttr(proj.personnel_ia, '_id'), selected_atom.ia.id));
-          console.log(packagedAngularEquals(packagedGetAttr(proj.personnel_ga, '_id'), selected_atom.ga.id));
-          console.log(packagedAngularEquals(packagedGetAttr(proj.personnel_fe, '_id'), selected_atom.fe.id));
-          console.log(packagedAngularEquals(packagedGetAttr(proj.personnel_pd, '_id'), selected_atom.pd.id)); 
-          console.log(packagedAngularEquals(packagedGetAttr(proj.related_version, '_id'), selected_atom.version.id));
-          console.log('-------------------------');
-
-
           if (
             packagedAngularEquals(packagedGetAttr(proj.program, '_id'), selected_atom.program.id) &&
             packagedAngularEquals(packagedGetAttr(proj.status, '_id'), selected_atom.status.id) &&
@@ -67,7 +55,7 @@ samProjectFilters.filter('SamProjectSideFilter', [
             packagedAngularEquals(packagedGetAttr(proj.personnel_ga, '_id'), selected_atom.ga.id) &&
             packagedAngularEquals(packagedGetAttr(proj.personnel_fe, '_id'), selected_atom.fe.id) &&
             packagedAngularEquals(packagedGetAttr(proj.personnel_pd, '_id'), selected_atom.pd.id) &&
-            packagedAngularEquals(packagedGetAttr(proj.related_version, '_id'), selected_atom.version.id)
+            packagedAngularEquals(proj.related_version, selected_atom.version.id) // related_version is string instead of object
             ) {
             tempProjects.push(proj);
           } 
