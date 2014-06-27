@@ -4,31 +4,44 @@ var samProjectControllers = angular.module('samProjectControllers', []);
  * Project
  */
 samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProjectService',
-    function($scope, $http, SamProjectService) {
-        $scope.programs = SamProjectService.getPrograms();
-        $scope.statuses = SamProjectService.getStatuses();
-        $scope.personnels = SamProjectService.getPersonnels();
+  function($scope, $http, SamProjectService) {
+    $scope.programs = SamProjectService.getPrograms();
+    $scope.statuses = SamProjectService.getStatuses();
+    $scope.personnels = SamProjectService.getPersonnels();
 
-        $http.get('/api/task/project/all').success(function(data) {
-            $scope.projects = data;
-        });
+    $http.get('/api/task/project/all').success(function(data) {
+      $scope.projects = data;
+      // extract the versions related to the projects appeared
+    });
 
-        $scope.selected_atom = [];
 
-        $scope.filterProjectsByAtom = function(id) {
-            if (_.contains($scope.selected_atom, id)) {
-                $scope.selected_atom = _.without($scope.selected_atom, id);
-            } else {
-                $scope.selected_atom.push(id);
-            }
-            return false;
-        };
+    // sidebar sort according to creteria
+    $scope.selected_atom = {
+      "program" : {"id": ''},
+      "status"  : {"id": ''},
+      "ia"      : {"id": ''},
+      "ga"      : {"id": ''},
+      "fe"      : {"id": ''},
+      "pd"      : {"id": ''},
+      "version" : {"id": ''},
+    };
 
-        $scope.isChecked = function(id) {
-            if (_.contains($scope.selected_atom, id)) {
-                return "checkmark icon";
-            }
-            return false;
-        };
-    }
+    $scope.filterProjectsByAtom = function(id, genre) {
+      if ($scope.selected_atom[genre].id == id) {
+        $scope.selected_atom[genre].id = '';
+      } else {
+        $scope.selected_atom[genre].id = id;
+      }
+      return false;
+    };
+
+    // Checked cretera in sidebar
+    $scope.isChecked = function(id, genre) {
+      if ($scope.selected_atom[genre].id == id) {
+        return "checkmark icon";
+      }
+      return false;
+    };
+
+  }
 ]);

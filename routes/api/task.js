@@ -53,7 +53,6 @@ exports.categoryIndex = function(req, res) {
   Task.find({category: req.params.category}).populate(populater).exec(function(err, tasks) {
     if (err)
       res.send('Error: ' + err);
-    console.log(tasks);
     res.json(tasks);
   });
 };

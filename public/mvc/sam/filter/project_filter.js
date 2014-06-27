@@ -3,32 +3,80 @@ var samProjectFilters = angular.module('samProjectFilters', []);
 /*
  * Project
  */
-samProjectFilters.filter('SamProjectFilter', [
+samProjectFilters.filter('SamProjectSideFilter', [
   function() {
+
+    // package the original equal evaluation
+    packagedAngularEquals = function(a, b) {
+      // judgement of whether b is blank should be regarded as the urgentest!
+      if (b == '') {
+        return true;
+      } else if (angular.isUndefined(a) || a === null) {
+        return false;
+      } else {
+        return angular.equals(a, b);
+      }
+    };
+
+    // package the original get value, incase the element is null or undefined
+    packagedGetAttr = function(el, node) {
+      if (el === null) {
+        return null;
+      } else {
+        return el[node];
+      }
+    };
+
     return function(projects, selected_atom) {
 
       if (!angular.isUndefined(projects) && !angular.isUndefined(selected_atom)) {
         var _projects = projects;
-        angular.forEach(selected_atom, function(atom) {
-          tempProjects = [];
-          angular.forEach(_projects, function(proj) {
-            if (
-              angular.equals(proj.program._id, atom) ||
-              angular.equals(proj.status._id, atom) ||
-              angular.equals(proj.personnel_ia._id, atom) ||
-              angular.equals(proj.personnel_ga._id, atom) ||
-              angular.equals(proj.personnel_fe._id, atom) ||
-              angular.equals(proj.related_version._id, atom)
-              ) {
-              tempProjects.push(proj);
-            } 
-          });
-          _projects = tempProjects;
+        tempProjects = [];
+        
+        // each creteria doesn't exists
+        if (
+          selected_atom.program.id == '' &&
+          selected_atom.status.id == '' &&
+          selected_atom.ia.id == '' &&
+          selected_atom.ga.id == '' &&
+          selected_atom.fe.id == '' &&
+          selected_atom.pd.id == '' &&
+          selected_atom.version.id == ''
+        ) {
+          return _projects;
+        }
+
+        // meaningful creteria exists
+        angular.forEach(_projects, function(proj) {
+
+
+          console.log(packagedAngularEquals(packagedGetAttr(proj.program, '_id'), selected_atom.program.id)); 
+          console.log(packagedAngularEquals(packagedGetAttr(proj.status, '_id'), selected_atom.status.id));
+          console.log(packagedAngularEquals(packagedGetAttr(proj.personnel_ia, '_id'), selected_atom.ia.id));
+          console.log(packagedAngularEquals(packagedGetAttr(proj.personnel_ga, '_id'), selected_atom.ga.id));
+          console.log(packagedAngularEquals(packagedGetAttr(proj.personnel_fe, '_id'), selected_atom.fe.id));
+          console.log(packagedAngularEquals(packagedGetAttr(proj.personnel_pd, '_id'), selected_atom.pd.id)); 
+          console.log(packagedAngularEquals(packagedGetAttr(proj.related_version, '_id'), selected_atom.version.id));
+          console.log('-------------------------');
+
+
+          if (
+            packagedAngularEquals(packagedGetAttr(proj.program, '_id'), selected_atom.program.id) &&
+            packagedAngularEquals(packagedGetAttr(proj.status, '_id'), selected_atom.status.id) &&
+            packagedAngularEquals(packagedGetAttr(proj.personnel_ia, '_id'), selected_atom.ia.id) &&
+            packagedAngularEquals(packagedGetAttr(proj.personnel_ga, '_id'), selected_atom.ga.id) &&
+            packagedAngularEquals(packagedGetAttr(proj.personnel_fe, '_id'), selected_atom.fe.id) &&
+            packagedAngularEquals(packagedGetAttr(proj.personnel_pd, '_id'), selected_atom.pd.id) &&
+            packagedAngularEquals(packagedGetAttr(proj.related_version, '_id'), selected_atom.version.id)
+            ) {
+            tempProjects.push(proj);
+          } 
         });
-        return _projects;
+        return tempProjects;
       } else {
         return false;
       }
     }
   }
 ]);
+

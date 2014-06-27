@@ -6,8 +6,8 @@
         <a><b>应用</b></a>
         <div class="menu">
           <a class="item" ng-repeat="program in programs" 
-            ng-click="filterProjectsByAtom(program._id)">
-            <i ng-class="isChecked(program._id)"></i>
+            ng-click="filterProjectsByAtom(program._id, 'program')">
+            <i ng-class="isChecked(program._id, 'program')"></i>
             {{program.name}}
           </a>
         </div>
@@ -16,28 +16,60 @@
         <a><b>状态</b></a>
         <div class="menu">
           <a class="item" ng-repeat="status in statuses"
-            ng-click="filterProjectsByAtom(status._id)">
-            <i ng-class="isChecked(status._id)"></i>
+            ng-click="filterProjectsByAtom(status._id, 'status')">
+            <i ng-class="isChecked(status._id, 'status')"></i>
             {{status.name}}
           </a>
         </div>
       </div>
+
       <div class="item">
-        <a><b>设计师</b></a>
+        <a><b>交互设计师</b></a>
         <div class="menu">
-          <a class="item" ng-repeat="personnel in personnels"
-            ng-click="filterProjectsByAtom(personnel._id)">
-            <i ng-class="isChecked(personnel._id)"></i>
+          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'ia')"
+            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '交互设计师'}">
+            <i ng-class="isChecked(personnel._id, 'ia')"></i>
             {{personnel.name}}
           </a>
         </div>
       </div>
       <div class="item">
+        <a><b>视觉设计师</b></a>
+        <div class="menu">
+          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'ga')"
+            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '视觉设计师'}">
+            <i ng-class="isChecked(personnel._id, 'ga')"></i>
+            {{personnel.name}}
+          </a>
+        </div>
+      </div>
+      <div class="item">
+        <a><b>前端设计师</b></a>
+        <div class="menu">
+          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'fe')"
+            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '前端设计师'}">
+            <i ng-class="isChecked(personnel._id, 'fe')"></i>
+            {{personnel.name}}
+          </a>
+        </div>
+      </div>
+      <div class="item">
+        <a><b>产品经理</b></a>
+        <div class="menu">
+          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'pd')"
+            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '产品经理'}">
+            <i ng-class="isChecked(personnel._id, 'pd')"></i>
+            {{personnel.name}}
+          </a>
+        </div>
+      </div>
+
+      <div class="item">
         <a><b>所属版本</b></a>
         <div class="menu">
           <a class="item" ng-repeat="version in versions"
-            ng-click="filterProjectsByAtom(version._id)">
-            <i ng-class="isChecked(version._id)"></i>
+            ng-click="filterProjectsByAtom(version._id, 'version')">
+            <i ng-class="isChecked(version._id, 'version')"></i>
             {{version.name}}
           </a>
         </div>
@@ -71,7 +103,7 @@
           <th>结束时间</th>
         </tr>
       </thead>
-      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectFilter:selected_atom)">
+      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom)">
         <td>
           <span ng-if="project.program.name == '官网'" class="cate_icon_o"></span>
           <span ng-if="project.program.name == '网站联盟'" class="cate_icon_u"></span>
