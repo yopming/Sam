@@ -34,31 +34,41 @@ samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProje
 
     // sidebar sort according to creteria
     $scope.selected_atom = {
-      "program" : {"id": ''},
-      "status"  : {"id": ''},
-      "ia"      : {"id": ''},
-      "ga"      : {"id": ''},
-      "fe"      : {"id": ''},
-      "pd"      : {"id": ''},
-      "version" : {"id": ''},
+      "program" : {"id": '', "name": ""},
+      "status"  : {"id": '', "name": ""},
+      "ia"      : {"id": '', "name": ""},
+      "ga"      : {"id": '', "name": ""},
+      "fe"      : {"id": '', "name": ""},
+      "pd"      : {"id": '', "name": ""},
+      "version" : {"id": '', "name": ""},
     };
 
-    $scope.filterProjectsByAtom = function(id, genre) {
+    $scope.filterProjectsByAtom = function(id, genre, name) {
       if ($scope.selected_atom[genre].id == id) {
         $scope.selected_atom[genre].id = '';
+        $scope.selected_atom[genre].name = '';
       } else {
         $scope.selected_atom[genre].id = id;
+        $scope.selected_atom[genre].name = name;
       }
       return false;
     };
 
-    // Checked cretera in sidebar
     $scope.isChecked = function(id, genre) {
       if ($scope.selected_atom[genre].id == id) {
         return "checkmark icon";
       }
       return false;
     };
+
+    // Remove the criteria which is been clicking
+    $scope.removeCriteria = function(id) {
+      for (var i in $scope.selected_atom) {
+        if ($scope.selected_atom[i].id == id) {
+          $scope.selected_atom[i].id = '';
+        }
+      }
+    }
 
   }
 ]);

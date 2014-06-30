@@ -6,7 +6,7 @@
         <a><b>应用</b></a>
         <div class="menu">
           <a class="item" ng-repeat="program in programs" 
-            ng-click="filterProjectsByAtom(program._id, 'program')">
+            ng-click="filterProjectsByAtom(program._id, 'program', program.name)">
             <i ng-class="isChecked(program._id, 'program')"></i>
             {{program.name}}
           </a>
@@ -16,7 +16,7 @@
         <a><b>状态</b></a>
         <div class="menu">
           <a class="item" ng-repeat="status in statuses"
-            ng-click="filterProjectsByAtom(status._id, 'status')">
+            ng-click="filterProjectsByAtom(status._id, 'status', status.name)">
             <i ng-class="isChecked(status._id, 'status')"></i>
             {{status.name}}
           </a>
@@ -26,7 +26,7 @@
       <div class="item">
         <a><b>交互设计师</b></a>
         <div class="menu">
-          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'ia')"
+          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'ia', personnel.name)"
             ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '交互设计师'}">
             <i ng-class="isChecked(personnel._id, 'ia')"></i>
             {{personnel.name}}
@@ -36,7 +36,7 @@
       <div class="item">
         <a><b>视觉设计师</b></a>
         <div class="menu">
-          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'ga')"
+          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'ga', personnel.name)"
             ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '视觉设计师'}">
             <i ng-class="isChecked(personnel._id, 'ga')"></i>
             {{personnel.name}}
@@ -46,7 +46,7 @@
       <div class="item">
         <a><b>前端设计师</b></a>
         <div class="menu">
-          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'fe')"
+          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'fe', personnel.name)"
             ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '前端设计师'}">
             <i ng-class="isChecked(personnel._id, 'fe')"></i>
             {{personnel.name}}
@@ -56,7 +56,7 @@
       <div class="item">
         <a><b>产品经理</b></a>
         <div class="menu">
-          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'pd')"
+          <a class="item" ng-click="filterProjectsByAtom(personnel._id, 'pd', personnel.name)"
             ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '产品经理'}">
             <i ng-class="isChecked(personnel._id, 'pd')"></i>
             {{personnel.name}}
@@ -68,7 +68,7 @@
         <a><b>所属版本</b></a>
         <div class="menu">
           <a class="item" ng-repeat="version in versions track by $index"
-            ng-click="filterProjectsByAtom(version._id, 'version')">
+            ng-click="filterProjectsByAtom(version._id, 'version', version._id)">
             <i ng-class="isChecked(version._id, 'version')"></i>
             {{version._id}}
           </a>
@@ -89,6 +89,16 @@
   </div>
 
   <div class="thirteen wide column">
+    <!-- filter criteria area -->
+    <div class="criterias">
+      <a class="ui teal label"
+        ng-repeat="criteria in selected_atom" ng-show="criteria.id">
+        {{ criteria.name }}
+        <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
+      </a>
+    </div>
+
+    <!-- data area -->
     <table class="ui table segment padded">
       <thead>
         <tr>
