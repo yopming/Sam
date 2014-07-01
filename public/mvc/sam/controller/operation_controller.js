@@ -13,22 +13,36 @@ samOperationControllers.controller('SamOperationMailCtrl', ['$scope', '$http',
       $scope.mails = data;
     });
 
-    $scope.selected_atom = [];
-
-    $scope.filterMailByAtom = function(id) {
-      if (_.contains($scope.selected_atom, id)) {
-        $scope.selected_atom = _.without($scope.selected_atom, id);
-      } else {
-        $scope.selected_atom.push(id);
-      }
+    $scope.selected_atom = {
+      "ga": {"id": '', "name": ''},
+      "fe": {"id": '', "name": ''}
     };
 
-    $scope.isChecked = function(id) {
-      if (_.contains($scope.selected_atom, id)) {
+    $scope.filterMailsByAtom = function(id, genre, name) {
+      if ($scope.selected_atom[genre].id == id) {
+        $scope.selected_atom[genre].id = '';
+        $scope.selected_atom[genre].name = '';
+      } else {
+        $scope.selected_atom[genre].id = id;
+        $scope.selected_atom[genre].name = name;
+      }
+      return false;
+    };
+
+    $scope.isChecked = function(id, genre) {
+      if ($scope.selected_atom[genre].id == id) {
         return "checkmark icon";
       }
       return false;
     };
+
+    $scope.removeCriteria = function(id) {
+      for (var i in $scope.selected_atom) {
+        if ($scope.selected_atom[i].id == id) {
+          $scope.selected_atom[i].id = '';
+        }
+      }
+    }
   }
 ]);
 

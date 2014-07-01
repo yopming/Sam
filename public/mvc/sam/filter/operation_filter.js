@@ -4,28 +4,57 @@ var samOperationFilters = angular.module('samOperationFilters', []);
  * Mail
  */
 samOperationFilters.filter('SamOperationMailFilter', [
-    function() {
-        return function(mails, selected_atom) {
-            if (!angular.isUndefined(mails) && !angular.isUndefined(selected_atom)) {
-                var _mails = mails;
-                angular.forEach(selected_atom, function(atom) {
-                    tempMails = [];
-                    angular.forEach(_mails, function(mail) {
-                        if (
-                            angular.equals(mail.personnel_ga._id, atom) ||
-                            angular.equals(mail.personnel_fe._id, atom) 
-                            ) {
-                            tempMails.push(mail);
-                        } 
-                    });
-                    _mails = tempMails;
-                });
-                return _mails;
-            } else {
-                return false;
-            }
+  function() {
+    // package the original equal evaluation
+    packagedAngularEquals = function(a, b) {
+      // judgement of whether b is blank should be regarded as the urgentest!
+      if (b == '') {
+        return true;
+      } else if (angular.isUndefined(a) || a === null) {
+        return false;
+      } else {
+        return angular.equals(a, b);
+      }
+    };
+
+    // package the original get value, incase the element is null or undefined
+    packagedGetAttr = function(el, node) {
+      if (el === null) {
+        return null;
+      } else {
+        return el[node];
+      }
+    };
+
+    return function(mails, selected_atom) {
+
+      if (!angular.isUndefined(mails) && !angular.isUndefined(selected_atom)) {
+        var _mails = mails;
+        tempMails = [];
+        
+        // each creteria doesn't exists
+        if (
+          selected_atom.ga.id == '' &&
+          selected_atom.fe.id == ''
+        ) {
+          return _mails;
         }
+
+        // meaningful creteria exists
+        angular.forEach(_mails, function(mail) {
+          if (
+            packagedAngularEquals(packagedGetAttr(mail.personnel_ga, '_id'), selected_atom.ga.id) &&
+            packagedAngularEquals(packagedGetAttr(mail.personnel_fe, '_id'), selected_atom.fe.id) 
+            ) {
+            tempMails.push(mail);
+          } 
+        });
+        return tempMails;
+      } else {
+        return false;
+      }
     }
+  }
 ]);
 
 

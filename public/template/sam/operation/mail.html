@@ -2,6 +2,7 @@
 
   <div class="three wide column">
     <div class="ui vertical menu">
+      <!--
       <div class="item">
         <a><b>年份</b></a>
         <div class="menu">
@@ -27,12 +28,23 @@
           <a class="item">12月</a>
         </div>
       </div>
+      -->
       <div class="item">
-        <a><b>设计师</b></a>
+        <a><b>视觉设计师</b></a>
         <div class="menu">
-          <a class="item" ng-repeat="personnel in personnels"
-            ng-click="filterMailByAtom(personnel._id)">
-            <i ng-class="isChecked(personnel._id)"></i>
+          <a class="item" ng-click="filterMailsByAtom(personnel._id, 'ga', personnel.name)"
+            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '视觉设计师'}">
+            <i ng-class="isChecked(personnel._id, 'ga')"></i>
+            {{personnel.name}}
+          </a>
+        </div>
+      </div>
+      <div class="item">
+        <a><b>前端设计师</b></a>
+        <div class="menu">
+          <a class="item" ng-click="filterMailsByAtom(personnel._id, 'fe', personnel.name)"
+            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '前端设计师'}">
+            <i ng-class="isChecked(personnel._id, 'fe')"></i>
             {{personnel.name}}
           </a>
         </div>
@@ -41,6 +53,15 @@
   </div>
 
   <div class="thirteen wide column">
+    <!-- filter criteria area -->
+    <div class="criterias">
+      <a class="ui teal label"
+        ng-repeat="criteria in selected_atom" ng-show="criteria.id">
+        {{ criteria.name }}
+        <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
+      </a>
+    </div>
+
     <div class="ui items">
       <a class="item" ng-repeat="mail in filtered = (mails | SamOperationMailFilter:selected_atom)">
         <div class="image">
