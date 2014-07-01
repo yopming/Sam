@@ -55,19 +55,21 @@
       <div class="item" ng-repeat="topic in filtered = (topics | orderBy:'-end_time' | SamOperationTopicFilter:selected_atom)">
         <div class="image">
           <img src="{{topic.topic_cover}}" />
-          <span class="like ui corner label">
-            {{topic.belong_to.name}}
-          </span>
         </div>
         <div class="content">
           <div class="meta">{{topic.end_time}}</div>
           <div class="name">{{topic.name}}</div>
           <div class="description">
-            <div class="ui label black">{{topic.personnel_ga.name}}</div>
-            <div class="ui label teal">{{topic.personnel_fe.name}}</div>
-            <a class="ui label" ng-if="topic.topic_graphic_uri" href="{{topic.topic_graphic_uri}}" target="_blank">设计稿</a>
-            <a class="ui label" ng-if="topic.topic_deploy_uri" href="{{topic.topic_deploy_uri}}" target="_blank">网页</a>
+            <a class="ui label black" ng-if="topic.topic_graphic_uri"
+              href="{{topic.topic_graphic_uri}}" target="_blank">设计稿</a>
+            <a class="ui label teal" ng-if="topic.topic_deploy_uri"
+              href="{{topic.topic_deploy_uri}}" target="_blank">网页</a>
           </div>
+        </div>
+        <div class="ui bottom attached label">
+          {{topic.belong_to.name}}
+          <span>{{topic.personnel_ga.name}}</span>
+          <span>{{topic.personnel_fe.name}}</span>
         </div>
       </div>
     </div>
