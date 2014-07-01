@@ -43,6 +43,24 @@ samOperationControllers.controller('SamOperationMailCtrl', ['$scope', '$http',
         }
       }
     }
+
+    // Reset the criteria
+    $scope.resetCriteria = function() {
+      for (var i in $scope.selected_atom) {
+        $scope.selected_atom[i].id = '';
+      }
+    }
+
+    $scope.isCriteriaValid = function() {
+      var validCount = 0;
+      for (var i in $scope.selected_atom) {
+        if ($scope.selected_atom[i].id != '') {
+          validCount ++;
+        }
+      }
+      return validCount <= 0 ? false : true;
+    }
+
   }
 ]);
 
@@ -92,5 +110,23 @@ samOperationControllers.controller('SamOperationTopicCtrl', ['$scope', '$http',
         }
       }
     }
+
+    // Reset the criteria
+    $scope.resetCriteria = function() {
+      for (var i in $scope.selected_atom) {
+        $scope.selected_atom[i].id = '';
+      }
+    }
+
+    $scope.isCriteriaValid = function() {
+      var validCount = 0;
+      for (var i in $scope.selected_atom) {
+        if ($scope.selected_atom[i].id != '') {
+          validCount ++;
+        }
+      }
+      return validCount <= 0 ? false : true;
+    }
+
   }
 ]);
