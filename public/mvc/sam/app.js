@@ -22,15 +22,10 @@ samApp.config(['$locationProvider', '$routeProvider',
       templateUrl: '/template/sam/dashboard.html',
       controller: 'SamDashboardCtrl'
     }).
-    when('/timeline', {
-      templateUrl: '/template/sam/timeline/timeline.html',
-      controller: 'SamTimelineCtrl'
-    }).
     */
-
     when('/', {
-      templateUrl: '/template/sam/timeline/timeline.html',
-      controller: 'SamTimelineCtrl'
+      templateUrl: '/template/sam/project/project.html',
+      controller: 'SamProjectCtrl'
     }).
     when('/project', {
       templateUrl: '/template/sam/project/project.html',
@@ -43,6 +38,10 @@ samApp.config(['$locationProvider', '$routeProvider',
     when('/operation/topic', {
       templateUrl: '/template/sam/operation/topic.html',
       controller: 'SamOperationTopicCtrl'
+    }).
+    when('/timeline', {
+      templateUrl: '/template/sam/timeline/timeline.html',
+      controller: 'SamTimelineCtrl'
     }).
     otherwise({
       redirectTo: '/'
