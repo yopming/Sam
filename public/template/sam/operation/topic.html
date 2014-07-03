@@ -82,7 +82,6 @@
           <img src="{{topic.topic_cover}}" />
         </div>
         <div class="content">
-          <div class="meta">{{topic.end_time}}</div>
           <div class="name">{{topic.name}}</div>
           <div class="description">
             <a class="ui label black" ng-if="topic.topic_graphic_uri"
@@ -92,9 +91,10 @@
           </div>
         </div>
         <div class="ui bottom attached label">
-          {{topic.belong_to.name}}
-          <span>{{topic.personnel_ga.name}}</span>
-          <span>{{topic.personnel_fe.name}}</span>
+          <span class="belong">{{topic.belong_to.name}}</span>
+          {{topic.end_time}}
+          <span class="per">{{topic.personnel_ga.name}}</span>
+          <span class="per">{{topic.personnel_fe.name}}</span>
         </div>
       </div>
     </div>
