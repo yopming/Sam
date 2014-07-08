@@ -67,7 +67,7 @@
     </div>
 
     <div class="ui items">
-      <div class="item" ng-repeat="mail in filtered = (mails | SamOperationMailFilter:selected_atom)">
+      <div class="item" ng-repeat="mail in filtered = (mails | orderBy: '-end_time' | SamOperationMailFilter:selected_atom)">
         <div class="image">
           <img src="{{mail.mail_cover}}" />
         </div>

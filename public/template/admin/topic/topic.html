@@ -1,4 +1,10 @@
-<div class="ui header dividing">专题</div>
+<div class="ui header dividing">
+  <a href="#!/topic/add" class="ui blue submit button icon labeled header-button">
+    <i class="edit basic icon"></i>
+    添加专题
+  </a>
+  <span class="header-title">专题</span>
+</div>
 
 <table class="ui table segment">
   <thead>
@@ -14,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="topic in topics">
+  <tr ng-repeat="topic in filtered = (topics | orderBy:'-end_time')">
     <td><a href="{{topic.topic_deploy_uri}}" target="_blank">{{topic.name}}</a></td>
     <td><a href="{{topic.topic_graphic_uri}}" target="_blank">查看</a></td>
     <td>{{topic.personnel_ga.name}}</td>

@@ -1,4 +1,10 @@
-<div class="ui header dividing">项目</div>
+<div class="ui header dividing clearfix">
+  <a href="#!/project/add" class="ui blue submit button icon labeled header-button">
+    <i class="edit basic icon"></i>
+    添加项目
+  </a>
+  <span class="header-title">项目</span>
+</div>
 
 <table class="ui table segment">
   <thead>
@@ -18,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="project in projects">
+  <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version')">
     <td>{{project.status.name}}</td>
     <td>{{project.program.name}}</td>
     <td>{{project.name}}</td>
