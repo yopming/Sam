@@ -69,13 +69,12 @@
     <div class="ui items">
       <div class="item" ng-repeat="mail in filtered = (mails | orderBy: '-end_time' | SamOperationMailFilter:selected_atom)">
         <div class="image">
-          <img src="{{mail.mail_cover}}" />
+          <a target="_blank" href="{{mail.mail_cover}}" title="查看大图">
+            <img src="{{mail.mail_cover}}" />
+          </a>
         </div>
         <div class="content">
           <div class="name">{{mail.name}}</div>
-          <div class="description">
-            <a class="ui teal small label" target="_blank" href="{{mail.mail_cover}}">大图</a>
-          </div>
         </div>
         <div class="ui bottom attached label">
           <span class="time">{{mail.end_time}}</span>
