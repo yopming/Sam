@@ -91,14 +91,16 @@
   <div class="thirteen wide column">
     <!-- filter criteria area -->
     <div class="criterias" ng-show="isCriteriaValid()">
+      <a class="ui black small label clearall" ng-click="resetCriteria()">
+        清空筛选条件
+      </a>
+
+      <i class="ellipsis vertical icon"></i>
+
       <a class="ui teal small label"
         ng-repeat="criteria in selected_atom" ng-show="criteria.id">
         {{ criteria.name }}
         <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
-      </a>
-
-      <a class="ui black small label clearall" ng-click="resetCriteria()">
-        清空筛选条件
       </a>
     </div>
 
