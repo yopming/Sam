@@ -2,15 +2,17 @@
  * Module dependencies.
  */
 
-// mongoose setup
 var express = require('express');
 var http = require('http');
 var path = require('path');
 var lessMiddleware = require('less-middleware');
 var flash = require('express-flash');
+var minify = require('express-minify');
 
+// mongoose setup
 require('./model/schema.js');
 var helper_auth = require('./helper/auth.js');
+
 
 var app = express();
 
@@ -27,9 +29,7 @@ var routes_api_status    = require('./routes/api/status.js');
 var routes_api_tribute   = require('./routes/api/tribute.js');
 
 // all environments
-app.use(express.bodyParser({
-  limit: '5mb'
-}));
+app.use(express.compress());
 app.use(express.cookieParser('samauth'));
 app.use(express.session());
 app.set('port', process.env.PORT || 3000);
@@ -56,6 +56,15 @@ app.use(lessMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// minify
+app.use(function(req, res, next) {
+  // do not mangle -angular.js files
+  if (/-angular\.js$/.test(req.url)) {
+    res._no_mangle = true;
+  }
+  next();
+});
+app.use(minify());
 
 // development only
 if ('development' == app.get('env')) {
