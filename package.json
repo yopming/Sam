@@ -14,7 +14,8 @@
     "connect-flash": "*",
     "express-flash": "*",
     "mongoose": "*",
-    "moment" : "*",
-    "express-minify": "*"
+    "moment": "*",
+    "express-minify": "*",
+    "compression": "~1.0.9"
   }
 }

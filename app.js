@@ -8,6 +8,7 @@ var path = require('path');
 var lessMiddleware = require('less-middleware');
 var flash = require('express-flash');
 var minify = require('express-minify');
+var compress = require('compression');
 
 // mongoose setup
 require('./model/schema.js');
@@ -30,6 +31,21 @@ var routes_api_tribute   = require('./routes/api/tribute.js');
 
 // all environments
 app.use(express.compress());
+
+// less-middleware
+// sequence of lessMiddleware and express.static should be like this, not inverse
+app.use(lessMiddleware({
+  src: __dirname + '/public/less',
+  dest: __dirname + '/public/css',
+  prefix: '/css',
+  compress: true
+  //force: true,
+  //debug: true
+}));
+app.use(express.static(__dirname + '/public', {
+  maxAge: 604800000
+}));
+
 app.use(express.cookieParser('samauth'));
 app.use(express.session());
 app.set('port', process.env.PORT || 3000);
@@ -43,18 +59,6 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
-
-// less-middleware
-// sequence of lessMiddleware and express.static should be like this, not inverse
-app.use(lessMiddleware({
-  src: __dirname + '/public/less',
-  dest: __dirname + '/public/css',
-  prefix: '/css',
-  compress: true
-  //force: true,
-  //debug: true
-}));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // minify
 app.use(function(req, res, next) {
