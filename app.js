@@ -50,9 +50,9 @@ app.use(lessMiddleware({
   src: __dirname + '/public/less',
   dest: __dirname + '/public/css',
   prefix: '/css',
-  compress: true,
-  force: true,
-  debug: true
+  compress: true
+  //force: true,
+  //debug: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
