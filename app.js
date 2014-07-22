@@ -46,7 +46,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.cookieParser('samauth'));
 app.use(express.session());
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(flash());
