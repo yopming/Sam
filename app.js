@@ -7,13 +7,10 @@ var http = require('http');
 var path = require('path');
 var lessMiddleware = require('less-middleware');
 var flash = require('express-flash');
-var minify = require('express-minify');
-var compress = require('compression');
 
 // mongoose setup
 require('./model/schema.js');
 var helper_auth = require('./helper/auth.js');
-
 
 var app = express();
 
@@ -30,7 +27,6 @@ var routes_api_status    = require('./routes/api/status.js');
 var routes_api_tribute   = require('./routes/api/tribute.js');
 
 // all environments
-app.use(express.compress());
 
 // less-middleware
 // sequence of lessMiddleware and express.static should be like this, not inverse
@@ -42,9 +38,7 @@ app.use(lessMiddleware({
   //force: true,
   //debug: true
 }));
-app.use(express.static(__dirname + '/public', {
-  maxAge: 604800000
-}));
+app.use(express.static(__dirname + '/public'));
 
 app.use(express.cookieParser('samauth'));
 app.use(express.session());
@@ -60,15 +54,6 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 
-// minify
-app.use(function(req, res, next) {
-  // do not mangle -angular.js files
-  if (/-angular\.js$/.test(req.url)) {
-    res._no_mangle = true;
-  }
-  next();
-});
-app.use(minify());
 
 // development only
 if ('development' == app.get('env')) {
