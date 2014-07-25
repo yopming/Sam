@@ -1,4 +1,4 @@
-var samProjectControllers = angular.module('samProjectControllers', []);
+var samProjectControllers = angular.module('samProjectControllers', ['ui.utils']);
 
 /*
  * Project
@@ -6,7 +6,6 @@ var samProjectControllers = angular.module('samProjectControllers', []);
 samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProjectService',
   function($scope, $http, SamProjectService) {
     $scope.programs = SamProjectService.getPrograms();
-    $scope.statuses = SamProjectService.getStatuses();
     $scope.personnels = SamProjectService.getPersonnels();
 
     $http.get('/api/task/project/all').success(function(data) {
@@ -35,7 +34,6 @@ samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProje
     // sidebar sort according to creteria
     $scope.selected_atom = {
       "program" : {"id": '', "name": ""},
-      "status"  : {"id": '', "name": ""},
       "ia"      : {"id": '', "name": ""},
       "ga"      : {"id": '', "name": ""},
       "fe"      : {"id": '', "name": ""},

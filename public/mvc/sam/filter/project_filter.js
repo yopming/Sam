@@ -36,7 +36,6 @@ samProjectFilters.filter('SamProjectSideFilter', [
         // each creteria doesn't exists
         if (
           selected_atom.program.id == '' &&
-          selected_atom.status.id == '' &&
           selected_atom.ia.id == '' &&
           selected_atom.ga.id == '' &&
           selected_atom.fe.id == '' &&
@@ -50,7 +49,6 @@ samProjectFilters.filter('SamProjectSideFilter', [
         angular.forEach(_projects, function(proj) {
           if (
             packagedAngularEquals(packagedGetAttr(proj.program, '_id'), selected_atom.program.id) &&
-            packagedAngularEquals(packagedGetAttr(proj.status, '_id'), selected_atom.status.id) &&
             packagedAngularEquals(packagedGetAttr(proj.personnel_ia, '_id'), selected_atom.ia.id) &&
             packagedAngularEquals(packagedGetAttr(proj.personnel_ga, '_id'), selected_atom.ga.id) &&
             packagedAngularEquals(packagedGetAttr(proj.personnel_fe, '_id'), selected_atom.fe.id) &&
