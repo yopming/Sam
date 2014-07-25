@@ -2,7 +2,6 @@ var adminApp = angular.module('admin', [
   'ngRoute',
   'adminControllers',
   'pickadate',
-  'angularFileUpload',
   'adminDirectives'
 ]);
 
@@ -84,10 +83,6 @@ adminApp.config(['$locationProvider', '$routeProvider',
     when('/program-add', {
       templateUrl: '/template/admin/parameter/program_add.html',
       controller: 'AdminParameterProgramAddCtrl'
-    }).
-    when('/status-add', {
-      templateUrl: '/template/admin/parameter/status_add.html',
-      controller: 'AdminParameterStatusAddCtrl'
     }).
     when('/releasePipe-add', {
       templateUrl: '/template/admin/parameter/releasePipe_add.html',

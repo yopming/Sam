@@ -87,5 +87,13 @@ samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProje
       return validCount <= 0 ? false : true;
     }
 
+    // Criteria highlight
+    $scope.highligh = function(text, search) {
+      if (!search) {
+        return $sce.trustAsHtml(text);
+      }
+      return $sce.trustAsHtml(text.replace(new RegExp(search, 'gi'), '<span class="highlightedText">$&</span>'));
+    }
+
   }
 ]);
