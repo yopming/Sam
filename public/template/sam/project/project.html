@@ -99,7 +99,6 @@
       </div>
     </div>
 
-    <p ng-bind-html-unsafe="'飞fdfjslkdfkj苗丽miaoli' | highlight:subSearch">sheng f哼飞苗丽miaoli</p>
     <!-- data area -->
     <table class="ui table segment padded data_program">
       <thead>
@@ -117,8 +116,7 @@
           <th>结束时间</th>
         </tr>
       </thead>
-      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom) | filter:subSearch"
-          ng-bind-html-unsafe="highlight:subSearch">
+      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom) | filter:subSearch">
         <td>
           <span ng-if="project.program.name == '官网'" class="cate_icon_o"></span>
           <span ng-if="project.program.name == '网站联盟'" class="cate_icon_u"></span>

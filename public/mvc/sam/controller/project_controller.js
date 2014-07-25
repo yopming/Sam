@@ -1,4 +1,6 @@
-var samProjectControllers = angular.module('samProjectControllers', ['ui.utils']);
+var samProjectControllers = angular.module('samProjectControllers', 
+  []
+);
 
 /*
  * Project

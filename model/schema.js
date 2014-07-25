@@ -94,6 +94,6 @@ mongoose.model('ReleasePipe', releasePipeSchema);
 
 
 // connect
-mongoose.connect('mongodb://192.168.28.107/sam');
-//mongoose.connect('mongodb://127.0.0.1/sam');
+// mongoose.connect('mongodb://192.168.28.107/sam');
+mongoose.connect('mongodb://127.0.0.1/sam');
 
