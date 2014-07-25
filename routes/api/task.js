@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 var Task = mongoose.model('Task');
 
 var Program = mongoose.model('Program');
-var ProjectStatus = mongoose.model('ProjectStatus');
 var Personnel = mongoose.model('Personnel');
 var ReleasePipe = mongoose.model('ReleasePipe');
 var ProjectVersion = mongoose.model('ProjectVersion');

@@ -26,7 +26,6 @@ var routes_api_position  = require('./routes/api/position.js');
 var routes_api_personnel = require('./routes/api/personnel.js');
 var routes_api_program   = require('./routes/api/program.js');
 var routes_api_pipe      = require('./routes/api/pipe.js');
-var routes_api_status    = require('./routes/api/status.js');
 var routes_api_tribute   = require('./routes/api/tribute.js');
 
 // all environments
@@ -113,10 +112,6 @@ app.post('/api/program/destroy/:program_id', routes_api_program.destroy);
 app.get('/api/pipe/all', routes_api_pipe.index);
 app.post('/api/pipe/add', routes_api_pipe.create);
 app.post('/api/pipe/destroy/:pipe_id', routes_api_pipe.destroy);
-
-app.get('/api/status/all', routes_api_status.index);
-app.post('/api/status/add', routes_api_status.create);
-app.post('/api/status/destroy/:status_id', routes_api_status.destroy);
 
 app.post('/api/tribute/add', routes_api_tribute.create);
 
