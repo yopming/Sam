@@ -90,18 +90,23 @@
 
   <div class="thirteen wide column">
     <!-- filter criteria area -->
-    <div class="criterias" ng-show="isCriteriaValid()">
-      <a class="ui black small label clearall" ng-click="resetCriteria()">
-        清空筛选条件
-      </a>
+    <div class="criterias">
+      <div class="clickable" ng-show="isCriteriaValid()">
+        <a class="ui black small label clearall" ng-click="resetCriteria()">
+          清空筛选条件
+        </a>
 
-      <i class="ellipsis vertical icon"></i>
+        <i class="ellipsis vertical icon"></i>
 
-      <a class="ui teal small label"
-        ng-repeat="criteria in selected_atom" ng-show="criteria.id">
-        {{ criteria.name }}
-        <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
-      </a>
+        <a class="ui teal small label"
+          ng-repeat="criteria in selected_atom" ng-show="criteria.id">
+          {{ criteria.name }}
+          <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
+        </a>
+      </div>
+      <div class="inputable ui input mini">
+        <input type="text" placeholder="文字筛选" ng-model="subSearch" />
+      </div>
     </div>
 
     <!-- data area -->
@@ -121,7 +126,7 @@
           <th>结束时间</th>
         </tr>
       </thead>
-      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom)">
+      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom) | filter:subSearch ">
         <td>
           <span ng-if="project.program.name == '官网'" class="cate_icon_o"></span>
           <span ng-if="project.program.name == '网站联盟'" class="cate_icon_u"></span>

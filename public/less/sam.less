@@ -62,7 +62,7 @@
     .column {
       height:100%;
       margin:0;
-      overflow-y:auto;
+      overflow-y:scroll;
       &.three {
         background:#fff;
         padding-left:0;
@@ -75,20 +75,37 @@
         }
       }
       &.thirteen {
-        .padding-horizontal(1.5%);
+        .padding-horizontal(15px);
       }
     }
 
     .criterias {
+      @criteriasHeight: 36px;
       position:relative;
       padding-left:100px;
-      .clearall {
+      padding-right:200px;
+      height: @criteriasHeight;
+      .clearfix();
+      .clickable {
+        float:left;
+        margin-top:8px;
+        .clearall {
+          position:absolute;
+          left:0;
+        }
+        .teal.label {
+          cursor:default;
+        }
+      }
+      .inputable {
         position:absolute;
-        left:0;
+        right:0;
+        width:200px;
       }
-      .teal.label {
-        cursor:default;
-      }
+    }
+
+    .data_program {
+      margin-top:10px;
     }
   }
 
@@ -136,6 +153,7 @@
       padding:0.5em 0;
       cursor: default;
       padding-bottom:34px;
+      margin-bottom:25px;
       .image {
         .square(300px);
         overflow:hidden;

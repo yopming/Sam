@@ -54,21 +54,26 @@
 
   <div class="thirteen wide column">
     <!-- filter criteria area -->
-    <div class="criterias" ng-show="isCriteriaValid()">
-      <a class="ui black small label clearall" ng-click="resetCriteria()">
-        清空筛选条件
-      </a>
-      <i class="ellipsis vertical icon"></i>
+    <div class="criterias">
+      <div class="clickable" ng-show="isCriteriaValid()">
+        <a class="ui black small label clearall" ng-click="resetCriteria()">
+          清空筛选条件
+        </a>
+        <i class="ellipsis vertical icon"></i>
 
-      <a class="ui teal label"
-        ng-repeat="criteria in selected_atom" ng-show="criteria.id">
-        {{ criteria.name }}
-        <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
-      </a>
+        <a class="ui teal label"
+          ng-repeat="criteria in selected_atom" ng-show="criteria.id">
+          {{ criteria.name }}
+          <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
+        </a>
+      </div>
+      <div class="inputable ui input mini">
+        <input type="text" placeholder="文字筛选" ng-model="subSearch" />
+      </div>
     </div>
 
     <div class="ui items">
-      <div class="item" ng-repeat="mail in filtered = (mails | orderBy: '-end_time' | SamOperationMailFilter:selected_atom)">
+      <div class="item" ng-repeat="mail in filtered = (mails | orderBy: '-end_time' | SamOperationMailFilter:selected_atom) | filter:subSearch ">
         <div class="image">
           <a target="_blank" href="{{mail.mail_cover}}" title="查看大图">
             <img src="{{mail.mail_cover}}" />
