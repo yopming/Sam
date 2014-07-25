@@ -1,33 +1,33 @@
 doctype html
 html(ng-app="admin")
-	head
-		title Sam :: Sign
-		link(rel="stylesheet", href="/css/sam-admin.css")
+  head
+    title Sam :: Sign
+    link(rel='stylesheet', href='/css/sam-admin.css')
     link(ref='shortcut icon', href='/favicon.ico', type='image/x-icon')
     meta(name='renderer', content='webkit')
 
-	body
-		div#sam-sign.ui.grid
-			div.five.wide.column
-			div.six.wide.column
-				h2.ui.header Sam
-				div.ui.form.segment.piled
-					form(action='/signin', method='POST')
-						- if (messages.info)
-							div.ui.error.message(style="display:block")
-								div=messages.info
+  body
+    div#sam-sign.ui.grid
+      div.five.wide.column
+      div.six.wide.column
+        h2.ui.header Sam
+        div.ui.form.segment.piled
+          form(action='/signin', method='POST')
+            - if (messages.info)
+              div.ui.error.message(style="display:block")
+                div=messages.info
 
-						div.field
-							label Username
-							div.ui.left.labeled.icon.input
-								input(type='text', name='username')
-								i.user.icon
-						div.field
-							label Password
-							div.ui.left.labeled.icon.input
-								input(type='password', name='password')
-								i.lock.icon
-						button.ui.small.red.submit.button(type='submit')
-							i.meh.icon
-							| Sign In
-			div.five.wide.column
+            div.field
+              label Username
+              div.ui.left.labeled.icon.input
+                input(type='text', name='username')
+                i.user.icon
+            div.field
+              label Password
+              div.ui.left.labeled.icon.input
+                input(type='password', name='password')
+                i.lock.icon
+            button.ui.small.red.submit.button(type='submit')
+              i.meh.icon
+              | Sign In
+    div.five.wide.column
