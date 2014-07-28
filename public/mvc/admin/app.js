@@ -1,7 +1,7 @@
 var adminApp = angular.module('admin', [
   'ngRoute',
-  'adminControllers',
   'pickadate',
+  'adminControllers',
   'adminDirectives'
 ]);
 

@@ -7,8 +7,8 @@
       <th>用户名</th>
       <th>名字</th>
       <th>邮件</th>
-      <th>用户组</th>
-      <th>编辑</th>
+      <th ng-show="isRoot">用户组</th>
+      <th ng-show="isRoot">编辑</th>
     </tr>
   </thead>
   <tbody>
@@ -17,19 +17,20 @@
     <td>{{user.username}}</td>
     <td>{{user.name}}</td>
     <td>{{user.email}}</td>
-    <td>{{user.group.name}}</td>
-    <td>
+    <td ng-show="isRoot">{{user.group.name}}</td>
+    <td ng-show="isRoot">
       <div class="ui tiny buttons">
         <a href="#!/user/edit/{{user._id}}" class="ui button positive">编辑</a>
         <div class="or"></div>
         <a ng-click="deleteUser(user._id)" class="ui button">删除</a>
       </div>
     </td>
+    </ng-show>
   </tr>
   </tbody>
 </table>
 
-<a href="#!/user/add" class="ui blue submit button icon labeled">
+<a ng-show="isRoot" href="#!/user/add" class="ui blue submit button icon labeled">
   <i class="edit basic icon"></i>
   添加用户
 </a>

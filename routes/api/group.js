@@ -14,3 +14,12 @@ exports.index = function(req, res) {
     res.json(groups);
   });
 };
+
+
+exports.indexOne = function(req, res) {
+  Group.findById(req.params.group_id, function(err, group) {
+    if (err) 
+      res.send('Error: ' + err);
+    res.json(group);
+  });
+};

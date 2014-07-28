@@ -1,4 +1,4 @@
-var adminControllers = angular.module('adminControllers', []);
+var adminControllers = angular.module('adminControllers', ['ngCookies']);
 
 /*
  * Sift
@@ -315,8 +315,15 @@ adminControllers.controller('AdminTopicEditCtrl', ['$scope', '$http', '$routePar
 /*
  * User
  */
-adminControllers.controller('AdminUserCtrl', ['$scope', '$http', '$location',
-  function($scope, $http, $location) {
+adminControllers.controller('AdminUserCtrl', ['$scope', '$http', '$location', '$cookies',
+  function($scope, $http, $location, $cookies) {
+    var userNice = $cookies.group;
+    if (userNice == 7) {
+      $scope.isRoot = true;
+    } else {
+      $scope.isRoot = false;
+    }
+
     $http.get('/api/user/all').success(function(data) {
       $scope.users = data;
     });
@@ -368,8 +375,15 @@ adminControllers.controller('AdminUserEditCtrl', ['$scope', '$http', '$routePara
 /*
  * Parameter
  */
-adminControllers.controller('AdminParameterCtrl', ['$scope', '$http', '$filter',
-  function($scope, $http, $filter) {
+adminControllers.controller('AdminParameterCtrl', ['$scope', '$http', '$filter', '$cookies',
+  function($scope, $http, $filter, $cookies) {
+    var userNice = $cookies.group;
+    if (userNice == 7) {
+      $scope.isRoot = true;
+    } else {
+      $scope.isRoot = false;
+    }
+
     $http.get('/api/group/all').success(function(data) {
       $scope.groups = data;
     });

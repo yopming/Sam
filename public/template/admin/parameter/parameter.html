@@ -6,7 +6,7 @@
 <div class="subParameter">
   <span ng-repeat="position in positions" class="ui black label">
     {{position.name}}
-    <i class="delete icon" ng-click="deletePosition(position._id)"></i>
+    <i ng-show="isRoot" class="delete icon" ng-click="deletePosition(position._id)"></i>
   </span>
 </div>
 
@@ -16,7 +16,7 @@
 <div class="subParameter">
   <span ng-repeat="program in programs" class="ui blue label">
     {{program.name}}
-    <i class="delete icon" ng-click="deleteProgram(program._id)"></i>
+    <i ng-show="isRoot" class="delete icon" ng-click="deleteProgram(program._id)"></i>
   </span>
 </div>
 
@@ -24,7 +24,7 @@
 <div class="subParameter">
   <span ng-repeat="status in statuses" class="ui red label">
     {{status.name}}
-    <i class="delete icon" ng-click="deleteStatus(status._id)"></i>
+    <i ng-show="isRoot" class="delete icon" ng-click="deleteStatus(status._id)"></i>
   </span>
 </div>
 
@@ -32,7 +32,7 @@
 <div class="subParameter">
   <span ng-repeat="pipe in pipes" class="ui teal label">
     {{pipe.name}}
-    <i class="delete icon" ng-click="deletePipe(pipe._id)"></i>
+    <i ng-show="isRoot"s class="delete icon" ng-click="deletePipe(pipe._id)"></i>
   </span>
 </div>
 
@@ -59,14 +59,14 @@
       <th>
         <a href="" ng-click="reverse=!reverse; order('position.name', reverse)">职位</a>
       </th>
-      <th>删除</th>
+      <th ng-show="isRoot">删除</th>
     </tr>
     <tr ng-repeat="personnel in personnels">
       <td>{{personnel.workno}}</td>
       <td>{{personnel.name}}</td>
       <td>{{personnel.domain_account}}</td>
       <td>{{personnel.position.name}}</td>
-      <td>
+      <td ng-show="isRoot">
         <i class="delete icon" ng-click="deletePersonnel(personnel._id)"></i>
       </td>
     </tr>

@@ -12,7 +12,6 @@ var compress = require('compression');
 
 // mongoose setup
 require('./model/schema.js');
-var helper_auth = require('./helper/auth.js');
 
 
 var app = express();
@@ -45,7 +44,7 @@ app.use(lessMiddleware({
 }));
 app.use(express.static(__dirname + '/public'));
 
-app.use(express.cookieParser('samauth'));
+app.use(express.cookieParser('samcookies'));
 app.use(express.session());
 app.set('port', process.env.PORT || 4000);
 app.set('views', path.join(__dirname, 'views'));
@@ -57,7 +56,15 @@ app.use(express.bodyParser());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+// jade session
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user || null;
+  res.locals.group = req.session.group || null;
+  next();
+});
+
 app.use(app.router);
+
 
 // minify
 app.use(function(req, res, next) {
@@ -73,6 +80,9 @@ app.use(minify());
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+// helper
+var helper_auth = require('./helper/auth.js');
 
 // route
 app.get('/', routes_sam.index);
@@ -99,6 +109,7 @@ app.post('/api/user/destroy/:user_id', routes_api_user.destroy);
 app.post('/api/user/update/:user_id', routes_api_user.update);
 
 app.get('/api/group/all', routes_api_group.index);
+app.get('/api/group/:group_id', routes_api_group.indexOne);
 
 app.get('/api/position/all', routes_api_position.index);
 app.post('/api/position/add', routes_api_position.create);

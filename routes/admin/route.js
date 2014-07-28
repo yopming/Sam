@@ -6,6 +6,7 @@
 var fs = require('fs');
 var hash = require('crypto').createHash('md5');
 var authenticate = require('../../helper/auth.js').authenticate;
+var query_mod = require('../../model/mod.js').queryNice;
 
 // sign
 exports.sign = function(req, res) {
@@ -21,7 +22,11 @@ exports.signin = function(req, res, next) {
     if (user) {
       req.session.regenerate(function() {
         req.session.user = user;
-        res.redirect('/admin');
+        query_mod(user.group, function(group) {
+          req.session.group = group;
+          res.cookie('group', group.nice, {maxAge: 24*60*60*1000});
+          res.redirect('/admin');
+        });
       });
     } else {
       req.flash('info', 'Username or password is not corret.');
@@ -32,13 +37,17 @@ exports.signin = function(req, res, next) {
 
 exports.signout = function(req, res) {
   req.session.destroy();
+  res.clearCookie('group');
   res.redirect('/');
 };
 
 
 // admin
 exports.admin = function(req, res) {
-  res.render('admin/admin', {current_user: req.session.user});
+  query_mod(req.session.user.group, function(group) {
+    res.cookie('group', group.nice, {maxAge: 24*60*60*1000});
+    res.render('admin/admin', {current_user: req.session.user});
+  });
 };
 
 
