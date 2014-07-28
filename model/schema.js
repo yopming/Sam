@@ -21,6 +21,7 @@ var taskSchema = new Schema ({
   category          : String,
   program           : {type: Schema.Types.ObjectId, ref: 'Program'},
   name              : {type: String, unique: true},
+  status            : {type: Schema.Types.ObjectId, ref: 'ProjectStatus'},
   personnel_fe      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
   personnel_ga      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
   personnel_ia      : {type: Schema.Types.ObjectId, ref: 'Personnel'},
@@ -74,6 +75,14 @@ var programSchema = new Schema({
 mongoose.model('Program', programSchema);
 
 
+/* task status
+ * @example: in interactive action, designing, coding, released
+ */
+var projectStatusSchema = new Schema({
+  name: {type: String, unique: true}
+});
+mongoose.model('ProjectStatus', projectStatusSchema);
+
 
 /* project version
  * @example: 2013.48, 2014.08
@@ -94,6 +103,5 @@ mongoose.model('ReleasePipe', releasePipeSchema);
 
 
 // connect
-// mongoose.connect('mongodb://192.168.28.107/sam');
-mongoose.connect('mongodb://127.0.0.1/sam');
+mongoose.connect('mongodb://192.168.28.107/sam');
 

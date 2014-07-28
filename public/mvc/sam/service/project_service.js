@@ -9,6 +9,10 @@ samProjectServices.factory('SamProjectService', ['$http', '$resource',
             query: {method: 'GET', isArray:true}
         });
 
+        var statuses = $resource('/api/status/all', {}, {
+            query: {method: 'GET', isArray:true}
+        });
+
         var personnels = $resource('/api/personnel/all', {}, {
             query: {method: 'GET', isArray:true}
         });
@@ -20,6 +24,9 @@ samProjectServices.factory('SamProjectService', ['$http', '$resource',
         return {
             getPrograms: function() {
                 return programs.query();
+            },
+            getStatuses: function() {
+                return statuses.query();
             },
             getPersonnels: function() {
                 return personnels.query();

@@ -12,6 +12,16 @@
           </a>
         </div>
       </div>
+      <div class="item">
+        <a><b>状态</b></a>
+        <div class="menu">
+          <a class="item" ng-repeat="status in statuses"
+            ng-click="filterProjectsByAtom(status._id, 'status', status.name)">
+            <i ng-class="isChecked(status._id, 'status')"></i>
+            {{status.name}}
+          </a>
+        </div>
+      </div>
 
       <div class="item">
         <a><b>交互设计师</b></a>
@@ -116,7 +126,7 @@
           <th>结束时间</th>
         </tr>
       </thead>
-      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom) | filter:subSearch">
+      <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom) | filter:subSearch ">
         <td>
           <span ng-if="project.program.name == '官网'" class="cate_icon_o"></span>
           <span ng-if="project.program.name == '网站联盟'" class="cate_icon_u"></span>
