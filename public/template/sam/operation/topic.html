@@ -85,7 +85,7 @@
     <div class="ui items">
       <div class="item" ng-repeat="topic in filtered = (topics | orderBy:'-end_time' | SamOperationTopicFilter:selected_atom) | filter:subSearch ">
         <div class="image">
-          <img src="{{topic.topic_cover}}" />
+          <img ng-src="{{topic.topic_cover}}" />
         </div>
         <div class="content">
           <div class="name">{{topic.name}}</div>

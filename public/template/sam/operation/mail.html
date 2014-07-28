@@ -76,7 +76,7 @@
       <div class="item" ng-repeat="mail in filtered = (mails | orderBy: '-end_time' | SamOperationMailFilter:selected_atom) | filter:subSearch ">
         <div class="image">
           <a target="_blank" href="{{mail.mail_cover}}" title="查看大图">
-            <img src="{{mail.mail_cover}}" />
+            <img ng-src="{{mail.mail_cover}}" />
           </a>
         </div>
         <div class="content">
