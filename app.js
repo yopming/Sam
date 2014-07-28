@@ -80,8 +80,7 @@ app.get('/', routes_sam.index);
 app.get('/sign', routes_admin.sign);
 app.post('/signin', routes_admin.signin);
 app.get('/signout', helper_auth.requiredAuth, routes_admin.signout);
-// app.get('/admin', helper_auth.requiredAuth, routes_admin.admin);
-// temporary remov auth requirement
+app.get('/admin', helper_auth.requiredAuth, routes_admin.admin);
 app.get('/admin', routes_admin.admin);
 
 // APIs
