@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var Personnel = mongoose.model('Personnel');
 var Position = mongoose.model('Position');
 
+
 exports.index = function(req, res) {
     Personnel.find().populate('position').exec(function(err, personnels, count) {
         if (err)

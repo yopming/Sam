@@ -11,6 +11,7 @@ var userSchema = new Schema({
   username : {type: String, unique: true},
   email    : {type: String, unique: true},
   hash     : String,
+  group    : {type: Schema.Types.ObjectId, ref: 'Group'},
   created  : {type: Date, default: Date.now}
 });
 mongoose.model('User', userSchema);
@@ -100,6 +101,17 @@ var releasePipeSchema = new Schema({
   name: {type: String, unique: true}
 });
 mongoose.model('ReleasePipe', releasePipeSchema);
+
+
+/*
+ * user group
+ * @example: root, user
+ */
+var groupSchema = new Schema({
+  name: {type: String, unique: true},
+  nice: {type: String, unique: true}
+});
+mongoose.model('Group', groupSchema);
 
 
 // connect

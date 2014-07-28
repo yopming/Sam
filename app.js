@@ -22,6 +22,7 @@ var routes_sam           = require('./routes/sam/route.js');
 var routes_admin         = require('./routes/admin/route.js');
 var routes_api_task      = require('./routes/api/task.js');
 var routes_api_user      = require('./routes/api/user.js');
+var routes_api_group     = require('./routes/api/group.js');
 var routes_api_position  = require('./routes/api/position.js');
 var routes_api_personnel = require('./routes/api/personnel.js');
 var routes_api_program   = require('./routes/api/program.js');
@@ -97,6 +98,8 @@ app.get('/api/user/:user_id', routes_api_user.indexOne);
 app.post('/api/user/add', routes_api_user.create);
 app.post('/api/user/destroy/:user_id', routes_api_user.destroy);
 app.post('/api/user/update/:user_id', routes_api_user.update);
+
+app.get('/api/group/all', routes_api_group.index);
 
 app.get('/api/position/all', routes_api_position.index);
 app.post('/api/position/add', routes_api_position.create);

@@ -1,65 +1,74 @@
 <div class="ui header dividing">参数</div>
 
 <div class="ui horizontal divider">
-    职位
+  职位
 </div>
 <div class="subParameter">
-    <span ng-repeat="position in positions" class="ui black label">
-        {{position.name}}
-        <i class="delete icon" ng-click="deletePosition(position._id)"></i>
-    </span>
+  <span ng-repeat="position in positions" class="ui black label">
+    {{position.name}}
+    <i class="delete icon" ng-click="deletePosition(position._id)"></i>
+  </span>
 </div>
 
 <div class="ui horizontal divider">
-    应用
+  应用
 </div>
 <div class="subParameter">
-    <span ng-repeat="program in programs" class="ui blue label">
-        {{program.name}}
-        <i class="delete icon" ng-click="deleteProgram(program._id)"></i>
-    </span>
+  <span ng-repeat="program in programs" class="ui blue label">
+    {{program.name}}
+    <i class="delete icon" ng-click="deleteProgram(program._id)"></i>
+  </span>
 </div>
 
 <div class="ui horizontal divider">状态</div>
 <div class="subParameter">
-    <span ng-repeat="status in statuses" class="ui red label">
-        {{status.name}}
-        <i class="delete icon" ng-click="deleteStatus(status._id)"></i>
-    </span>
+  <span ng-repeat="status in statuses" class="ui red label">
+    {{status.name}}
+    <i class="delete icon" ng-click="deleteStatus(status._id)"></i>
+  </span>
 </div>
 
 <div class="ui horizontal divider">渠道</div>
 <div class="subParameter">
-    <span ng-repeat="pipe in pipes" class="ui teal label">
-        {{pipe.name}}
-        <i class="delete icon" ng-click="deletePipe(pipe._id)"></i>
-    </span>
+  <span ng-repeat="pipe in pipes" class="ui teal label">
+    {{pipe.name}}
+    <i class="delete icon" ng-click="deletePipe(pipe._id)"></i>
+  </span>
+</div>
+
+<div class="ui horizontal divider">
+  用户组
+</div>
+<div class="subParameter">
+  <span ng-repeat="group in groups" class="ui purple label">
+    {{group.name}}
+  </span>
 </div>
 
 <div class="ui horizontal divider">人员</div>
 <div class="subParameter">
-    <table class="ui segment table">
-        <tr>
-          <th>
-            <a href="" ng-click="reverse=!reverse; order('workno', reverse)">工号</a>
-          </th>
-          <th>姓名</th>
-          <th>
-            <a href="" ng-click="reverse=!reverse; order('domain_account', reverse)">域账号</a>
-          </th>
-          <th>
-            <a href="" ng-click="reverse=!reverse; order('position.name', reverse)">职位</a>
-          </th>
-          <th>删除</th>
-        </tr>
-        <tr ng-repeat="personnel in personnels">
-            <td>{{personnel.workno}}</td>
-            <td>{{personnel.name}}</td>
-            <td>{{personnel.domain_account}}</td>
-            <td>{{personnel.position.name}}</td>
-            <td>
-                <i class="delete icon" ng-click="deletePersonnel(personnel._id)"></i>
-            </td>
-        </tr>
-    </table>
+  <table class="ui segment table">
+    <tr>
+      <th>
+        <a href="" ng-click="reverse=!reverse; order('workno', reverse)">工号</a>
+      </th>
+      <th>姓名</th>
+      <th>
+        <a href="" ng-click="reverse=!reverse; order('domain_account', reverse)">域账号</a>
+      </th>
+      <th>
+        <a href="" ng-click="reverse=!reverse; order('position.name', reverse)">职位</a>
+      </th>
+      <th>删除</th>
+    </tr>
+    <tr ng-repeat="personnel in personnels">
+      <td>{{personnel.workno}}</td>
+      <td>{{personnel.name}}</td>
+      <td>{{personnel.domain_account}}</td>
+      <td>{{personnel.position.name}}</td>
+      <td>
+        <i class="delete icon" ng-click="deletePersonnel(personnel._id)"></i>
+      </td>
+    </tr>
+  </table>
 </div>

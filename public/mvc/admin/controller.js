@@ -331,6 +331,10 @@ adminControllers.controller('AdminUserCtrl', ['$scope', '$http', '$location',
 
 adminControllers.controller('AdminUserAddCtrl', ['$scope', '$http', '$location',
   function($scope, $http, $location) {
+    $http.get('/api/group/all').success(function(data) {
+      $scope.groups = data;
+    });
+
     $scope.userSave = function() {
       $http.post('/api/user/add', $scope.user).success(function(data) {
         $location.url('/user');
@@ -342,6 +346,10 @@ adminControllers.controller('AdminUserAddCtrl', ['$scope', '$http', '$location',
 adminControllers.controller('AdminUserEditCtrl', ['$scope', '$http', '$routeParams', '$location',
   function($scope, $http, $routeParams, $location) {
     var user_id = $routeParams.id;
+
+    $http.get('/api/group/all').success(function(data) {
+      $scope.groups = data;
+    });
 
     $http.get('/api/user/' + user_id).success(function(data) {
       $scope.user = data;
@@ -362,6 +370,9 @@ adminControllers.controller('AdminUserEditCtrl', ['$scope', '$http', '$routePara
  */
 adminControllers.controller('AdminParameterCtrl', ['$scope', '$http', '$filter',
   function($scope, $http, $filter) {
+    $http.get('/api/group/all').success(function(data) {
+      $scope.groups = data;
+    });
     $http.get('/api/position/all').success(function(data) {
       $scope.positions = data;
     });
