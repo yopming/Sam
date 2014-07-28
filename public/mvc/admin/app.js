@@ -88,6 +88,10 @@ adminApp.config(['$locationProvider', '$routeProvider',
       templateUrl: '/template/admin/parameter/releasePipe_add.html',
       controller: 'AdminParameterReleasePipeAddCtrl'
     }).
+    when('/status-add', {
+      templateUrl: '/template/admin/parameter/status_add.html',
+      controller: 'AdminParameterStatusAddCtrl'
+    }).
     otherwise({
       redirectTo: '/'
     });

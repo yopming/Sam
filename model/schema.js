@@ -50,7 +50,8 @@ mongoose.model('Task', taskSchema);
  * @example: frontend, graphic, interactive...
  */
 var positionSchema = new Schema({
-  name: {type: String, unique: true}
+  name  : {type: String, unique: true},
+  valid : {type: Boolean, default: true}
 });
 mongoose.model('Position', positionSchema);
 
@@ -62,7 +63,8 @@ var personnelSchema = new Schema({
   workno         : {type: Number, unique: true},
   name           : String,
   domain_account : {type: String, unique: true},
-  position       : {type: mongoose.Schema.Types.ObjectId, ref: 'Position'}
+  position       : {type: mongoose.Schema.Types.ObjectId, ref: 'Position'},
+  valid          : {type: Boolean, default: true}
 });
 mongoose.model('Personnel', personnelSchema);
 
@@ -71,7 +73,8 @@ mongoose.model('Personnel', personnelSchema);
  * @example: official, channel...
  */
 var programSchema = new Schema({
-  name: {type: String, unique: true}
+  name  : {type: String, unique: true},
+  valid : {type: Boolean, default: true}
 });
 mongoose.model('Program', programSchema);
 
@@ -80,7 +83,8 @@ mongoose.model('Program', programSchema);
  * @example: in interactive action, designing, coding, released
  */
 var projectStatusSchema = new Schema({
-  name: {type: String, unique: true}
+  name  : {type: String, unique: true},
+  valid : {type: Boolean, default: true}
 });
 mongoose.model('ProjectStatus', projectStatusSchema);
 
@@ -89,7 +93,8 @@ mongoose.model('ProjectStatus', projectStatusSchema);
  * @example: 2013.48, 2014.08
  */
 var projectVersionSchema = new Schema({
-  name: {type: String, unique: true}
+  name  : {type: String, unique: true},
+  valid : {type: Boolean, default: true}
 });
 mongoose.model('ProjectVersion', projectVersionSchema);
 
@@ -98,7 +103,8 @@ mongoose.model('ProjectVersion', projectVersionSchema);
  * @example: CMS, version, CST
  */
 var releasePipeSchema = new Schema({
-  name: {type: String, unique: true}
+  name  : {type: String, unique: true},
+  valid : {type: Boolean, default: true}
 });
 mongoose.model('ReleasePipe', releasePipeSchema);
 

@@ -113,22 +113,27 @@ app.get('/api/group/:group_id', routes_api_group.indexOne);
 
 app.get('/api/position/all', routes_api_position.index);
 app.post('/api/position/add', routes_api_position.create);
+app.post('/api/position/remove/:position_id', routes_api_position.remove);
 app.post('/api/position/destroy/:position_id', routes_api_position.destroy);
 
 app.get('/api/personnel/all', routes_api_personnel.index);
 app.post('/api/personnel/add', routes_api_personnel.create);
+app.post('/api/personnel/remove/:personnel_id', routes_api_personnel.remove);
 app.post('/api/personnel/destroy/:personnel_id', routes_api_personnel.destroy);
 
 app.get('/api/program/all', routes_api_program.index);
 app.post('/api/program/add', routes_api_program.create);
+app.post('/api/program/remove/:program_id', routes_api_program.remove);
 app.post('/api/program/destroy/:program_id', routes_api_program.destroy);
 
 app.get('/api/pipe/all', routes_api_pipe.index);
 app.post('/api/pipe/add', routes_api_pipe.create);
+app.post('/api/pipe/remove/:pipe_id', routes_api_pipe.remove);
 app.post('/api/pipe/destroy/:pipe_id', routes_api_pipe.destroy);
 
 app.get('/api/status/all', routes_api_status.index);
 app.post('/api/status/add', routes_api_status.create);
+app.post('/api/status/remove/:status_id', routes_api_status.remove);
 app.post('/api/status/destroy/:status_id', routes_api_status.destroy);
 
 app.post('/api/tribute/add', routes_api_tribute.create);

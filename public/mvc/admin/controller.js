@@ -410,27 +410,27 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http', '$filter',
     };
 
     $scope.deletePosition = function(id) {
-      $http.post('/api/position/destroy/' + id).success(function(data) {
+      $http.post('/api/position/remove/' + id).success(function(data) {
         $scope.positions = data;
       });
     };
     $scope.deletePersonnel = function(id) {
-      $http.post('/api/personnel/destroy/' + id).success(function(data) {
+      $http.post('/api/personnel/remove/' + id).success(function(data) {
         $scope.personnels = data;
       });
     };
     $scope.deleteProgram = function(id) {
-      $http.post('/api/program/destroy/' + id).success(function(data) {
+      $http.post('/api/program/remove/' + id).success(function(data) {
         $scope.programs = data;
       });
     };
     $scope.deletePipe = function(id) {
-      $http.post('/api/pipe/destroy/' + id).success(function(data) {
+      $http.post('/api/pipe/remove/' + id).success(function(data) {
         $scope.pipes = data;
       });
     };
     $scope.deleteStatus = function(id) {
-      $http.post('/api/status/destroy/' + id).success(function(data) {
+      $http.post('/api/status/remove/' + id).success(function(data) {
         $scope.statuses = data;
       });
     };

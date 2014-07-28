@@ -8,7 +8,7 @@ var ProjectStatus = mongoose.model('ProjectStatus');
 
 
 exports.index = function(req, res) {
-    ProjectStatus.find(function(err, statuses, count) {
+    ProjectStatus.find({'valid': {$ne: 'false'}}, function(err, statuses, count) {
         if (err) 
             res.send(err);
         res.json(statuses);
@@ -27,6 +27,21 @@ exports.create = function(req, res) {
             res.json(statuses);
         });
     });
+};
+
+exports.remove = function(req, res) {
+  ProjectStatus.findById(req.params.status_id, function(err, status) {
+    status.valid = false;
+    status.save(function(err, status, count) {
+      if (err)
+        res.send(err);
+      ProjectStatus.find(function(err, statuses) {
+        if (err)
+          res.send(err);
+        res.json(statuses);
+      });
+    });
+  });
 };
 
 exports.destroy = function(req, res) {
