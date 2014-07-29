@@ -27,7 +27,7 @@ var routes_api_personnel = require('./routes/api/personnel.js');
 var routes_api_program   = require('./routes/api/program.js');
 var routes_api_pipe      = require('./routes/api/pipe.js');
 var routes_api_status    = require('./routes/api/status.js');
-var routes_api_tribute   = require('./routes/api/tribute.js');
+var routes_api_period    = require('./routes/api/period.js');
 
 // all environments
 app.use(express.compress());
@@ -136,7 +136,8 @@ app.post('/api/status/add', routes_api_status.create);
 app.post('/api/status/remove/:status_id', routes_api_status.remove);
 app.post('/api/status/destroy/:status_id', routes_api_status.destroy);
 
-app.post('/api/tribute/add', routes_api_tribute.create);
+app.get('/api/period/years', routes_api_period.years);
+app.get('/api/period/months', routes_api_period.months);
 
 
 // run server

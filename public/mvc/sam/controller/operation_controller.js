@@ -5,6 +5,14 @@ var samOperationControllers = angular.module('samOperationControllers', []);
  */
 samOperationControllers.controller('SamOperationMailCtrl', ['$scope', '$http',
   function($scope, $http) {
+    $http.get('/api/period/years').success(function(data) {
+      $scope.years = data;
+    });
+
+    $http.get('/api/period/months').success(function(data) {
+      $scope.months = data;
+    });
+
     $http.get('/api/personnel/all').success(function(data) {
       $scope.personnels = data;
     });
@@ -14,8 +22,10 @@ samOperationControllers.controller('SamOperationMailCtrl', ['$scope', '$http',
     });
 
     $scope.selected_atom = {
-      "ga": {"id": '', "name": ''},
-      "fe": {"id": '', "name": ''}
+      "ga"    : {"id": '', "name": ''},
+      "fe"    : {"id": '', "name": ''},
+      "year"  : {"id": '', "name": ''},
+      "month"  : {"id": '', "name": ''}
     };
 
     $scope.filterMailsByAtom = function(id, genre, name) {
@@ -35,6 +45,13 @@ samOperationControllers.controller('SamOperationMailCtrl', ['$scope', '$http',
       }
       return false;
     };
+    $scope.isDateChecked = function(id, genre) {
+      if ($scope.selected_atom[genre].id == id) {
+        return true;
+      }
+      return false;
+    }
+
 
     $scope.removeCriteria = function(id) {
       for (var i in $scope.selected_atom) {
@@ -67,6 +84,14 @@ samOperationControllers.controller('SamOperationMailCtrl', ['$scope', '$http',
 
 samOperationControllers.controller('SamOperationTopicCtrl', ['$scope', '$http',
   function($scope, $http) {
+    $http.get('/api/period/years').success(function(data) {
+      $scope.years = data;
+    });
+
+    $http.get('/api/period/months').success(function(data) {
+      $scope.months = data;
+    });
+
     $http.get('/api/personnel/all').success(function(data) {
       $scope.personnels = data;
     });
@@ -82,7 +107,9 @@ samOperationControllers.controller('SamOperationTopicCtrl', ['$scope', '$http',
     $scope.selected_atom = {
       "pipe": {"id": '', "name": ''},
       "ga": {"id": '', "name": ''},
-      "fe": {"id": '', "name": ''}
+      "fe": {"id": '', "name": ''},
+      "year"  : {"id": '', "name": ''},
+      "month"  : {"id": '', "name": ''}
     };
 
     $scope.filterTopicsByAtom = function(id, genre, name) {
@@ -102,6 +129,12 @@ samOperationControllers.controller('SamOperationTopicCtrl', ['$scope', '$http',
       }
       return false;
     };
+    $scope.isDateChecked = function(id, genre) {
+      if ($scope.selected_atom[genre].id == id) {
+        return true;
+      }
+      return false;
+    }
 
     $scope.removeCriteria = function(id) {
       for (var i in $scope.selected_atom) {

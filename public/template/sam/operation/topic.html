@@ -12,33 +12,26 @@
           </a>
         </div>
       </div>
-      <!--
       <div class="item">
         <a><b>年份</b></a>
-        <div class="menu">
-          <a class="item">2012</a>
-          <a class="item">2013</a>
-          <a class="item">2014</a>
+        <div class="menu matrix ui">
+          <a class="ui label" ng-repeat="year in years"
+            ng-class="{'ui label checked': isDateChecked(year.value, 'year'), 'ui label': !isDateChecked(year.value, 'year')}"
+            ng-click="filterTopicsByAtom(year.value, 'year', year.name)">
+            {{ year.name }}
+          </a>
         </div>
       </div>
       <div class="item">
         <a><b>月份</b></a>
-        <div class="menu">
-          <a class="item">1月</a>
-          <a class="item">2月</a>
-          <a class="item">3月</a>
-          <a class="item">4月</a>
-          <a class="item">5月</a>
-          <a class="item">6月</a>
-          <a class="item">7月</a>
-          <a class="item">8月</a>
-          <a class="item">9月</a>
-          <a class="item">10月</a>
-          <a class="item">11月</a>
-          <a class="item">12月</a>
+        <div class="menu ui matrix loose">
+          <a class="ui label" ng-repeat="month in months"
+            ng-click="filterTopicsByAtom(month.value, 'month', month.name)"
+            ng-class="{'ui label checked': isDateChecked(month.value, 'month'), 'ui label': !isDateChecked(month.value, 'month')}">
+            {{ month.name }}
+          </a>
         </div>
       </div>
-      -->
       <div class="item">
         <a><b>视觉设计师</b></a>
         <div class="menu">

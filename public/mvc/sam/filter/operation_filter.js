@@ -25,6 +25,13 @@ samOperationFilters.filter('SamOperationMailFilter', [
         return el[node];
       }
     };
+    packagedCut = function(el, s, e) {
+      if (el === null || el == undefined) {
+        return null;
+      } else {
+        return el.substring(s,e);
+      }
+    }
 
     return function(mails, selected_atom) {
 
@@ -35,7 +42,9 @@ samOperationFilters.filter('SamOperationMailFilter', [
         // each creteria doesn't exists
         if (
           selected_atom.ga.id == '' &&
-          selected_atom.fe.id == ''
+          selected_atom.fe.id == '' &&
+          selected_atom.year.id == '' &&
+          selected_atom.month.id == ''
         ) {
           return _mails;
         }
@@ -44,7 +53,9 @@ samOperationFilters.filter('SamOperationMailFilter', [
         angular.forEach(_mails, function(mail) {
           if (
             packagedAngularEquals(packagedGetAttr(mail.personnel_ga, '_id'), selected_atom.ga.id) &&
-            packagedAngularEquals(packagedGetAttr(mail.personnel_fe, '_id'), selected_atom.fe.id) 
+            packagedAngularEquals(packagedGetAttr(mail.personnel_fe, '_id'), selected_atom.fe.id) &&
+            packagedAngularEquals(packagedCut(mail.end_time, 0, 4), selected_atom.year.id) &&
+            packagedAngularEquals(packagedCut(mail.end_time, 5, 7), selected_atom.month.id)
             ) {
             tempMails.push(mail);
           } 
@@ -83,6 +94,13 @@ samOperationFilters.filter('SamOperationTopicFilter', [
         return el[node];
       }
     };
+    packagedCut = function(el, s, e) {
+      if (el === null || el == undefined) {
+        return null;
+      } else {
+        return el.substring(s,e);
+      }
+    }
 
     return function(topics, selected_atom) {
 
@@ -94,7 +112,9 @@ samOperationFilters.filter('SamOperationTopicFilter', [
         if (
           selected_atom.pipe.id == '' &&
           selected_atom.ga.id == '' &&
-          selected_atom.fe.id == ''
+          selected_atom.fe.id == '' &&
+          selected_atom.year.id == '' &&
+          selected_atom.month.id == ''
         ) {
           return _topics;
         }
@@ -104,7 +124,9 @@ samOperationFilters.filter('SamOperationTopicFilter', [
           if (
             packagedAngularEquals(packagedGetAttr(topic.belong_to, '_id'), selected_atom.pipe.id) &&
             packagedAngularEquals(packagedGetAttr(topic.personnel_ga, '_id'), selected_atom.ga.id) &&
-            packagedAngularEquals(packagedGetAttr(topic.personnel_fe, '_id'), selected_atom.fe.id) 
+            packagedAngularEquals(packagedGetAttr(topic.personnel_fe, '_id'), selected_atom.fe.id) &&
+            packagedAngularEquals(packagedCut(topic.end_time, 0, 4), selected_atom.year.id) &&
+            packagedAngularEquals(packagedCut(topic.end_time, 5, 7), selected_atom.month.id)
             ) {
             tempTopics.push(topic);
           } 
