@@ -6,6 +6,10 @@
   <span class="header-title">专题</span>
 </div>
 
+<div class="inputable ui input mini">
+  <input type="text" placeholder="模糊筛选" ng-model="subSearch">
+</div>
+
 <table class="ui table segment">
   <thead>
     <tr>
@@ -20,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="topic in filtered = (topics | orderBy:'-end_time')">
+  <tr ng-repeat="topic in filtered = (topics | orderBy:'-end_time') | filter:subSearch">
     <td><a href="{{topic.topic_deploy_uri}}" target="_blank">{{topic.name}}</a></td>
     <td><a href="{{topic.topic_graphic_uri}}" target="_blank">查看</a></td>
     <td>{{topic.personnel_ga.name}}</td>

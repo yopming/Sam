@@ -6,6 +6,10 @@
   <span class="header-title">邮件</span>
 </div>
 
+<div class="inputable ui input mini">
+  <input type="text" placeholder="模糊筛选" ng-model="subSearch">
+</div>
+
 <table class="ui table segment">
   <thead>
     <tr>
@@ -19,7 +23,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="mail in filtered = (mails | orderBy: '-end_time')">
+  <tr ng-repeat="mail in filtered = (mails | orderBy: '-end_time') | filter:subSearch">
     <td>{{mail.name}}</td>
     <td><a href="{{mail.mail_graphic_uri}}" target="_blank">查看</a></td>
     <td>{{mail.personnel_ga.name}}</td>

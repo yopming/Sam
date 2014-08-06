@@ -6,6 +6,10 @@
   <span class="header-title">项目</span>
 </div>
 
+<div class="inputable ui input mini">
+  <input type="text" placeholder="模糊筛选" ng-model="subSearch">
+</div>
+
 <table class="ui table segment">
   <thead>
     <tr>
@@ -24,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version')">
+  <tr ng-repeat="project in filtered = (projects | orderBy: '-related_version') | filter:subSearch">
     <td>{{project.status.name}}</td>
     <td>{{project.program.name}}</td>
     <td>{{project.name}}</td>
