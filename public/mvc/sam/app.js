@@ -16,16 +16,8 @@ samApp.config(['$locationProvider', '$routeProvider',
     $locationProvider.html5Mode(false).hashPrefix('!');
 
     $routeProvider.
-    /**
-     * Dashboard is not available
     when('/', {
-      templateUrl: '/template/sam/dashboard.html',
-      controller: 'SamDashboardCtrl'
-    }).
-    */
-    when('/', {
-      templateUrl: '/template/sam/project/project.html',
-      controller: 'SamProjectCtrl'
+      redirectTo: '/project'
     }).
     when('/project', {
       templateUrl: '/template/sam/project/project.html',
