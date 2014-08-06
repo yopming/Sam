@@ -12,8 +12,7 @@ adminApp.config(['$locationProvider', '$routeProvider',
 
     $routeProvider.
     when('/', {
-      templateUrl: '/template/admin/sift.html',
-      controller: 'AdminSiftCtrl'
+      redirectTo: '/project'
     }).
 
     when('/project', {

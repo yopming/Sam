@@ -1,13 +1,5 @@
 var adminControllers = angular.module('adminControllers', ['ngCookies']);
 
-/*
- * Sift
- */
-adminControllers.controller('AdminSiftCtrl', ['$scope', '$http',
-  function($scope, $http) {
-  }
-]);
-
 
 /*
  * Project
