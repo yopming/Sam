@@ -17,7 +17,9 @@ samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProje
       // uniq the version
       var _versions = [];
       for (var i in $scope.projects) {
-        _versions[i] = $scope.projects[i].related_version;
+        if ($scope.projects[i].related_version !== undefined) {
+          _versions[i] = $scope.projects[i].related_version;
+        }
       }
       uniqedVersions = _.uniq(_versions);
       // combined into array
