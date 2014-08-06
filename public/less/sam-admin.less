@@ -184,6 +184,7 @@ html {
   }
 
   .tooltip-image {
+    .opacity(100);
     img {
       display:none;
     }
@@ -191,11 +192,12 @@ html {
       position:relative;
       overflow:show;
       img {
+        .box-shadow(0 2px 4px rgba(0,0,0,.78));
         display:block;
         position:absolute;
         top:13px;
         left:2px;
-        .box-shadow(0 2px 4px rgba(0,0,0,.78));
+        z-index:4;
       }
     }
   }
