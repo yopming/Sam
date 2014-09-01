@@ -136,8 +136,8 @@ adminControllers.controller('AdminMailCtrl', ['$scope', '$http', '$location',
   }
 ]);
 
-adminControllers.controller('AdminMailAddCtrl', ['$scope', '$http', '$location', '$fileUploader',
-  function($scope, $http, $location, $fileUploader) {
+adminControllers.controller('AdminMailAddCtrl', ['$scope', '$http', '$location', 
+  function($scope, $http, $location) {
     $scope.mail = {};
     $scope.mail.category = 'mail';
 
@@ -151,23 +151,11 @@ adminControllers.controller('AdminMailAddCtrl', ['$scope', '$http', '$location',
       });
     };
 
-    // upload
-    var uploader = $scope.uploader = $fileUploader.create({
-      scope: $scope,
-      url: '/api/tribute/add',
-      autoUpload: true,
-      method: 'POST'
-    });
-
-    uploader.bind('success', function(event, item, progress) {
-      $scope.mail.head_image = item.response;
-    });
-
   }
 ]);
 
-adminControllers.controller('AdminMailEditCtrl', ['$scope', '$http', '$routeParams', '$location', '$fileUploader',
-  function($scope, $http, $routeParams, $location, $fileUploader) {
+adminControllers.controller('AdminMailEditCtrl', ['$scope', '$http', '$routeParams', '$location',
+  function($scope, $http, $routeParams, $location) {
     var mail_id = $routeParams.id;
 
     $http.get('/api/personnel/all').success(function(data) {
@@ -184,18 +172,6 @@ adminControllers.controller('AdminMailEditCtrl', ['$scope', '$http', '$routePara
         $location.url('/mail');
       });
     };
-
-    // upload
-    var uploader = $scope.uploader = $fileUploader.create({
-      scope: $scope,
-      url: '/api/tribute/add',
-      autoUpload: true,
-      method: 'POST'
-    });
-
-    uploader.bind('success', function(event, item, progress) {
-      $scope.mail.head_image = item.response;
-    });
 
   }
 ]);
@@ -218,8 +194,8 @@ adminControllers.controller('AdminTopicCtrl', ['$scope', '$http', '$location',
   }
 ]);
 
-adminControllers.controller('AdminTopicAddCtrl', ['$scope', '$http', '$location', '$fileUploader',
-  function($scope, $http, $location, $fileUploader) {
+adminControllers.controller('AdminTopicAddCtrl', ['$scope', '$http', '$location',
+  function($scope, $http, $location) {
     $scope.topic = {};
     $scope.topic.category = 'topic';
 
@@ -236,23 +212,11 @@ adminControllers.controller('AdminTopicAddCtrl', ['$scope', '$http', '$location'
         $location.url('/topic');
       });
     };
-
-    // upload
-    var uploader = $scope.uploader = $fileUploader.create({
-      scope: $scope,
-      url: '/api/tribute/add',
-      autoUpload: true,
-      method: 'POST'
-    });
-
-    uploader.bind('success', function(event, item, progress) {
-      $scope.topic.head_image = item.response;
-    });
   }
 ]);
 
-adminControllers.controller('AdminTopicEditCtrl', ['$scope', '$http', '$routeParams', '$location', '$fileUploader',
-  function($scope, $http, $routeParams, $location, $fileUploader) {
+adminControllers.controller('AdminTopicEditCtrl', ['$scope', '$http', '$routeParams', '$location',
+  function($scope, $http, $routeParams, $location) {
     var topic_id = $routeParams.id;
 
     $http.get('/api/personnel/all').success(function(data) {
@@ -272,19 +236,6 @@ adminControllers.controller('AdminTopicEditCtrl', ['$scope', '$http', '$routePar
         $location.url('/topic');
       });
     };
-
-    // upload
-    var uploader = $scope.uploader = $fileUploader.create({
-      scope: $scope,
-      url: '/api/tribute/add',
-      autoUpload: true,
-      method: 'POST'
-    });
-
-    uploader.bind('success', function(event, item, progress) {
-      console.log(item);
-      $scope.topic.head_image = item.response;
-    });
   }
 ]);
 
