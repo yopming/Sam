@@ -20,6 +20,7 @@
       <th>发布时间</th>
       <th>头图</th>
       <th>发布渠道</th>
+      <th>发布应用</th>
       <th>编辑</th>
     </tr>
   </thead>
@@ -36,6 +37,12 @@
       </i>
     </td>
     <td>{{topic.belong_to.name}}</td>
+    <td>
+      <div ng-if="topic.topic_deploy_channel_official">官网</div>
+      <div ng-if="topic.topic_deploy_channel_touch">触屏站</div>
+      <div ng-if="topic.topic_deploy_channel_app">APP</div>
+      <div ng-if="topic.topic_deploy_channel_union">网站联盟</div>
+    </td>
     <td>
       <div class="ui tiny buttons">
         <a href="#!/topic/edit/{{topic._id}}" class="ui button positive">编辑</a>

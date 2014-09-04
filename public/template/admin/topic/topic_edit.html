@@ -17,16 +17,36 @@
     <label>头图</label>
     <input type="text" ng-model="topic.topic_cover" />
   </div>
+
+  <div class="field">
+    <label>视觉稿地址</label>
+    <input type="text" ng-model="topic.topic_graphic_uri" />
+  </div>  
   
   <div class="field">
     <label>专题Url</label>
     <input type="text" ng-model="topic.topic_deploy_uri" />
   </div>
 
-  <div class="field">
-    <label>视觉稿地址</label>
-    <input type="text" ng-model="topic.topic_graphic_uri" />
-  </div>  
+  <div class="field checkboxes">
+    <label>发布应用</label>
+    <div class="ui checkbox">
+      <input id="application1" type="checkbox" ng-model="topic.topic_deploy_channel_official">
+      <label for="application1">官网</label>
+    </div>
+    <div class="ui checkbox">
+      <input id="application2" type="checkbox" ng-model="topic.topic_deploy_channel_touch">
+      <label for="application2">触屏站</label>
+    </div>
+    <div class="ui checkbox">
+      <input id="application3" type="checkbox" ng-model="topic.topic_deploy_channel_app">
+      <label for="application3">APP</label>
+    </div>
+    <div class="ui checkbox">
+      <input id="application4" type="checkbox" ng-model="topic.topic_deploy_channel_union">
+      <label for="application4">网站联盟</label>
+    </div>
+  </div>
 
   <div class="field">
     <label>视觉设计师</label>

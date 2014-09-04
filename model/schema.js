@@ -30,13 +30,16 @@ var taskSchema = new Schema ({
   jira_uri          : String,
   ix_uri            : String,
   gandolf_uri       : String,
-  topic_cover       : String,
   mail_cover        : String,
-  topic_deploy_uri  : String,
-  topic_graphic_uri : String,
   mail_graphic_uri  : String,
+  topic_cover       : String,
+  topic_graphic_uri : String,
+  topic_deploy_uri  : String,
+  topic_deploy_channel_official : Boolean,
+  topic_deploy_channel_touch    : Boolean,
+  topic_deploy_channel_app      : Boolean,
+  topic_deploy_channel_union    : Boolean,
   belong_to         : {type: Schema.Types.ObjectId, ref: 'ReleasePipe'},
-  //related_version   : {type: Schema.Types.ObjectId, ref: 'ProjectVersion'},
   related_version   : String,
   head_image        : String,
   start_time        : String,
@@ -121,5 +124,5 @@ mongoose.model('Group', groupSchema);
 
 
 // connect
-mongoose.connect('mongodb://192.168.28.107/sam');
+mongoose.connect('mongodb://192.168.33.13/sam');
 

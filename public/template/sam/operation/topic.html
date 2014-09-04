@@ -82,6 +82,12 @@
         </div>
         <div class="content">
           <div class="name">{{topic.name}}</div>
+          <div class="application">
+            <span ng-if="topic.topic_deploy_channel_official">官网</span>
+            <span ng-if="topic.topic_deploy_channel_touch">触屏站</span>
+            <span ng-if="topic.topic_deploy_channel_app">APP</span>
+            <span ng-if="topic.topic_deploy_channel_union">网站联盟</span>
+          </div>
           <div class="description">
             <a class="ui label black" ng-if="topic.topic_graphic_uri"
               href="{{topic.topic_graphic_uri}}" target="_blank">设计稿</a>
