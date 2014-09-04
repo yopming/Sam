@@ -196,8 +196,10 @@ adminControllers.controller('AdminTopicCtrl', ['$scope', '$http', '$location',
 
 adminControllers.controller('AdminTopicAddCtrl', ['$scope', '$http', '$location',
   function($scope, $http, $location) {
+
     $scope.topic = {};
     $scope.topic.category = 'topic';
+    $scope.topic.topic_deploy = {};
 
     $http.get('/api/personnel/all').success(function(data) {
       $scope.personnels = data;
@@ -205,6 +207,10 @@ adminControllers.controller('AdminTopicAddCtrl', ['$scope', '$http', '$location'
 
     $http.get('/api/pipe/all').success(function(data) {
       $scope.pipes = data;
+    });
+
+    $http.get('/api/program/all').success(function(data) {
+      $scope.programs = data;
     });
 
     $scope.topicSave = function() {
@@ -225,6 +231,10 @@ adminControllers.controller('AdminTopicEditCtrl', ['$scope', '$http', '$routePar
 
     $http.get('/api/pipe/all').success(function(data) {
       $scope.pipes = data;
+    });
+
+    $http.get('/api/program/all').success(function(data) {
+      $scope.programs = data;
     });
 
     $http.get('/api/task/' + topic_id).success(function(data) {
