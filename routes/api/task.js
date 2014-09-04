@@ -59,8 +59,6 @@ exports.categoryIndex = function(req, res) {
 
 exports.create = function(req, res) {
     new Task(req.body).save(function(err, tasks) {
-        console.log(req.body);
-        console.log(typeof req.body.topic_deploy);
         if (err)
             res.send('Error: ' + err);
         Task.find({category: req.params.category}).populate(populater).exec(function(err, tasks) {

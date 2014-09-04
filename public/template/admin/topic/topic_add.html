@@ -19,24 +19,14 @@
   </div>
 
   <div class="field">
+    <label>专题Url</label>
+    <input type="text" name="" ng-model="topic.topic_deploy_uri" />
+  </div>
+
+  <div class="field">
     <label>视觉稿地址</label>
     <input type="text" name="" ng-model="topic.topic_graphic_uri" />
   </div>  
-
-  <div class="fields grouped inline">
-    <label>专题线上地址</label>
-    <div class="field adaptTopicUrl" ng-repeat="program in programs">
-      <input id="checkbox_{{program._id}}" type="checkbox" ng-model="topic.topic_deploy['program'+($index+1)]">
-      <label class="quoteLabel" for="checkbox_{{program._id}}">
-        {{program.name}}
-      </label>
-      <input class="quoteInput" type="text" ng-show="topic.topic_deploy['program'+($index+1)]" 
-        ng-model="topic.topic_deploy['program_url'+($index+1)]" />
-    </div>
-  </div>
-
-  {{ topic.topic_deploy }}
-  {{ topic.topic_deploy | json }}
 
   <div class="field">
     <label>视觉设计师</label>
