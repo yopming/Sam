@@ -43,15 +43,15 @@ adminApp.config(['$locationProvider', '$routeProvider',
 
     when('/topic', {
       templateUrl: '/template/admin/topic/topic.html',
-      controller: 'AdminTopicCtrl',
+      controller: 'AdminTopicCtrl'
     }).
     when('/topic/add', {
       templateUrl: '/template/admin/topic/topic_add.html',
-      controller: 'AdminTopicAddCtrl',
+      controller: 'AdminTopicAddCtrl'
     }).
     when('/topic/edit/:id', {
       templateUrl: '/template/admin/topic/topic_edit.html',
-      controller: 'AdminTopicEditCtrl',
+      controller: 'AdminTopicEditCtrl'
     }).
 
     when('/user', {

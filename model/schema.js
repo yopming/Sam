@@ -39,6 +39,7 @@ var taskSchema = new Schema ({
   topic_deploy_channel_touch    : Boolean,
   topic_deploy_channel_app      : Boolean,
   topic_deploy_channel_union    : Boolean,
+  topic_deploy_channel_tmall    : Boolean,
   belong_to         : {type: Schema.Types.ObjectId, ref: 'ReleasePipe'},
   related_version   : String,
   head_image        : String,

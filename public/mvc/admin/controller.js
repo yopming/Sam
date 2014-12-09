@@ -181,7 +181,7 @@ adminControllers.controller('AdminMailEditCtrl', ['$scope', '$http', '$routePara
  * Topic
  */
 adminControllers.controller('AdminTopicCtrl', ['$scope', '$http', '$location',
-  function($scope, $http, $location) {
+  function($scope, $http) {
     $http.get('/api/task/topic/all').success(function(data) {
       $scope.topics = data;
     });

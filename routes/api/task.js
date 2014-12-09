@@ -105,6 +105,7 @@ exports.update = function(req, res) {
         task.topic_deploy_channel_touch = req.body.topic_deploy_channel_touch;
         task.topic_deploy_channel_app = req.body.topic_deploy_channel_app;
         task.topic_deploy_channel_union = req.body.topic_deploy_channel_union;
+        task.topic_deploy_channel_tmall = req.body.topic_deploy_channel_tmall;
         task.belong_to          = req.body.belong_to;
         task.related_version    = req.body.related_version;
         task.start_time         = req.body.start_time;
