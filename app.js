@@ -17,17 +17,18 @@ require('./model/schema.js');
 var app = express();
 
 // routes
-var routes_sam           = require('./routes/sam/route.js');
-var routes_admin         = require('./routes/admin/route.js');
-var routes_api_task      = require('./routes/api/task.js');
-var routes_api_user      = require('./routes/api/user.js');
-var routes_api_group     = require('./routes/api/group.js');
-var routes_api_position  = require('./routes/api/position.js');
+var routes_sam = require('./routes/sam/route.js');
+var routes_admin = require('./routes/admin/route.js');
+var routes_api_task = require('./routes/api/task.js');
+var routes_api_share = require('./routes/api/share.js');
+var routes_api_user = require('./routes/api/user.js');
+var routes_api_group = require('./routes/api/group.js');
+var routes_api_position = require('./routes/api/position.js');
 var routes_api_personnel = require('./routes/api/personnel.js');
-var routes_api_program   = require('./routes/api/program.js');
-var routes_api_pipe      = require('./routes/api/pipe.js');
-var routes_api_status    = require('./routes/api/status.js');
-var routes_api_period    = require('./routes/api/period.js');
+var routes_api_program = require('./routes/api/program.js');
+var routes_api_pipe = require('./routes/api/pipe.js');
+var routes_api_status = require('./routes/api/status.js');
+var routes_api_period = require('./routes/api/period.js');
 
 // all environments
 app.use(express.compress());
@@ -35,12 +36,12 @@ app.use(express.compress());
 // less-middleware
 // sequence of lessMiddleware and express.static should be like this, not inverse
 app.use(lessMiddleware({
-  src: __dirname + '/public/less',
-  dest: __dirname + '/public/css',
-  prefix: '/css',
-  compress: true
-  //force: true,
-  //debug: true
+	src: __dirname + '/public/less',
+	dest: __dirname + '/public/css',
+	prefix: '/css',
+	compress: true
+	//force: true,
+	//debug: true
 }));
 app.use(express.static(__dirname + '/public'));
 
@@ -57,28 +58,28 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 // jade session
-app.use(function(req, res, next) {
-  res.locals.user = req.session.user || null;
-  res.locals.group = req.session.group || null;
-  next();
+app.use(function (req, res, next) {
+	res.locals.user = req.session.user || null;
+	res.locals.group = req.session.group || null;
+	next();
 });
 
 app.use(app.router);
 
 
 // minify
-app.use(function(req, res, next) {
-  // do not mangle -angular.js files
-  if (/-angular\.js$/.test(req.url)) {
-    res._no_mangle = true;
-  }
-  next();
+app.use(function (req, res, next) {
+	// do not mangle -angular.js files
+	if (/-angular\.js$/.test(req.url)) {
+		res._no_mangle = true;
+	}
+	next();
 });
 app.use(minify());
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+	app.use(express.errorHandler());
 }
 
 // helper
@@ -100,6 +101,12 @@ app.get('/api/task/:category/all', routes_api_task.categoryIndex);
 app.post('/api/task/:category/add', routes_api_task.create);
 app.post('/api/task/:category/destroy/:task_id', routes_api_task.destroy);
 app.post('/api/task/:category/update/:task_id', routes_api_task.update);
+
+app.get('/api/share/all', routes_api_share.index);
+app.get('/api/share/:share_id', routes_api_share.indexOne);
+app.post('/api/share/add', routes_api_share.create);
+app.post('/api/share/destory/:share_id', routes_api_share.destroy);
+app.post('/api/share/update/:share_id', routes_api_share.update);
 
 app.get('/api/user/all', routes_api_user.index);
 app.get('/api/user/:user_id', routes_api_user.indexOne);
@@ -140,7 +147,7 @@ app.get('/api/period/months', routes_api_period.months);
 
 
 // run server
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(app.get('port'), function () {
+	console.log('Express server listening on port ' + app.get('port'));
 });
 

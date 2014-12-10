@@ -50,6 +50,16 @@ var taskSchema = new Schema ({
 mongoose.model('Task', taskSchema);
 
 
+// share model
+var shareSchema = new Schema ({
+	name	: String,
+	content	: String,
+	author	: {type: Schema.Types.ObjectId, ref: 'User'},
+	time	: String
+});
+mongoose.model('Share', shareSchema);
+
+
 /* position,i.e. job type
  * @example: frontend, graphic, interactive...
  */

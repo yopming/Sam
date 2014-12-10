@@ -1,0 +1,36 @@
+<div class="ui attached message">
+	<div class="header">
+		添加设享
+	</div>
+</div>
+
+
+<form class="ui form attached fluid segment" ng-controller="AdminShareAddCtrl" ng-submit="shareSave()">
+
+	<div class="field">
+		<label>名称</label>
+		<input type="text" name="name" ng-model="share.name" />
+	</div>
+
+	<div class="field">
+		<label>内容</label>
+		<input type="hidden" name="content" value="{{share.content}}" />
+		<div class="rte" simditor ng-model="share.content"></div>
+	</div>
+
+	<div class="field">
+		<label>作者</label>
+		<select ng-model="share.author" ng-options="user._id as user.name for user in users | filter: {username: '!sam'}">
+		</select>
+	</div>
+
+	<div class="field">
+		<label>时间</label>
+		<input type="text" name="time" ng-model="share.time" readonly />
+		<div pickadate ng-model="share.time"></div>
+	</div>
+
+	<button class="ui blue submit button right floated">
+		添加设享
+	</button>
+</form>

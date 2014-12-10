@@ -1,62 +1,62 @@
 <div class="ui header dividing">
-  <a href="#!/topic/add" class="ui blue submit button icon labeled header-button">
-    <i class="edit basic icon"></i>
-    添加专题
-  </a>
-  <span class="header-title">专题</span>
+	<a href="#!/topic/add" class="ui blue submit button icon labeled header-button">
+		<i class="edit basic icon"></i>
+		添加专题
+	</a>
+	<span class="header-title">专题</span>
 </div>
 
 <div class="inputable ui input mini">
-  <input type="text" placeholder="模糊筛选" ng-model="subSearch">
+	<input type="text" placeholder="模糊筛选" ng-model="subSearch">
 </div>
 
 <table class="ui table segment">
-  <thead>
-    <tr>
-      <th>名称</th>
-      <th>视觉稿</th>
-      <th>视觉</th>
-      <th>前端</th>
-      <th>发布时间</th>
-      <th>头图</th>
-      <th>发布渠道</th>
-      <th>发布应用</th>
-      <th>编辑</th>
-    </tr>
-  </thead>
-  <tbody>
-  <tr ng-repeat="topic in filtered = (topics | orderBy:'-end_time') | filter:subSearch">
-    <td><a href="{{topic.topic_deploy_uri}}" target="_blank">{{topic.name}}</a></td>
-    <td><a href="{{topic.topic_graphic_uri}}" target="_blank">查看</a></td>
-    <td>{{topic.personnel_ga.name}}</td>
-    <td>{{topic.personnel_fe.name}}</td>
-    <td>{{topic.end_time}}</td>
-    <td>
-      <i class="icon photo tooltip-image">
-        <img class="uploaded-image" ng-src="{{topic.topic_cover}}" />
-      </i>
-    </td>
-    <td>{{topic.belong_to.name}}</td>
-    <td>
-      <div ng-if="topic.topic_deploy_channel_official">官网</div>
-      <div ng-if="topic.topic_deploy_channel_touch">触屏站</div>
-      <div ng-if="topic.topic_deploy_channel_app">APP</div>
-      <div ng-if="topic.topic_deploy_channel_union">网站联盟</div>
-	  <div ng-if="topic.topic_deploy_channel_tmall">天猫</div>
-    </td>
-    <td>
-      <div class="ui tiny buttons">
-        <a href="#!/topic/edit/{{topic._id}}" class="ui button positive">编辑</a>
-        <div class="or"></div>
-        <a ng-click="deleteTopic(topic._id)" class="ui button">删除</a>
-      </div>
-    </td>
-  </tr>
-  </tbody>
+	<thead>
+		<tr>
+			<th>名称</th>
+			<th>视觉稿</th>
+			<th>视觉</th>
+			<th>前端</th>
+			<th>发布时间</th>
+			<th>头图</th>
+			<th>发布渠道</th>
+			<th>发布应用</th>
+			<th>编辑</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="topic in filtered = (topics | orderBy:'-end_time') | filter:subSearch">
+		<td><a href="{{topic.topic_deploy_uri}}" target="_blank">{{topic.name}}</a></td>
+		<td><a href="{{topic.topic_graphic_uri}}" target="_blank">查看</a></td>
+		<td>{{topic.personnel_ga.name}}</td>
+		<td>{{topic.personnel_fe.name}}</td>
+		<td>{{topic.end_time}}</td>
+		<td>
+			<i class="icon photo tooltip-image">
+				<img class="uploaded-image" ng-src="{{topic.topic_cover}}" />
+			</i>
+		</td>
+		<td>{{topic.belong_to.name}}</td>
+		<td>
+			<div ng-if="topic.topic_deploy_channel_official">官网</div>
+			<div ng-if="topic.topic_deploy_channel_touch">触屏站</div>
+			<div ng-if="topic.topic_deploy_channel_app">APP</div>
+			<div ng-if="topic.topic_deploy_channel_union">网站联盟</div>
+			<div ng-if="topic.topic_deploy_channel_tmall">天猫</div>
+		</td>
+		<td>
+			<div class="ui tiny buttons">
+				<a href="#!/topic/edit/{{topic._id}}" class="ui button positive">编辑</a>
+				<div class="or"></div>
+				<a ng-click="deleteTopic(topic._id)" class="ui button">删除</a>
+			</div>
+		</td>
+	</tr>
+	</tbody>
 </table>
 
 <a href="#!/topic/add" class="ui blue submit button icon labeled">
-  <i class="edit basic icon"></i>
-  添加专题
+	<i class="edit basic icon"></i>
+	添加专题
 </a>
 

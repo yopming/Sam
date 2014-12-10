@@ -1,0 +1,33 @@
+<div class="ui header dividing clearfix">
+	<a href="#!/share/add" class="ui blue submit button icon labeled header-button">
+		<i class="edit basic icon"></i>
+		添加
+	</a>
+	<span class="header-title">设享</span>
+</div>
+
+<div class="inputable ui input mini">
+	<input type="text" placeholder="模糊筛选" ng-model="subSearch">
+</div>
+
+<table class="ui table segment">
+	<thead>
+		<tr>
+			<th>名称</th>
+			<th>时间</th>
+			<th>作者</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="share in filtered = (shares | orderBy: '-time') | filter: subSearch">
+			<td>{{share.name}}</td>
+			<td>{{share.time}}</td>
+			<td>{{share.author.name}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<a href="#!/share/add" class="ui blue submit button icon labeled">
+	<i class="edit basic icon"></i>
+	添加
+</a>

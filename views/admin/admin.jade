@@ -5,11 +5,15 @@ html(ng-app="admin")
     link(rel="stylesheet", href="/css/sam-admin.css")
     link(ref='shortcut icon', href='/favicon.ico', type='image/x-icon')
     meta(name='renderer', content='webkit')
+    script(src="/js/chives/jquery/jquery.min.js")
     script(src="/js/chives/angular/angular.min.js")
     script(src="/js/chives/angular-i18n/angular-locale_zh-cn.js")
     script(src="/js/chives/angular-route/angular-route.min.js")
     script(src="/js/chives/angular-cookies/angular-cookies.js")
     script(src="/js/chives/angular-pickadate/src/angular-pickadate.js")
+    script(src="/js/chives/angular-route-styles/route-styles.js")
+    script(src="/js/chives/angular-editor/javascripts/simditor/simditor-all.js")
+    script(src="/js/chives/angular-editor/javascripts/angular-editor.js")
     script(src="/mvc/admin/app.js")
     script(src="/mvc/admin/controller.js")
     script(src="/mvc/admin/directive.js")
@@ -36,6 +40,9 @@ html(ng-app="admin")
               a.item(href="#!/topic", admin-active="active")
                 i.tasks.icon
                 | 专题
+              a.item(href="#!/share", admin-active="active")
+                i.book.icon
+                | 设享
               a.item(href="#!/user", admin-active="active")
                 i.users.icon
                 | 用户
