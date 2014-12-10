@@ -1,2 +1,20 @@
-<div class="ui grid sam-share">
+<div class="sam-share">
+
+	<div class="ui items">
+		<div ng-repeat="share in shares" class="item">
+			<div class="image">
+				<img src="">
+			</div>
+			<div class="content">
+				<a class="header">{{share.name}}</a>
+				<div class="meta">
+					<span class="cinema">{{share.author.name}}</span>
+				</div>
+				<div class="description">
+					{{share.content}}
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>

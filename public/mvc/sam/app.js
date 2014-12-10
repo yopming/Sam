@@ -4,6 +4,7 @@ var samApp = angular.module('sam', [
   'samProjectControllers',
   'samOperationControllers',
   'samReferenceControllers',
+  'samShareControllers',
   'samTimelineControllers',
   'samProjectServices',
   'samProjectFilters',
