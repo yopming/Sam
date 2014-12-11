@@ -20,11 +20,12 @@ html {
 #sam-sign {
 	.ui.header {
 		margin-top:170px;
+		font-size:2rem;
 		color:#fff;
 	}
 	.form {
-		margin-top:30px;
 		.margin-vertical(auto);
+		margin-top:20px;
 		.button:hover {
 			.meh:before {
 				content: "\f118";
@@ -81,7 +82,7 @@ html {
 				line-height:50px;
 			}
 			.front {
-				.size(50px, 43px);
+				.square(50px);
 				padding-top:7px;
 				position:absolute;
 				right:0;
@@ -107,6 +108,7 @@ html {
 			height:50px;
 			line-height:50px;
 			overflow:hidden;
+			padding-left:0.95em;
 			&,
 			.item {
 				font-size:14px;
@@ -120,6 +122,9 @@ html {
 				&:hover {
 					color:#aaa;
 				}
+			}
+			.logout {
+				margin-left:20px;
 			}
 		}
 
@@ -150,7 +155,6 @@ html {
 		}
 	}
 	.subParameter {
-		padding-bottom:20px;
 		span {
 			margin-bottom:7px;
 		}

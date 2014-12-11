@@ -1,88 +1,91 @@
 <div class="ui grid sam-mail">
 
-  <div class="three wide column">
-    <div class="ui vertical menu">
-      <div class="item">
-        <a><b>年份</b></a>
-        <div class="menu matrix ui">
-          <a class="ui label" ng-repeat="year in years"
-            ng-class="{'ui label checked': isDateChecked(year.value, 'year'), 'ui label': !isDateChecked(year.value, 'year')}"
-            ng-click="filterMailsByAtom(year.value, 'year', year.name)">
-            {{ year.name }}
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <a><b>月份</b></a>
-        <div class="menu ui matrix loose">
-          <a class="ui label" ng-repeat="month in months"
-            ng-click="filterMailsByAtom(month.value, 'month', month.name)"
-            ng-class="{'ui label checked': isDateChecked(month.value, 'month'), 'ui label': !isDateChecked(month.value, 'month')}">
-            {{ month.name }}
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <a><b>视觉设计师</b></a>
-        <div class="menu">
-          <a class="item" ng-click="filterMailsByAtom(personnel._id, 'ga', personnel.name)"
-            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '视觉设计师'}">
-            <i ng-class="isChecked(personnel._id, 'ga')"></i>
-            {{personnel.name}}
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <a><b>前端设计师</b></a>
-        <div class="menu">
-          <a class="item" ng-click="filterMailsByAtom(personnel._id, 'fe', personnel.name)"
-            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '前端设计师'}">
-            <i ng-class="isChecked(personnel._id, 'fe')"></i>
-            {{personnel.name}}
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="three wide column">
+		<div class="ui vertical menu">
+			<div class="item">
+				<a><b>年份</b></a>
+				<div class="menu matrix ui">
+					<a class="ui label" ng-repeat="year in years"
+						ng-class="{'ui label checked': isDateChecked(year.value, 'year'), 'ui label': !isDateChecked(year.value, 'year')}"
+						ng-click="filterMailsByAtom(year.value, 'year', year.name)">
+						{{ year.name }}
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<a><b>月份</b></a>
+				<div class="menu ui matrix loose">
+					<a class="ui label" ng-repeat="month in months"
+						ng-click="filterMailsByAtom(month.value, 'month', month.name)"
+						ng-class="{'ui label checked': isDateChecked(month.value, 'month'), 'ui label': !isDateChecked(month.value, 'month')}">
+						{{ month.name }}
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<a><b>视觉设计师</b></a>
+				<div class="menu">
+					<a class="item" ng-click="filterMailsByAtom(personnel._id, 'ga', personnel.name)"
+						ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '视觉设计师'}">
+						<i ng-class="isChecked(personnel._id, 'ga')"></i>
+						{{personnel.name}}
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<a><b>前端设计师</b></a>
+				<div class="menu">
+					<a class="item" ng-click="filterMailsByAtom(personnel._id, 'fe', personnel.name)"
+						ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '前端设计师'}">
+						<i ng-class="isChecked(personnel._id, 'fe')"></i>
+						{{personnel.name}}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <div class="thirteen wide column">
-    <!-- filter criteria area -->
-    <div class="criterias">
-      <div class="clickable" ng-show="isCriteriaValid()">
-        <a class="ui black small label clearall" ng-click="resetCriteria()">
-          清空筛选条件
-        </a>
-        <i class="ellipsis vertical icon"></i>
+	<div class="thirteen wide column">
+		<!-- filter criteria area -->
+		<div class="criterias">
+			<div class="clickable" ng-show="isCriteriaValid()">
+				<a class="ui black small label clearall" ng-click="resetCriteria()">
+					清空筛选条件
+				</a>
+				<i class="ellipsis vertical icon"></i>
 
-        <a class="ui teal label"
-          ng-repeat="criteria in selected_atom" ng-show="criteria.id">
-          {{ criteria.name }}
-          <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
-        </a>
-      </div>
-      <div class="inputable ui input mini">
-        <input type="text" placeholder="文字筛选" ng-model="subSearch" />
-      </div>
-    </div>
+				<a class="ui teal label"
+					ng-repeat="criteria in selected_atom" ng-show="criteria.id">
+					{{ criteria.name }}
+					<i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
+				</a>
+			</div>
+			<div class="inputable ui input mini">
+				<input type="text" placeholder="文字筛选" ng-model="subSearch" />
+			</div>
+		</div>
 
-    <div class="ui items">
-      <div class="item" ng-repeat="mail in filtered = (mails | orderBy: '-end_time' | SamOperationMailFilter:selected_atom) | filter:subSearch ">
-        <div class="image">
-          <a target="_blank" href="{{mail.mail_cover}}" title="查看大图">
-            <img ng-src="{{mail.mail_cover}}" />
-          </a>
-        </div>
-        <div class="content">
-          <div class="name">{{mail.name}}</div>
-        </div>
-        <div class="ui bottom attached label">
-          <span class="time">{{mail.end_time}}</span>
-          <span class="per">{{mail.personnel_ga.name}}</span>
-          <span class="per">{{mail.personnel_fe.name}}</span>
-        </div>
-      </div>
-    </div>
-  </div>
+		<div class="ui cards">
+			<div class="card" ng-repeat="mail in filtered = (mails | orderBy: '-end_time' | SamOperationMailFilter:selected_atom) | filter:subSearch ">
+				<div class="image">
+					<a target="_blank" href="{{mail.mail_cover}}" title="查看大图">
+						<img width="290" ng-src="{{mail.mail_cover}}" />
+					</a>
+				</div>
+
+				<div class="content">
+					<span class="header">{{mail.name}}</span>
+					<div class="meta">
+						<span class="date">{{mail.end_time}}</span>
+					</div>
+				</div>
+
+				<div class="extra content">
+					<span class="right floated created">{{mail.personnel_ga.name}}</span>
+					<span class="friends">{{mail.personnel_fe.name}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
 

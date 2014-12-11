@@ -1,14 +1,18 @@
-<div class="ui header dividing">
-	<a href="#!/topic/add" class="ui blue submit button icon labeled header-button">
-		<i class="edit basic icon"></i>
-		添加专题
-	</a>
-	<span class="header-title">专题</span>
+<div class="ui menu">
+	<span class="active item">专题</span>
+	<div class="right menu">
+		<div class="item">
+			<div class="ui icon transparent input">
+				<input type="text" placeholder="模糊筛选" ng-model="subSearch">
+				<i class="search link icon"></i>
+			</div>
+		</div>
+		<a href="#!/topic/add" class="ui item">
+			<i class="edit basic icon"></i> 添加专题
+		</a>
+	</div>
 </div>
 
-<div class="inputable ui input mini">
-	<input type="text" placeholder="模糊筛选" ng-model="subSearch">
-</div>
 
 <table class="ui table segment">
 	<thead>
@@ -55,7 +59,7 @@
 	</tbody>
 </table>
 
-<a href="#!/topic/add" class="ui blue submit button icon labeled">
+<a href="#!/topic/add" class="ui blue submit button icon">
 	<i class="edit basic icon"></i>
 	添加专题
 </a>

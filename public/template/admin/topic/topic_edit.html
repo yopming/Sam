@@ -1,92 +1,92 @@
 <div class="ui attached message">
-  <div class="header">
-    编辑专题
-  </div>
+	<div class="header">
+		编辑专题
+	</div>
 </div>
 
-<form  class="ui form attached fluid segment" ng-controller="AdminTopicEditCtrl" ng-submit="topicUpdate()">
+<form  class="ui form fluid segment" ng-controller="AdminTopicEditCtrl" ng-submit="topicUpdate()">
 
-  <input type="hidden" ng-model="topic.category" name="category" />
+	<input type="hidden" ng-model="topic.category" name="category" />
 
-  <div class="field">
-    <label>专题名称</label>
-    <input type="text" name="name" ng-model="topic.name" />
-  </div>
-
-  <div class="field">
-    <label>头图</label>
-    <input type="text" ng-model="topic.topic_cover" />
-  </div>
-
-  <div class="field">
-    <label>视觉稿地址</label>
-    <input type="text" ng-model="topic.topic_graphic_uri" />
-  </div>  
-  
-  <div class="field">
-    <label>专题Url</label>
-    <input type="text" ng-model="topic.topic_deploy_uri" />
-  </div>
-
-  <div class="field checkboxes">
-    <label>发布应用</label>
-    <div class="ui checkbox">
-      <input id="application1" type="checkbox" ng-model="topic.topic_deploy_channel_official">
-      <label for="application1">官网</label>
-    </div>
-    <div class="ui checkbox">
-      <input id="application2" type="checkbox" ng-model="topic.topic_deploy_channel_touch">
-      <label for="application2">触屏站</label>
-    </div>
-    <div class="ui checkbox">
-      <input id="application3" type="checkbox" ng-model="topic.topic_deploy_channel_app">
-      <label for="application3">APP</label>
-    </div>
-    <div class="ui checkbox">
-      <input id="application4" type="checkbox" ng-model="topic.topic_deploy_channel_union">
-      <label for="application4">网站联盟</label>
-    </div>
-	<div class="ui checkbox">
-		<input id="application5" type="checkbox" ng-model="topic.topic_deploy_channel_tmall">
-		<label for="application5">天猫</label>
+	<div class="field">
+		<label>专题名称</label>
+		<input type="text" name="name" ng-model="topic.name" />
 	</div>
-  </div>
 
-  <div class="field">
-    <label>视觉设计师</label>
-    <select ng-model="topic.personnel_ga"
-      ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '视觉设计师'}">
-    </select>
-  </div>
+	<div class="field">
+		<label>头图</label>
+		<input type="text" ng-model="topic.topic_cover" />
+	</div>
 
-  <div class="field">
-    <label>前端设计师</label>
-    <select ng-model="topic.personnel_fe"
-      ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '前端设计师'}">
-    </select>
-  </div>
+	<div class="field">
+		<label>视觉稿地址</label>
+		<input type="text" ng-model="topic.topic_graphic_uri" />
+	</div>  
 
-  <div class="field">
-    <label>归属</label>
-    <select ng-model="topic.belong_to" ng-options="pipe._id as pipe.name for pipe in pipes"></select>
-  </div>
+	<div class="field">
+		<label>专题Url</label>
+		<input type="text" ng-model="topic.topic_deploy_uri" />
+	</div>
 
-  <div class="field">
-    <label>发布时间</label>
-    <input type="text" ng-model="topic.end_time" placeholder="点击下面日历选择日期" />
-    <div pickadate ng-model="topic.end_time"></div>
-  </div>
+	<div class="field checkboxes">
+		<label>发布应用</label>
+		<div class="ui checkbox">
+			<input id="application1" type="checkbox" ng-model="topic.topic_deploy_channel_official">
+			<label for="application1">官网</label>
+		</div>
+		<div class="ui checkbox">
+			<input id="application2" type="checkbox" ng-model="topic.topic_deploy_channel_touch">
+			<label for="application2">触屏站</label>
+		</div>
+		<div class="ui checkbox">
+			<input id="application3" type="checkbox" ng-model="topic.topic_deploy_channel_app">
+			<label for="application3">APP</label>
+		</div>
+		<div class="ui checkbox">
+			<input id="application4" type="checkbox" ng-model="topic.topic_deploy_channel_union">
+			<label for="application4">网站联盟</label>
+		</div>
+		<div class="ui checkbox">
+			<input id="application5" type="checkbox" ng-model="topic.topic_deploy_channel_tmall">
+			<label for="application5">天猫</label>
+		</div>
+	</div>
 
-  <a href="#!/topic" class="ui animated button">
-    <div class="visible content">返回</div>
-    <div class="hidden content">
-      <i class="left arrow icon"></i>
-    </div>
-  </a>
+	<div class="field">
+		<label>视觉设计师</label>
+		<select ng-model="topic.personnel_ga"
+			ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '视觉设计师'}">
+		</select>
+	</div>
 
-  <button class="ui blue submit button right floated">
-    保存修改
-  </button>
+	<div class="field">
+		<label>前端设计师</label>
+		<select ng-model="topic.personnel_fe"
+			ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '前端设计师'}">
+		</select>
+	</div>
+
+	<div class="field">
+		<label>归属</label>
+		<select ng-model="topic.belong_to" ng-options="pipe._id as pipe.name for pipe in pipes"></select>
+	</div>
+
+	<div class="field">
+		<label>发布时间</label>
+		<input type="text" ng-model="topic.end_time" placeholder="点击下面日历选择日期" />
+		<div pickadate ng-model="topic.end_time"></div>
+	</div>
+
+	<a href="#!/topic" class="ui animated button">
+		<div class="visible content">返回</div>
+		<div class="hidden content">
+			<i class="left arrow icon"></i>
+		</div>
+	</a>
+
+	<button class="ui blue submit button right floated">
+		保存修改
+	</button>
 
 </form>
 

@@ -1,60 +1,60 @@
 <div class="ui attached message">
-  <div class="header">
-    编辑邮件
-  </div>
+	<div class="header">
+		编辑邮件
+	</div>
 </div>
 
-<form  class="ui form attached fluid segment" ng-controller="AdminMailEditCtrl" ng-submit="mailUpdate()">
+<form  class="ui form fluid segment" ng-controller="AdminMailEditCtrl" ng-submit="mailUpdate()">
 
-  <input type="hidden" ng-model="mail.category" name="category" />
+	<input type="hidden" ng-model="mail.category" name="category" />
 
-  <div class="field">
-    <label>邮件名称</label>
-    <input type="text" name="name" ng-model="mail.name" />
-  </div>
+	<div class="field">
+		<label>邮件名称</label>
+		<input type="text" name="name" ng-model="mail.name" />
+	</div>
 
-  <div class="field">
-    <label>视觉稿</label>
-    <input type="text" ng-model="mail.mail_graphic_uri" />
-  </div>
+	<div class="field">
+		<label>视觉稿</label>
+		<input type="text" ng-model="mail.mail_graphic_uri" />
+	</div>
 
-  <div class="field">
-    <label>头图</label>
-    <input type="text" ng-model="mail.mail_cover" />
-  </div>
+	<div class="field">
+		<label>头图</label>
+		<input type="text" ng-model="mail.mail_cover" />
+	</div>
 
-  <div class="field">
-    <label>视觉设计师</label>
-    <select ng-model="mail.personnel_ga"
-      ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '视觉设计师'}">
-    </select>
-  </div>
+	<div class="field">
+		<label>视觉设计师</label>
+		<select ng-model="mail.personnel_ga"
+			ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '视觉设计师'}">
+		</select>
+	</div>
 
-  <div class="field">
-    <label>前端设计师</label>
-    <select ng-model="mail.personnel_fe"
-      ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '前端设计师'}">
-    </select>
-  </div>
+	<div class="field">
+		<label>前端设计师</label>
+		<select ng-model="mail.personnel_fe"
+			ng-options="personnel._id as personnel.name for personnel in personnels | filter: {position: '前端设计师'}">
+		</select>
+	</div>
 
-  <div class="fields two">
-    <div class="field">
-      <label>发布时间</label>
-      <input type="text" ng-model="mail.end_time" placeholder="点击下面日历选择日期" />
-      <div pickadate ng-model="mail.end_time"></div>
-    </div>
-  </div>
+	<div class="fields two">
+		<div class="field">
+			<label>发布时间</label>
+			<input type="text" ng-model="mail.end_time" placeholder="点击下面日历选择日期" />
+			<div pickadate ng-model="mail.end_time"></div>
+		</div>
+	</div>
 
-  <a href="#!/mail" class="ui animated button">
-    <div class="visible content">返回</div>
-    <div class="hidden content">
-      <i class="left arrow icon"></i>
-    </div>
-  </a>
+	<a href="#!/mail" class="ui animated button">
+		<div class="visible content">返回</div>
+		<div class="hidden content">
+			<i class="left arrow icon"></i>
+		</div>
+	</a>
 
-  <button class="ui blue submit button right floated">
-    保存修改
-  </button>
+	<button class="ui blue submit button right floated">
+		保存修改
+	</button>
 
 </form>
 

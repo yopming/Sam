@@ -1,110 +1,113 @@
 <div class="ui grid sam-topic">
 
-  <div class="three wide column">
-    <div class="ui vertical menu">
-      <div class="item">
-        <a><b>归属</b></a>
-        <div class="menu">
-          <a class="item" ng-repeat="pipe in pipes"
-            ng-click="filterTopicsByAtom(pipe._id, 'pipe', pipe.name)">
-            <i ng-class="isChecked(pipe._id, 'pipe')"></i>
-            {{pipe.name}}
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <a><b>年份</b></a>
-        <div class="menu matrix ui">
-          <a class="ui label" ng-repeat="year in years"
-            ng-class="{'ui label checked': isDateChecked(year.value, 'year'), 'ui label': !isDateChecked(year.value, 'year')}"
-            ng-click="filterTopicsByAtom(year.value, 'year', year.name)">
-            {{ year.name }}
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <a><b>月份</b></a>
-        <div class="menu ui matrix loose">
-          <a class="ui label" ng-repeat="month in months"
-            ng-click="filterTopicsByAtom(month.value, 'month', month.name)"
-            ng-class="{'ui label checked': isDateChecked(month.value, 'month'), 'ui label': !isDateChecked(month.value, 'month')}">
-            {{ month.name }}
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <a><b>视觉设计师</b></a>
-        <div class="menu">
-          <a class="item" ng-click="filterTopicsByAtom(personnel._id, 'ga', personnel.name)"
-            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '视觉设计师'}">
-            <i ng-class="isChecked(personnel._id, 'ga')"></i>
-            {{personnel.name}}
-          </a>
-        </div>
-      </div>
-      <div class="item">
-        <a><b>前端设计师</b></a>
-        <div class="menu">
-          <a class="item" ng-click="filterTopicsByAtom(personnel._id, 'fe', personnel.name)"
-            ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '前端设计师'}">
-            <i ng-class="isChecked(personnel._id, 'fe')"></i>
-            {{personnel.name}}
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="three wide column">
+		<div class="ui vertical menu">
+			<div class="item">
+				<a><b>归属</b></a>
+				<div class="menu">
+					<a class="item" ng-repeat="pipe in pipes"
+						ng-click="filterTopicsByAtom(pipe._id, 'pipe', pipe.name)">
+						<i ng-class="isChecked(pipe._id, 'pipe')"></i>
+						{{pipe.name}}
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<a><b>年份</b></a>
+				<div class="menu matrix ui">
+					<a class="ui label" ng-repeat="year in years"
+						ng-class="{'ui label checked': isDateChecked(year.value, 'year'), 'ui label': !isDateChecked(year.value, 'year')}"
+						ng-click="filterTopicsByAtom(year.value, 'year', year.name)">
+						{{ year.name }}
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<a><b>月份</b></a>
+				<div class="menu ui matrix loose">
+					<a class="ui label" ng-repeat="month in months"
+						ng-click="filterTopicsByAtom(month.value, 'month', month.name)"
+						ng-class="{'ui label checked': isDateChecked(month.value, 'month'), 'ui label': !isDateChecked(month.value, 'month')}">
+						{{ month.name }}
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<a><b>视觉设计师</b></a>
+				<div class="menu">
+					<a class="item" ng-click="filterTopicsByAtom(personnel._id, 'ga', personnel.name)"
+						ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '视觉设计师'}">
+						<i ng-class="isChecked(personnel._id, 'ga')"></i>
+						{{personnel.name}}
+					</a>
+				</div>
+			</div>
+			<div class="item">
+				<a><b>前端设计师</b></a>
+				<div class="menu">
+					<a class="item" ng-click="filterTopicsByAtom(personnel._id, 'fe', personnel.name)"
+						ng-repeat="personnel in personnels | orderBy: 'domain_account' | filter: {position: '前端设计师'}">
+						<i ng-class="isChecked(personnel._id, 'fe')"></i>
+						{{personnel.name}}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <div class="thirteen wide column">
-    <!-- filter criteria area -->
-    <div class="criterias">
-      <div class="clickable" ng-show="isCriteriaValid()">
-        <a class="ui black small label clearall" ng-click="resetCriteria()">
-          清空筛选条件
-        </a>
-        <i class="ellipsis vertical icon"></i>
+	<div class="thirteen wide column">
+		<!-- filter criteria area -->
+		<div class="criterias">
+			<div class="clickable" ng-show="isCriteriaValid()">
+				<a class="ui black small label clearall" ng-click="resetCriteria()">
+					清空筛选条件
+				</a>
+				<i class="ellipsis vertical icon"></i>
 
-        <a class="ui teal label"
-          ng-repeat="criteria in selected_atom" ng-show="criteria.id">
-          {{ criteria.name }}
-          <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
-        </a>
-      </div>
-      <div class="inputable ui input mini">
-        <input type="text" placeholder="文字筛选" ng-model="subSearch" />
-      </div>
-    </div>
+				<a class="ui teal label"
+					ng-repeat="criteria in selected_atom" ng-show="criteria.id">
+					{{ criteria.name }}
+					<i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
+				</a>
+			</div>
+			<div class="inputable ui input mini">
+				<input type="text" placeholder="文字筛选" ng-model="subSearch" />
+			</div>
+		</div>
 
-    <div class="ui items">
-      <div class="item" ng-repeat="topic in filtered = (topics | orderBy:'-end_time' | SamOperationTopicFilter:selected_atom) | filter:subSearch ">
-        <div class="image">
-          <img ng-src="{{topic.topic_cover}}" />
-        </div>
-        <div class="content">
-          <div class="name">{{topic.name}}</div>
-          <div class="application">
-            <span ng-if="topic.topic_deploy_channel_official">官网</span>
-            <span ng-if="topic.topic_deploy_channel_touch">触屏站</span>
-            <span ng-if="topic.topic_deploy_channel_app">APP</span>
-            <span ng-if="topic.topic_deploy_channel_union">网站联盟</span>
-            <span ng-if="topic.topic_deploy_channel_tmall">天猫</span>
-          </div>
-          <div class="description">
-            <a class="ui label black" ng-if="topic.topic_graphic_uri"
-              href="{{topic.topic_graphic_uri}}" target="_blank">设计稿</a>
-            <a class="ui label teal" ng-if="topic.topic_deploy_uri"
-              href="{{topic.topic_deploy_uri}}" target="_blank">网页</a>
-          </div>
-        </div>
-        <div class="ui bottom attached label">
-          <span class="belong">{{topic.belong_to.name}}</span>
-          {{topic.end_time}}
-          <span class="per">{{topic.personnel_ga.name}}</span>
-          <span class="per">{{topic.personnel_fe.name}}</span>
-        </div>
-      </div>
-    </div>
-  </div>
+		<div class="ui cards">
+			<div class="card" ng-repeat="topic in filtered = (topics | orderBy:'-end_time' | SamOperationTopicFilter:selected_atom) | filter:subSearch ">
+				<div class="image">
+					<img width="290" ng-src="{{topic.topic_cover}}" />
+				</div>
+
+				<div class="content">
+					<span class="header">{{topic.name}}</span>
+					<div class="meta">
+						<span ng-if="topic.topic_deploy_channel_official">官网</span>
+						<span ng-if="topic.topic_deploy_channel_touch">触屏站</span>
+						<span ng-if="topic.topic_deploy_channel_app">APP</span>
+						<span ng-if="topic.topic_deploy_channel_union">网站联盟</span>
+						<span ng-if="topic.topic_deploy_channel_tmall">天猫</span>
+					</div>
+					<div class="description">
+						<a class="ui label black" ng-if="topic.topic_graphic_uri"
+							href="{{topic.topic_graphic_uri}}" target="_blank">设计稿</a>
+						<a class="ui label teal" ng-if="topic.topic_deploy_uri"
+							href="{{topic.topic_deploy_uri}}" target="_blank">网页</a>
+					</div>
+				</div>
+
+				<div class="extra content attached">
+					<span class="belong">{{topic.belong_to.name}}</span>
+					{{topic.end_time}}
+					<span class="per">{{topic.personnel_ga.name}}</span>
+					<span class="per">{{topic.personnel_fe.name}}</span>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 </div>
 
 
