@@ -64,7 +64,7 @@ exports.update = function(req, res) {
 
 	Share.findById(req.params.share_id, function(err, share) {
 		share.name		= req.body.name;
-		share.content	= req.body.editor;
+		share.content	= req.body.content;
 		share.author = req.body.author;
 		share.time = _date;
 

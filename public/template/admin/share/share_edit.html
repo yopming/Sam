@@ -1,11 +1,11 @@
 <div class="ui attached message">
 	<div class="header">
-		添加沙盒
+		编辑沙盒
 	</div>
 </div>
 
 
-<form class="ui form fluid segment" ng-controller="AdminShareAddCtrl" ng-submit="shareSave()">
+<form class="ui form fluid segment" ng-controller="AdminShareEditCtrl" ng-submit="shareUpdate()">
 
 	<div class="field">
 		<label>名称</label>
@@ -23,6 +23,13 @@
 		<select ng-model="share.author" ng-options="user._id as user.name for user in users | filter: {username: '!sam'}">
 		</select>
 	</div>
+
+	<a href="#!/share" class="ui animated button">
+		<div class="visible content">返回</div>
+		<div class="hidden content">
+			<i class="left arrow icon"></i>
+		</div>
+	</a>
 
 	<button class="ui blue submit button right floated">
 		保存修改

@@ -65,9 +65,10 @@ adminApp.config(['$locationProvider', '$routeProvider',
 			controller: 'AdminShareAddCtrl',
 			css: ['/css/simditor.css', '/css/simditor-fontAwesome.css']
 		}).
-		when('/share/eidt/:id', {
+		when('/share/edit/:id', {
 			templateUrl: '/template/admin/share/share_edit.html',
-			controller: 'AdminShareEditCtrl'
+			controller: 'AdminShareEditCtrl',
+			css: ['/css/simditor.css', '/css/simditor-fontAwesome.css']
 		}).
 
 		when('/user', {

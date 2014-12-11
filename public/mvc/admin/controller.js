@@ -278,8 +278,16 @@ adminControllers.controller('AdminShareEditCtrl', ['$scope', '$http', '$location
 	function($scope, $http, $location, $routeParams) {
 		var share_id = $routeParams.id;
 
+		$http.get('/api/share/' + share_id).success(function(data) {
+			$scope.share = data;
+		});
+
+		$http.get('/api/user/all').success(function(data) {
+			$scope.users = data;
+		});
+
 		$scope.shareUpdate = function() {
-			$http.post('/api/share/update/' + share_id, $scope.topic).success(function() {
+			$http.post('/api/share/update/' + share_id, $scope.share).success(function() {
 				$location.url('/share');
 			});
 		};
