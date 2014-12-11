@@ -105,7 +105,7 @@ app.post('/api/task/:category/update/:task_id', routes_api_task.update);
 app.get('/api/share/all', routes_api_share.index);
 app.get('/api/share/:share_id', routes_api_share.indexOne);
 app.post('/api/share/add', routes_api_share.create);
-app.post('/api/share/destory/:share_id', routes_api_share.destroy);
+app.post('/api/share/destroy/:share_id', routes_api_share.destroy);
 app.post('/api/share/update/:share_id', routes_api_share.update);
 
 app.get('/api/user/all', routes_api_user.index);

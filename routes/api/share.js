@@ -26,11 +26,13 @@ exports.indexOne = function(req, res) {
 };
 
 exports.create = function(req, res) {
+	var now = new Date();
+	var _date = now.getFullYear().toString() + '-' + now.getMonth().toString() + '-' + now.getDate().toString();
 	new Share({
 		name: req.body.name,
 		content: req.body.content,
 		author: req.body.author,
-		time: req.body.time
+		time: _date
 	}).save(function(err, shares) {
 		if (err)
 			res.send('Error: ' + err);
@@ -57,9 +59,14 @@ exports.destroy = function(req, res) {
 };
 
 exports.update = function(req, res) {
+	var now = new Date();
+	var _date = now.getFullYear().toString() + '-' + now.getMonth().toString() + '-' + now.getDate().toString();
+
 	Share.findById(req.params.share_id, function(err, share) {
 		share.name		= req.body.name;
 		share.content	= req.body.editor;
+		share.author = req.body.author;
+		share.time = _date;
 
 		share.save(function(err, share, count) {
 			if (err)

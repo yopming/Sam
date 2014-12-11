@@ -248,6 +248,7 @@ adminControllers.controller('AdminShareCtrl', ['$scope', '$http',
 		$http.get('/api/share/all').success(function(data) {
 			$scope.shares = data;
 		});
+		
 
 		$scope.deleteShare = function(id) {
 			$http.post('/api/share/destroy/' + id).success(function(data) {

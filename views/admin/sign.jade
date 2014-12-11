@@ -15,7 +15,7 @@ html(ng-app="admin")
 					form(action='/signin', method='POST')
 						- if (messages.info)
 							div.ui.error.message(style="display:block")
-							div=messages.info
+								div=messages.info
 
 						div.field
 							label Username
