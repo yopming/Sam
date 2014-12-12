@@ -18,6 +18,7 @@ var app = express();
 
 // routes
 var routes_sam = require('./routes/sam/route.js');
+var routes_share = require('./routes/sam/share.js');
 var routes_admin = require('./routes/admin/route.js');
 var routes_api_task = require('./routes/api/task.js');
 var routes_api_share = require('./routes/api/share.js');
@@ -87,6 +88,7 @@ var helper_auth = require('./helper/auth.js');
 
 // route
 app.get('/', routes_sam.index);
+app.get('/share/presentation/:share_id', routes_share.display);
 
 app.get('/sign', routes_admin.sign);
 app.post('/signin', routes_admin.signin);
@@ -144,6 +146,10 @@ app.post('/api/status/destroy/:status_id', routes_api_status.destroy);
 
 app.get('/api/period/years', routes_api_period.years);
 app.get('/api/period/months', routes_api_period.months);
+
+// 404 & 500 exception
+app.get('/error', routes_sam.error);
+app.get('*', routes_sam.notfound);
 
 
 // run server

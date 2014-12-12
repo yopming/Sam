@@ -1,5 +1,6 @@
 var samApp = angular.module('sam', [
   'ngRoute',
+  'ngSanitize',
   'samDashboardControllers',
   'samProjectControllers',
   'samOperationControllers',

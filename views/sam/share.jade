@@ -1,0 +1,25 @@
+doctype
+html
+	head
+		title Sam
+		link(rel='stylesheet', href='/css/sam-presentation.css')
+		link(rel='stylesheet', href='/css/simditor.css')
+		link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
+		meta(name='renderer', content='webkit')
+
+	body
+		div.ui.page.grid#sam-presentation
+			div.sixteen.wide.column
+				div.ui.piled.segment
+					div.ui.segment.heading
+						h3.ui.right.floated.header
+							= author
+						div.ui.left.floated.header
+							h1.ui.header
+								= name
+								div.sub.header
+									= time
+					div.simditor
+						div.simditor-wrapper
+							div.simditor-body
+								!= content

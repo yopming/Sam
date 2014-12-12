@@ -18,7 +18,7 @@ exports.index = function(req, res) {
 };
 
 exports.indexOne = function(req, res) {
-	Share.findById(req.params.share_id, function(err, share) {
+	Share.findById(req.params.share_id).populate('author').exec(function(err, share) {
 		if (err)
 			res.send(err);
 		res.json(share);

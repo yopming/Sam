@@ -226,10 +226,31 @@
 		}
 	}
 
-	.sam-timeline {
+	.sam-timeline,
+	.sam-share {
 		padding:3em;
 		.feed {
 			padding:3em;
 		}
 	}
+
+	.sam-share {
+		.card {
+			text-decoration:none;
+			&:hover {
+				.header {
+					color:#00b2f3;
+				}
+			}
+			.header {
+				.text-overflow();
+				width:260px;
+			}
+			.description {
+				height:80px;
+				overflow:hidden;
+			}
+		}
+	}
+
 }

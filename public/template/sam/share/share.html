@@ -1,7 +1,12 @@
 <div class="sam-share">
 
 	<div class="ui menu">
-		<a class="item"><i class="icon wait"></i> 时间排序</a>
+		<a class="item" ng-click="reverse=!reverse; order('time', reverse)">
+			<i class="icon wait"></i> 时间排序
+		</a>
+		<a class="item" ng-click="reverse=!reverse; order('name', reverse)">
+			<i class="icon wait"></i> 标题排序
+		</a>
 		<div class="right menu">
 			<div class="item">
 				<div class="ui transparent icon input">
@@ -13,14 +18,15 @@
 	</div>
 
 	<div class="ui cards">
-		<a class="card" href="#" ng-repeat="share in shares | filter:subSearch">
+		<div class="card" ng-repeat="share in shares | filter:subSearch">
 			<div class="content">
-				<div class="header">{{share.name}}</div>
+				<div class="header">
+					<a href="/share/presentation/{{share._id}}" target="_blank">
+						{{share.name}}</a></div>
 				<div class="meta">
 					<span class="category">{{share.time}}</span>
 				</div>
-				<div class="description">
-					{{share.content}}
+				<div class="description" ng-bind-html="share.content" >
 				</div>
 			</div>
 			<div class="extra content">
@@ -28,7 +34,7 @@
 					{{share.author.name}}
 				</div>
 			</div>
-		</a>
+		</div>
 	</div>
 
 </div>
