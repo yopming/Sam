@@ -71,6 +71,15 @@ adminApp.config(['$locationProvider', '$routeProvider',
 			css: ['/css/simditor.css', '/css/simditor-fontAwesome.css']
 		}).
 
+		when('/media', {
+			templateUrl: '/template/admin/media/media.html',
+			controller: 'AdminMediaCtrl'
+		}).
+		when('/media/add', {
+			templateUrl: '/template/admin/media/media_add.html',
+			controller: 'AdminMediaAddCtrl'
+		}).
+
 		when('/user', {
 			templateUrl: '/template/admin/user/user.html',
 			controller: 'AdminUserCtrl'

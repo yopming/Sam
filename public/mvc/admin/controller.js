@@ -294,6 +294,14 @@ adminControllers.controller('AdminShareEditCtrl', ['$scope', '$http', '$location
 	}
 ]);
 
+/*
+ * Media
+ */
+adminControllers.controller('AdminMediaCtrl', ['$scope', '$http', '$location',
+	function($scope, $http, $location) {
+	}
+]);
+
 
 /*
  * User

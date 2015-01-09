@@ -13,7 +13,6 @@ var compress = require('compression');
 // mongoose setup
 require('./model/schema.js');
 
-
 var app = express();
 
 // routes
@@ -45,6 +44,7 @@ app.use(lessMiddleware({
 	//debug: true
 }));
 app.use(express.static(__dirname + '/public'));
+app.use(express.static('/Users/yopming/Downloads'));
 
 app.use(express.cookieParser('samcookies'));
 app.use(express.session());
@@ -54,10 +54,11 @@ app.set('view engine', 'jade');
 app.use(flash());
 app.use(express.favicon());
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
+app.use(express.bodyParser({uploadDir: './public/upload'}));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+
 // jade session
 app.use(function (req, res, next) {
 	res.locals.user = req.session.user || null;
@@ -66,7 +67,6 @@ app.use(function (req, res, next) {
 });
 
 app.use(app.router);
-
 
 // minify
 app.use(function (req, res, next) {
@@ -96,6 +96,7 @@ app.get('/signout', helper_auth.requiredAuth, routes_admin.signout);
 app.get('/admin', helper_auth.requiredAuth, routes_admin.admin);
 
 // APIs
+// API - Data
 app.get('/api/task/all', routes_api_task.index);
 app.get('/api/task/all/:sequence', routes_api_task.indexSort);
 app.get('/api/task/:task_id', routes_api_task.indexOne);
