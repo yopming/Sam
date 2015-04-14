@@ -31,7 +31,7 @@ samOperationFilters.filter('SamOperationMailFilter', [
       } else {
         return el.substring(s,e);
       }
-    }
+    };
 
     return function(mails, selected_atom) {
 
@@ -100,7 +100,7 @@ samOperationFilters.filter('SamOperationTopicFilter', [
       } else {
         return el.substring(s,e);
       }
-    }
+    };
 
     return function(topics, selected_atom) {
 

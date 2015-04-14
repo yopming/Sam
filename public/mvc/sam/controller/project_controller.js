@@ -29,7 +29,7 @@ samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProje
       }
       var asc = function(x, y) {
         return x-y;
-      }
+      };
       $scope.versions = _.uniq($scope.versions.sort(asc));
     });
 
@@ -70,14 +70,14 @@ samProjectControllers.controller('SamProjectCtrl', ['$scope', '$http', 'SamProje
           $scope.selected_atom[i].id = '';
         }
       }
-    }
+    };
 
     // Reset the criteria
     $scope.resetCriteria = function() {
       for (var i in $scope.selected_atom) {
         $scope.selected_atom[i].id = '';
       }
-    }
+    };
 
     $scope.isCriteriaValid = function() {
       var validCount = 0;

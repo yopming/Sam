@@ -260,7 +260,7 @@ adminControllers.controller('AdminShareCtrl', ['$scope', '$http',
 
 adminControllers.controller('AdminShareAddCtrl', ['$scope', '$http', '$location',
 	function($scope, $http, $location) {
-		$scope.share = {}
+		$scope.share = {};
 
 		$http.get('/api/user/all').success(function(data) {
 			$scope.users = data;

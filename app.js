@@ -3,15 +3,27 @@
  */
 
 var express = require('express');
+var bodyParser = require('body-parser');
 var http = require('http');
 var path = require('path');
 var lessMiddleware = require('less-middleware');
 var flash = require('express-flash');
 var minify = require('express-minify');
-var compress = require('compression');
+var compression = require('compression');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var serveStatic = require('serve-static');
+var serveFavicon = require('serve-favicon');
+var morgan = require('morgan');
+var methodOverride = require('method-override');
+var errorHandler = require('errorhandler');
 
 // mongoose setup
 require('./model/schema.js');
+
+// helper
+var helper_auth = require('./helper/auth.js');
+
 
 var app = express();
 
@@ -31,7 +43,7 @@ var routes_api_status = require('./routes/api/status.js');
 var routes_api_period = require('./routes/api/period.js');
 
 // all environments
-app.use(express.compress());
+app.use(compression());
 
 // less-middleware
 // sequence of lessMiddleware and express.static should be like this, not inverse
@@ -39,54 +51,29 @@ app.use(lessMiddleware({
 	src: __dirname + '/public/less',
 	dest: __dirname + '/public/css',
 	prefix: '/css',
-	compress: true
 	//force: true,
 	//debug: true
 }));
-app.use(express.static(__dirname + '/public'));
-app.use(express.static('/Users/yopming/Downloads'));
+app.use(serveStatic(__dirname + '/public'));
 
-app.use(express.cookieParser('samcookies'));
-app.use(express.session());
+app.use(cookieParser('samcookies'));
+app.use(session({
+	secret: 'samsessions',
+	resave: true,
+	saveUninitialized: true
+}));
+
 app.set('port', process.env.PORT || 1080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(flash());
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser({uploadDir: './public/upload'}));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
+app.use(serveFavicon(__dirname + '/public/favicon.ico'));
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('X-HTTP-Method-Override'));
 
-// jade session
-app.use(function (req, res, next) {
-	res.locals.user = req.session.user || null;
-	res.locals.group = req.session.group || null;
-	next();
-});
-
-app.use(app.router);
-
-// minify
-app.use(function (req, res, next) {
-	// do not mangle -angular.js files
-	if (/-angular\.js$/.test(req.url)) {
-		res._no_mangle = true;
-	}
-	next();
-});
-app.use(minify());
-
-// development only
-if ('development' == app.get('env')) {
-	app.use(express.errorHandler());
-}
-
-// helper
-var helper_auth = require('./helper/auth.js');
-
-// route
+// routers
 app.get('/', routes_sam.index);
 app.get('/share/presentation/:share_id', routes_share.display);
 
@@ -152,6 +139,28 @@ app.get('/api/period/months', routes_api_period.months);
 app.get('/error', routes_sam.error);
 app.get('*', routes_sam.notfound);
 
+
+// jade session
+app.use(function (req, res, next) {
+	res.locals.user = req.session.user || null;
+	res.locals.group = req.session.group || null;
+	next();
+});
+
+// minify
+app.use(function (req, res, next) {
+	// do not mangle -angular.js files
+	if (/-angular\.js$/.test(req.url)) {
+		res._no_mangle = true;
+	}
+	next();
+});
+app.use(minify());
+
+// development only
+if ('development' == app.get('env')) {
+	app.use(errorHandler());
+}
 
 // run server
 http.createServer(app).listen(app.get('port'), function () {

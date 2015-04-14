@@ -50,7 +50,7 @@ samOperationControllers.controller('SamOperationMailCtrl', ['$scope', '$http',
         return true;
       }
       return false;
-    }
+    };
 
 
     $scope.removeCriteria = function(id) {
@@ -59,14 +59,14 @@ samOperationControllers.controller('SamOperationMailCtrl', ['$scope', '$http',
           $scope.selected_atom[i].id = '';
         }
       }
-    }
+    };
 
     // Reset the criteria
     $scope.resetCriteria = function() {
       for (var i in $scope.selected_atom) {
         $scope.selected_atom[i].id = '';
       }
-    }
+    };
 
     $scope.isCriteriaValid = function() {
       var validCount = 0;
@@ -134,7 +134,7 @@ samOperationControllers.controller('SamOperationTopicCtrl', ['$scope', '$http',
         return true;
       }
       return false;
-    }
+    };
 
     $scope.removeCriteria = function(id) {
       for (var i in $scope.selected_atom) {
@@ -142,14 +142,14 @@ samOperationControllers.controller('SamOperationTopicCtrl', ['$scope', '$http',
           $scope.selected_atom[i].id = '';
         }
       }
-    }
+    };
 
     // Reset the criteria
     $scope.resetCriteria = function() {
       for (var i in $scope.selected_atom) {
         $scope.selected_atom[i].id = '';
       }
-    }
+    };
 
     $scope.isCriteriaValid = function() {
       var validCount = 0;
