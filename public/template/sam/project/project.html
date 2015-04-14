@@ -74,17 +74,6 @@
 					</a>
 				</div>
 			</div>
-			<!--
-	  <div class="item">
-		<a><b>开始时间</b></a>
-		<div class="menu">
-		  <div class="ui input icon">
-			<input type="text" placeholder="选取时间" />
-			<i class="data basic icon"></i>
-		  </div>
-		</div>
-	  </div>
-	  -->
 		</div>
 	</div>
 
@@ -115,15 +104,12 @@
 				<tr>
 					<th>应用</th>
 					<th>名称</th>
-					<th>状态</th>
 					<th>版本</th>
 					<th>JIRA</th>
 					<th>交互稿</th>
 					<th>视觉稿</th>
 					<th>产品</th>
 					<th>设计师</th>
-					<th>开始时间</th>
-					<th>结束时间</th>
 				</tr>
 			</thead>
 			<tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom) | filter:subSearch ">
@@ -137,7 +123,6 @@
 					<span class="program_text">{{project.program.name}}</span>
 				</td>
 				<td>{{project.name}}</td>
-				<td>{{project.status.name}}</td>
 				<td>{{project.related_version}}</td>
 				<td>
 					<a href="http://jira.vemic.com/browse/{{project.jira_uri}}"  ng-if="project.jira_uri" target="_blank">
@@ -160,8 +145,6 @@
 					<div ng-if="project.personnel_ga.name">{{project.personnel_ga.name}}</div>
 					<div ng-if="project.personnel_fe.name">{{project.personnel_fe.name}}</div>
 				</td>
-				<td>{{project.start_time}}</td>
-				<td>{{project.end_time}}</td>
 			</tr>
 		</table>
 	</div>

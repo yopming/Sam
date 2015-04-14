@@ -52,7 +52,7 @@ app.use(lessMiddleware(path.join(__dirname, 'public', 'less'), {
 	force: true,
 	debug: true
 }));
-app.use(serveStatic(__dirname + '/public'));
+app.use(serveStatic(path.join(__dirname, 'public')));
 
 app.use(cookieParser('samcookies'));
 app.use(session({
@@ -65,11 +65,11 @@ app.set('port', process.env.PORT || 1080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(flash());
-app.use(serveFavicon(__dirname + '/public/favicon.ico'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(serveFavicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // routers
 app.get('/', routes_sam.index);
@@ -162,6 +162,7 @@ if ('development' == app.get('env')) {
 
 // run server
 http.createServer(app).listen(app.get('port'), function () {
+	console.log(process.argv[2]);
 	console.log('Express server listening on port ' + app.get('port'));
 });
 
