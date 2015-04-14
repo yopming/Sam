@@ -47,12 +47,10 @@ app.use(compression());
 
 // less-middleware
 // sequence of lessMiddleware and express.static should be like this, not inverse
-app.use(lessMiddleware({
-	src: __dirname + '/public/less',
-	dest: __dirname + '/public/css',
-	prefix: '/css',
-	//force: true,
-	//debug: true
+app.use(lessMiddleware(path.join(__dirname, 'public', 'less'), {
+	dest: path.join(__dirname, 'public', 'css'),
+	force: true,
+	debug: true
 }));
 app.use(serveStatic(__dirname + '/public'));
 
