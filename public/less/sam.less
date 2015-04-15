@@ -1,10 +1,11 @@
-@import "./module/variable";
-@import "./module/mixin";
-@import "./module/normalize";
-@import "./module/semantic";
-@import "./module/selection";
-@import "./module/timeline";
-@import "./module/statistic";
+@import "module/variable";
+@import "module/mixin";
+@import "module/normalize";
+@import "module/semantic/semantic";
+
+@import "module/selection";
+@import "module/timeline";
+@import "module/statistic";
 
 #sam {
 	padding-top:33px;
@@ -227,7 +228,8 @@
 	}
 
 	.sam-timeline,
-	.sam-share {
+	.sam-share,
+	.sam-graphic {
 		padding:3em;
 		.feed {
 			padding:3em;

@@ -6,7 +6,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var http = require('http');
 var path = require('path');
-var lessMiddleware = require('less-middleware');
 var flash = require('express-flash');
 var minify = require('express-minify');
 var compression = require('compression');
@@ -17,6 +16,7 @@ var serveFavicon = require('serve-favicon');
 var morgan = require('morgan');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
+var lessCompiler = require('express-less-middlware');
 
 // mongoose setup
 require('./model/schema.js');
@@ -47,11 +47,7 @@ app.use(compression());
 
 // less-middleware
 // sequence of lessMiddleware and express.static should be like this, not inverse
-app.use(lessMiddleware(path.join(__dirname, 'public', 'less'), {
-	dest: path.join(__dirname, 'public', 'css'),
-	force: true,
-	debug: true
-}));
+lessCompiler = lessCompiler({publicDir: path.join(__dirname, 'public', 'less')});
 app.use(serveStatic(path.join(__dirname, 'public')));
 
 app.use(cookieParser('samcookies'));
@@ -162,7 +158,6 @@ if ('development' == app.get('env')) {
 
 // run server
 http.createServer(app).listen(app.get('port'), function () {
-	console.log(process.argv[2]);
 	console.log('Express server listening on port ' + app.get('port'));
 });
 

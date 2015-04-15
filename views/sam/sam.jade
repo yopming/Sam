@@ -17,6 +17,7 @@ html(ng-app="sam")
 		script(src="/mvc/sam/controller/operation_controller.js")
 		script(src="/mvc/sam/controller/reference_controller.js")
 		script(src="/mvc/sam/controller/share_controller.js")
+		script(src="/mvc/sam/controller/graphic_controller.js")
 		script(src="/mvc/sam/controller/timeline_controller.js")
 		script(src="/mvc/sam/service/project_service.js")
 		script(src="/mvc/sam/filter/project_filter.js")
@@ -39,6 +40,9 @@ html(ng-app="sam")
 			a.item(href="#!/share", sam-active="active")
 				i.book.icon
 				| 沙盒
+			a.item(href="#!/graphic", sam-active="active")
+				i.file.image.outline.icon
+				| 视觉稿
 			a.item(href="#!/timeline", sam-active="active")
 				i.time.icon
 				| 时间线
