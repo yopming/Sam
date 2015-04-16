@@ -16,7 +16,7 @@ var serveFavicon = require('serve-favicon');
 var morgan = require('morgan');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
-var lessCompiler = require('express-less-middlware');
+var lessMiddleware = require('less-middleware');
 
 // mongoose setup
 require('./model/schema.js');
@@ -47,7 +47,7 @@ app.use(compression());
 
 // less-middleware
 // sequence of lessMiddleware and express.static should be like this, not inverse
-lessCompiler = lessCompiler({publicDir: path.join(__dirname, 'public', 'less')});
+app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(serveStatic(path.join(__dirname, 'public')));
 
 app.use(cookieParser('samcookies'));
