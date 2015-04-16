@@ -1,7 +1,25 @@
 <div class="ui grid sam-topic">
 
 	<div class="three wide column">
-		<div class="ui vertical menu">
+        <!-- filter criteria area -->
+        <div class="criterias">
+            <div class="inputable ui input mini">
+                <input type="text" placeholder="文字筛选" ng-model="subSearch" />
+            </div>
+            <div class="clickable" ng-show="isCriteriaValid()">
+                <a class="ui black small label clearall" ng-click="resetCriteria()">
+                    清空筛选条件
+                </a>
+
+                <a class="ui teal label"
+                   ng-repeat="criteria in selected_atom" ng-show="criteria.id">
+                    {{ criteria.name }}
+                    <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
+                </a>
+            </div>
+        </div>
+
+		<div class="ui vertical menu filter">
 			<div class="item">
 				<a><b>归属</b></a>
 				<div class="menu">
@@ -56,25 +74,6 @@
 	</div>
 
 	<div class="thirteen wide column">
-		<!-- filter criteria area -->
-		<div class="criterias">
-			<div class="clickable" ng-show="isCriteriaValid()">
-				<a class="ui black small label clearall" ng-click="resetCriteria()">
-					清空筛选条件
-				</a>
-				<i class="ellipsis vertical icon"></i>
-
-				<a class="ui teal label"
-					ng-repeat="criteria in selected_atom" ng-show="criteria.id">
-					{{ criteria.name }}
-					<i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
-				</a>
-			</div>
-			<div class="inputable ui input mini">
-				<input type="text" placeholder="文字筛选" ng-model="subSearch" />
-			</div>
-		</div>
-
 		<div class="ui cards">
 			<div class="card" ng-repeat="topic in filtered = (topics | orderBy:'-end_time' | SamOperationTopicFilter:selected_atom) | filter:subSearch ">
 				<div class="image">
