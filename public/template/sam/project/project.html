@@ -1,7 +1,25 @@
 <div class="ui grid sam-project">
 
 	<div class="three wide column">
-		<div class="ui vertical menu">
+        <!-- filter criteria area -->
+        <div class="criterias">
+            <div class="inputable ui input mini">
+                <input type="text" placeholder="文字筛选" ng-model="subSearch" />
+            </div>
+            <div class="clickable" ng-show="isCriteriaValid()">
+                <a class="ui black small label clearall" ng-click="resetCriteria()">
+                    清空筛选条件
+                </a>
+
+                <a class="ui teal small label"
+                   ng-repeat="criteria in selected_atom" ng-show="criteria.id">
+                    {{ criteria.name }}
+                    <i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
+                </a>
+            </div>
+        </div>
+
+		<div class="ui vertical menu filter">
 			<div class="item">
 				<a><b>应用</b></a>
 				<div class="menu">
@@ -78,38 +96,19 @@
 	</div>
 
 	<div class="thirteen wide column">
-		<!-- filter criteria area -->
-		<div class="criterias">
-			<div class="clickable" ng-show="isCriteriaValid()">
-				<a class="ui black small label clearall" ng-click="resetCriteria()">
-					清空筛选条件
-				</a>
 
-				<i class="ellipsis vertical icon"></i>
-
-				<a class="ui teal small label"
-					ng-repeat="criteria in selected_atom" ng-show="criteria.id">
-					{{ criteria.name }}
-					<i class="delete icon" ng-click="removeCriteria(criteria.id)"></i>
-				</a>
-			</div>
-			<div class="inputable ui input mini">
-				<input type="text" placeholder="文字筛选" ng-model="subSearch" />
-			</div>
-		</div>
 
 		<!-- data area -->
-		<table class="ui table segment padded data_program">
+		<table class="ui table segment small data_program">
 			<thead>
 				<tr>
 					<th>应用</th>
 					<th>名称</th>
 					<th>版本</th>
-					<th>JIRA</th>
-					<th>交互稿</th>
-					<th>视觉稿</th>
-					<th>产品</th>
-					<th>设计师</th>
+					<th>JIRA（产品）</th>
+					<th>交互</th>
+					<th>视觉</th>
+					<th>前端</th>
 				</tr>
 			</thead>
 			<tr ng-repeat="project in filtered = (projects | orderBy: '-related_version' | SamProjectSideFilter:selected_atom) | filter:subSearch ">
@@ -125,24 +124,21 @@
 				<td>{{project.name}}</td>
 				<td>{{project.related_version}}</td>
 				<td>
-					<a href="http://jira.vemic.com/browse/{{project.jira_uri}}"  ng-if="project.jira_uri" target="_blank">
+					<a href="http://jira.vemic.com/browse/{{project.jira_uri}}"
+						ng-if="project.jira_uri" target="_blank">
 						{{project.jira_uri}}
 					</a>
+                    <div class="sub" ng-if="project.personnel_pd">{{project.personnel_pd.name}}</div>
 				</td>
 				<td>
-					<a href="{{project.ix_uri}}" ng-if="project.ix_uri" target="_blank">
-						查看
-					</a>
+					<a href="{{project.ix_uri}}" ng-if="project.ix_uri" target="_blank">查看</a>
+					<div class="sub" ng-if="project.personnel_ia">{{project.personnel_ia.name}}</div>
 				</td>
 				<td>
-					<a href="{{project.gandolf_uri}}" ng-if="project.gandolf_uri" target="_blank">
-						查看
-					</a>
+					<a href="{{project.gandolf_uri}}" ng-if="project.gandolf_uri" target="_blank">查看 </a>
+					<div class="sub" ng-if="project.personnel_ga.name">{{project.personnel_ga.name}}</div>
 				</td>
-				<td><div ng-if="project.personnel_pd">{{project.personnel_pd.name}}</div></td>
 				<td>
-					<div ng-if="project.personnel_ia">{{project.personnel_ia.name}}</div>
-					<div ng-if="project.personnel_ga.name">{{project.personnel_ga.name}}</div>
 					<div ng-if="project.personnel_fe.name">{{project.personnel_fe.name}}</div>
 				</td>
 			</tr>

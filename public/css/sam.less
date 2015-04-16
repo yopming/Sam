@@ -1,11 +1,7 @@
-@import "module/variable";
-@import "module/mixin";
-@import "module/normalize";
-@import "module/semantic/semantic";
-
-@import "module/selection";
-@import "module/timeline";
-@import "module/statistic";
+@import "_global";
+@import "_module/_selection/_selection";
+@import "_module/_timeline/_timeline";
+@import "_module/_statistic/_statistic";
 
 #sam {
 	padding-top:33px;
@@ -59,10 +55,12 @@
 	.sam-project,
 	.sam-mail,
 	.sam-topic {
+	    overflow: hidden;
 		.column {
 			height:100%;
 			margin:0;
-			overflow-y:scroll;
+			padding-top:0px;
+
 			&.three {
 				.box-shadow(0 0 20px #ccc);
 				background:#fff;
@@ -76,39 +74,44 @@
 						.menu {
 							margin-top:10px;
 						}
-					}
-					a {
-						margin-bottom:5px;
+						&:not(.dropdown) {
+						    > .menu {
+						        > .item {
+                                    padding:.3rem 1rem;
+                                }
+                            }
+                        }
 					}
 				}
+				.filter {
+				    overflow-y: scroll;
+				    margin-top: 0;
+				    border-top: 1px solid #eee;
+                }
 			}
 			&.thirteen {
+                overflow: auto;
 				.padding-horizontal(15px);
 			}
 		}
 
 		.criterias {
-			@criteriasHeight: 36px;
-			position:relative;
-			padding-left:100px;
-			padding-right:200px;
-			height: @criteriasHeight;
+			width: 226px;
+			margin: 7px 10px;
 			.clearfix();
 			.clickable {
-				float:left;
-				margin-top:8px;
-				.clearall {
-					position:absolute;
-					left:0;
-				}
+			    margin-top:5px;
 				.teal.label {
+				    margin: 1px 0;
 					cursor:default;
+					display: block;
+					.icon {
+                        float: right;
+                    }
 				}
 			}
 			.inputable {
-				position:absolute;
-				right:0;
-				width:200px;
+				width:225px;
 			}
 
 			.ui-match{
@@ -138,6 +141,14 @@
 		.data_program th,
 		.data_program td {
 			white-space:nowrap;
+			vertical-align:top;
+			.sub {
+			    color:#777;
+			}
+			a+.sub {
+			    font-size:13px;
+			    margin-top:4px;
+            }
 		}
 		.cate_icon_o {
 			background-image:url(/img/category/xyz.png);
