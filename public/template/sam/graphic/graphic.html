@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <table class="ui celled striped table">
+    <table class="ui celled table">
         <thead>
             <tr>
             <th colspan="3">{currentDirectory</th>
@@ -34,18 +34,20 @@
         <tbody>
             <tr ng-repeat="node in filtered = (nodes | orderBy: '-type')">
                 <td class="collapsing">
-                    <ng-if="node.type == 'Directory'">
+                    <div ng-if="node.type == 'Directory'">
                         <a href="{{node.name}}">
                             <i class="folder icon"></i> {{node.name}}
                         </a>
-                    </ng-if>
-                    <ng-if="node.type == 'File'">
+                    </div>
+                    <div ng-if="node.type == 'File'">
                         <a href="{{node.down}}" target="_blank">
                             <i class="file image outline icon"></i> {{node.name}}
                         </a>
-                    </ng-if>
+                    </div>
                 </td>
-                <td>{{node.size}}</td>
+                <td>
+                    <div ng-if="node.type == 'File'">{{node.size}}</div>
+                </td>
                 <td class="right aligned collapsing">{{node.time}}</td>
             </tr>
         </tbody>
