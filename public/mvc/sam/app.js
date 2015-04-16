@@ -9,6 +9,7 @@ var samApp = angular.module('sam', [
     'samGraphicControllers',
     'samTimelineControllers',
     'samProjectServices',
+    'samGraphicServices',
     'samProjectFilters',
     'samOperationFilters',
     'samDirectives'

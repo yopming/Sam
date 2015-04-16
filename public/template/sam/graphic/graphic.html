@@ -1,21 +1,53 @@
 <div class="sam-graphic">
 
-    <div class="ui menu">
-        <div class="ui breadcrumb">
-            <a class="section">Home</a>
-            <i class="right chevron icon divider"></i>
-            <a class="section">Registration</a>
-            <i class="right chevron icon divider"></i>
-            <div class="active section">Personal Information</div>
-        </div>
+    <div class="ui segment stacked topbar">
+        <div class="ui grid">
+            <div class="thirteen wide column">
+                <div class="ui breadcrumb">
+                    <a class="section">Home</a>
+                    <i class="right chevron icon divider"></i>
+                    <a class="section">Registration</a>
+                    <i class="right chevron icon divider"></i>
+                    <div class="active section">Personal Information</div>
+                </div>
+            </div>
 
-        <div class="right menu">
-            <div class="item">
-                <div class="ui transparent icon input">
-                    <input type="text" placeholder="搜索文件">
-                    <i class="search link icon"></i>
+            <div class="three wide column">
+                <div class="right menu searchBar">
+                    <div class="item">
+                        <div class="ui transparent icon input">
+                            <input type="text" placeholder="搜索文件">
+                            <i class="search link icon"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <table class="ui celled striped table">
+        <thead>
+            <tr>
+            <th colspan="3">{currentDirectory</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="node in filtered = (nodes | orderBy: '-type')">
+                <td class="collapsing">
+                    <ng-if="node.type == 'Directory'">
+                        <a href="{{node.name}}">
+                            <i class="folder icon"></i> {{node.name}}
+                        </a>
+                    </ng-if>
+                    <ng-if="node.type == 'File'">
+                        <a href="{{node.down}}" target="_blank">
+                            <i class="file image outline icon"></i> {{node.name}}
+                        </a>
+                    </ng-if>
+                </td>
+                <td>{{node.size}}</td>
+                <td class="right aligned collapsing">{{node.time}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
