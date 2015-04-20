@@ -1,14 +1,22 @@
 <div class="sam-graphic">
 
     <table class="ui table">
+        <colgroup>
+            <col style="">
+            <col style="width:5%;">
+            <col style="width:7%;">
+            <col style="width:10%;">
+        </colgroup>
         <thead>
             <tr>
                 <th colspan="2">
-                    <a class="section">Home</a>
-                    <i class="right chevron icon divider"></i>
-                    <a class="section">Registration</a>
-                    <i class="right chevron icon divider"></i>
-                    <span class="active section">Personal Information</span>
+                    <div class="ui breadcrumb">
+                        <a href="" class="section">视觉稿</a>
+                        <div class="divider"> / </div>
+                        <a class="section">Registration</a>
+                        <div class="divider"> / </div>
+                        <div class="active section">Personal Information</div>
+                    </div>
                 </th>
                 <th colspan="2">
                     <div class="ui mini icon input searchBar">
@@ -32,11 +40,11 @@
                         </a>
                     </div>
                 </td>
+                <td><a href=""><i class="qrcode icon"></i></span></td>
                 <td>
-                    <div ng-if="node.type == 'File'">{{node.size}}</div>
+                    <div class="subsidiary" ng-if="node.type == 'File'">{{node.size}}</div>
                 </td>
-                <td></td>
-                <td class="right aligned collapsing">{{node.human_time}}</td>
+                <td class="right aligned collapsing subsidiary">{{node.human_time}}</td>
             </tr>
         </tbody>
     </table>
