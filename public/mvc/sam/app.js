@@ -40,7 +40,11 @@ samApp.config(['$locationProvider', '$routeProvider',
             }).
             when('/graphic', {
                 templateUrl: '/template/sam/graphic/graphic.html',
-                controller: 'SamGraphicCtrl'
+                controller: 'SamGraphicRootCtrl'
+            }).
+            when('/graphic/:path', {
+                templateUrl: '/template/sam/graphic/graphic.html',
+                controller: 'SamGraphicViewerCtrl'
             }).
             when('/timeline', {
                 templateUrl: '/template/sam/timeline/timeline.html',

@@ -11,7 +11,7 @@
             <tr>
                 <th colspan="2">
                     <div class="ui breadcrumb">
-                        <a href="" class="section">视觉稿</a>
+                        <a href="/#!/graphic" class="section">视觉稿</a>
                         <div class="divider"> / </div>
                         <a class="section">Registration</a>
                         <div class="divider"> / </div>
@@ -20,7 +20,7 @@
                 </th>
                 <th colspan="2">
                     <div class="ui mini icon input searchBar">
-                        <input type="text" placeholder="Search...">
+                        <input type="text">
                         <i class="search icon"></i>
                     </div>
                 </th>
@@ -30,12 +30,12 @@
             <tr ng-repeat="node in nodes | orderBy:['type', 'name']">
                 <td class="collapsing">
                     <div ng-if="node.type == 'Directory'">
-                        <a href="{{node.name}}">
+                        <a href="/#!/graphic/{{node.name}}">
                             <i class="folder icon"></i> {{node.name}}
                         </a>
                     </div>
                     <div ng-if="node.type == 'File'">
-                        <a href="{{node.down}}" target="_blank">
+                        <a href="/#!/graphic/{{node.down}}" target="_blank">
                             <i class="file image outline icon"></i> {{node.name}}
                         </a>
                     </div>
@@ -44,7 +44,9 @@
                 <td>
                     <div class="subsidiary" ng-if="node.type == 'File'">{{node.size}}</div>
                 </td>
-                <td class="right aligned collapsing subsidiary">{{node.human_time}}</td>
+                <td class="right aligned collapsing subsidiary">
+                    <span title="{{node.time}}">{{node.human_time}}</span>
+                </td>
             </tr>
         </tbody>
     </table>
