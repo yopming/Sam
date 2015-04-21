@@ -21,10 +21,11 @@ samGraphicControllers.controller('SamGraphicRootCtrl', ['$scope', '$http',
 samGraphicControllers.controller('SamGraphicViewerCtrl', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
         var master = $location.url().split("/graphic")[1];
-        console.log($location.url());
-        console.log(master);
         $http.get(remoteServer + master).success(function(data) {
             $scope.nodes = _.toArray(data);
         });
+
+        var crumbs = $location.url().split("/graphic/")[1].split("/");
+        $scope.crumbs = crumbs;
     }
 ]);

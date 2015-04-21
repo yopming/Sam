@@ -1,7 +1,6 @@
 var samApp = angular.module('sam', [
     'ngRoute',
     'ngSanitize',
-    'rt.encodeuri',
     'samDashboardControllers',
     'samProjectControllers',
     'samOperationControllers',
@@ -44,7 +43,7 @@ samApp.config(['$locationProvider', '$routeProvider',
                 templateUrl: '/template/sam/graphic/graphic.html',
                 controller: 'SamGraphicRootCtrl'
             }).
-            when('/graphic/:path', {
+            when('/graphic/:path*', {
                 templateUrl: '/template/sam/graphic/graphic.html',
                 controller: 'SamGraphicViewerCtrl'
             }).

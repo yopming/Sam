@@ -12,10 +12,10 @@
                 <th colspan="2">
                     <div class="ui breadcrumb">
                         <a href="/#!/graphic" class="section">视觉稿</a>
-                        <div class="divider"> / </div>
-                        <a class="section">Registration</a>
-                        <div class="divider"> / </div>
-                        <div class="active section">Personal Information</div>
+                        <span ng-repeat="crumb in crumbs">
+                            <div class="divider"> / </div>
+                            <a class="section" href="">{{crumb | decode}}</a>
+                        </span>
                     </div>
                 </th>
                 <th colspan="2">
@@ -40,7 +40,9 @@
                         </a>
                     </div>
                 </td>
-                <td><a href=""><i class="qrcode icon"></i></span></td>
+                <td>
+                    <a href=""><i class="qrcode icon"></i></span>
+                </td>
                 <td>
                     <div class="subsidiary" ng-if="node.type == 'File'">{{node.size}}</div>
                 </td>
