@@ -1,6 +1,7 @@
 var samApp = angular.module('sam', [
     'ngRoute',
     'ngSanitize',
+    'rt.encodeuri',
     'samDashboardControllers',
     'samProjectControllers',
     'samOperationControllers',
@@ -9,6 +10,7 @@ var samApp = angular.module('sam', [
     'samGraphicControllers',
     'samTimelineControllers',
     'samProjectServices',
+    'urlFilters',
     'samProjectFilters',
     'samOperationFilters',
     'samDirectives'
@@ -51,7 +53,6 @@ samApp.config(['$locationProvider', '$routeProvider',
                 controller: 'SamTimelineCtrl'
             }).
             otherwise({
-                redirectTo: '/'
             });
     }
 ]);

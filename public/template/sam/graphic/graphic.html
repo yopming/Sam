@@ -30,12 +30,12 @@
             <tr ng-repeat="node in nodes | orderBy:['type', 'name']">
                 <td class="collapsing">
                     <div ng-if="node.type == 'Directory'">
-                        <a href="/#!/graphic/{{node.name}}">
+                        <a href="/#!/graphic/{{node.down}}" title="{{node.down}}">
                             <i class="folder icon"></i> {{node.name}}
                         </a>
                     </div>
                     <div ng-if="node.type == 'File'">
-                        <a href="/#!/graphic/{{node.down}}" target="_blank">
+                        <a href="{{node.down}}" target="_blank">
                             <i class="file image outline icon"></i> {{node.name}}
                         </a>
                     </div>
