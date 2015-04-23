@@ -27,5 +27,8 @@ samGraphicControllers.controller('SamGraphicViewerCtrl', ['$scope', '$http', '$l
 
         var crumbs = $location.url().split("/graphic/")[1].split("/");
         $scope.crumbs = crumbs;
+
+        var crumbs = new Array();
+
     }
 ]);
