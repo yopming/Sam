@@ -26,9 +26,18 @@ samGraphicControllers.controller('SamGraphicViewerCtrl', ['$scope', '$http', '$l
         });
 
         var crumbs = $location.url().split("/graphic/")[1].split("/");
-        $scope.crumbs = crumbs;
 
-        var crumbs = new Array();
+        var breadcrumb = new Array();
+        var link = "/#!/graphic";
+        for (var i=0; i<crumbs.length; i++) {
+            link += ("/" + crumbs[i]);
+            var _bread = new Array(link, crumbs[i]);
+            breadcrumb[i] = _bread;
+        }
+
+        console.log(crumbs);
+        console.log(breadcrumb);
+        $scope.breadcrumb = breadcrumb;
 
     }
 ]);
