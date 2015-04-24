@@ -12,9 +12,9 @@
                 <th colspan="2">
                     <div class="ui breadcrumb">
                         <a href="/#!/graphic" class="section">视觉稿</a>
-                        <span ng-repeat="crumb in crumbs">
+                        <span ng-repeat="bread in breadcrumb">
                             <div class="divider"> / </div>
-                            <a class="section" href="">{{crumb | decode}}</a>
+                            <a class="section" href="{{bread[0] | decode }}">{{bread[1] | decode}}</a>
                         </span>
                     </div>
                 </th>
