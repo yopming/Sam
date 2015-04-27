@@ -2,15 +2,20 @@ var samGraphicControllers = angular.module('samGraphicControllers', []);
 
 var remoteServer = 'http://192.168.17.135:54321/files';
 
-
 /*
  * Graphic Root
  */
-samGraphicControllers.controller('SamGraphicRootCtrl', ['$scope', '$http',
-    function($scope, $http) {
-        $http.get(remoteServer).success(function(data) {
+samGraphicControllers.controller('SamGraphicRootCtrl', ['$scope', '$http', 'SamGraphicService',
+    function ($scope, $http, SamGraphicService) {
+        $http.get(remoteServer).success(function (data) {
             $scope.nodes = _.toArray(data);
         });
+
+        $scope.Shorten = function(node) {
+            node_url = $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#!/graphic/" + node.down;
+            var result = SamGraphicService.shortenUrl(node_url);
+            console.log(result);
+        };
     }
 ]);
 
@@ -18,10 +23,10 @@ samGraphicControllers.controller('SamGraphicRootCtrl', ['$scope', '$http',
 /*
  * Graphic Viewer
  */
-samGraphicControllers.controller('SamGraphicViewerCtrl', ['$scope', '$http', '$location',
-    function($scope, $http, $location) {
+samGraphicControllers.controller('SamGraphicViewerCtrl', ['$scope', '$http', '$location', 'SamGraphicService',
+    function ($scope, $http, $location, SamGraphicService) {
         var master = $location.url().split("/graphic")[1];
-        $http.get(remoteServer + master).success(function(data) {
+        $http.get(remoteServer + master).success(function (data) {
             $scope.nodes = _.toArray(data);
         });
 
@@ -35,9 +40,12 @@ samGraphicControllers.controller('SamGraphicViewerCtrl', ['$scope', '$http', '$l
             breadcrumb[i] = _bread;
         }
 
-        console.log(crumbs);
-        console.log(breadcrumb);
         $scope.breadcrumb = breadcrumb;
 
+        $scope.Shorten = function(node) {
+            node_url = $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#!/graphic/" + node.down;
+            var result = SamGraphicService.shortenUrl(node_url);
+            console.log(result);
+        };
     }
 ]);
