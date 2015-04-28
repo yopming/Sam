@@ -1,11 +1,10 @@
 <div class="sam-graphic">
-
     <table class="ui compact table">
         <colgroup>
             <col style="">
-            <col style="width:10%;">
-            <col style="width:7%;">
-            <col style="width:10%;">
+                <col style="width:10%;">
+                    <col style="width:7%;">
+                        <col style="width:10%;">
         </colgroup>
         <thead>
             <tr>
@@ -41,9 +40,22 @@
                     </div>
                 </td>
                 <td>
-                    <a ng-click="Shorten(node)"/><i class="qrcode icon"></i></a>
-                    <a href=""><i class="share alternate icon"></i></a>
-                    <qrcode data=""></qrcode> 
+                    <div ng-if="node.type == 'Directory'">
+                        <a ng-click="" />
+                            <i class="qrcode icon"></i>
+                        </a>
+                        <a ng-tooltip="ShortenForDir(node)">
+                            <i class="share alternate icon"></i>
+                        </a>
+                    </div>
+                    <div ng-if="node.type == 'File'">
+                        <a ng-click="" />
+                            <i class="qrcode icon"></i>
+                        </a>
+                        <a ng-click="ShowTooltip">
+                            <i class="share alternate icon"></i>
+                        </a>
+                    </div>
                 </td>
                 <td>
                     <div class="subsidiary" ng-if="node.type == 'File'">{{node.size}}</div>
