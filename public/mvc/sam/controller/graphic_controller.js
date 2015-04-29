@@ -6,11 +6,22 @@ var remoteServer = 'http://192.168.17.135:54321/files';
 /*
  * Graphic Viewer
  */
-samGraphicControllers.controller('SamGraphicCtrl', ['$scope', '$http', '$location', 'SamGraphicService',
-    function($scope, $http, $location, SamGraphicService) {
+samGraphicControllers.controller('SamGraphicCtrl',
+    ['$scope', '$http', '$location', 'ngDialog', 'SamGraphicService',
+
+    function($scope, $http, $location, ngDialog, SamGraphicService) {
+
         var master = $location.url().split("/graphic")[1];
         $http.get(remoteServer + master).success(function(data) {
-            $scope.nodes = _.toArray(data);
+            var serial = _.toArray(data);
+
+            $scope.nodes = serial;
+
+            for (var i=serial.length-1; i>0; i--) {
+                if (serial[i]['name'] == 'readme.txt') {
+                    console.log(serial[i].content);
+                }
+            }
         });
 
         // internal page, the root page won't do this function
@@ -26,23 +37,28 @@ samGraphicControllers.controller('SamGraphicCtrl', ['$scope', '$http', '$locatio
             $scope.breadcrumb = breadcrumb;
         }
 
-        $scope.ShortenForDir = function(node) {
-            node_url = $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#!/graphic/" + node.down;
-
-            var request = SamGraphicService.shorten(node_url);
-            request.success(function(data) {
-                return data['shorten'];
-            });
-        };
-
-        $scope.ShortenForFile = function(node) {
-            var request = SamGraphicService.shorten(node);
-            request.success(function(data) {
-                return data['shorten'];
-            });
-        };
-
         $scope.ShowTooltip = function() {
+            var link = "";
+            var tar = angular.element(event.target)[0];
+            var type = tar.attributes['data-type'].value;
+            var down = tar.attributes['data-down'].value;
+
+            if (type == 'File') {
+                link = down;
+            } else if (type == 'Directory') {
+                link = $location.protocol() + "://" + $location.host() + ":" + $location.port() + "/#!/graphic/" + down;
+            }
+
+            var request = SamGraphicService.shorten(link);
+            request.success(function(data) {
+                $scope.link = data['shorten'];
+                ngDialog.open({
+                    template: 'sam-dialog',
+                    scope: $scope,
+                    className: 'ngdialog-theme-default sam-dialog-slim',
+                    showClose: false
+                });
+            });
         };
     }
 ]);

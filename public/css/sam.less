@@ -2,7 +2,10 @@
 @import "_module/_selection/_selection";
 @import "_module/_timeline/_timeline";
 @import "_module/_statistic/_statistic";
-@import "_module/_tooltip/_tooltip";
+@import "_module/_dialog/_dialog";
+@import "_module/_dialog/_dialog-theme-default";
+@import "_module/_dialog/_dialog-theme-plain";
+@import "_module/_markdown/_markdown";
 
 #sam {
 	padding-top:33px;
@@ -275,5 +278,26 @@
             font-size:12px;
         }
     }
+
+    // Dialog
+    .sam-dialog-slim {
+    	.ngdialog-content {
+    		width: 290px;
+    		padding: 15px;
+    		.cardwrap {
+    			width: 260px;
+    		}
+    		qr {
+    			height: 260px;
+    			display: block;
+    			overflow: hidden;
+    		}
+    		.extra {
+    			text-align: center;
+    			color: #000;
+    		}
+    	}
+    }
+
 
 }

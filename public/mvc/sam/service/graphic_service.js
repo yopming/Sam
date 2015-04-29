@@ -20,7 +20,7 @@ samGraphicServices.service('SamGraphicService', ['$http',
                 }
             });
 
-            return (request)
+            return (request);
         }
 
     }

@@ -1,69 +1,77 @@
 <div class="sam-graphic">
-    <table class="ui compact table">
-        <colgroup>
-            <col style="">
-                <col style="width:10%;">
+    <div class="ui grid">
+        <div class="ten wide column">
+            <table class="ui compact striped table">
+                <colgroup>
+                    <col style="">
+                    <col style="width:10%;">
                     <col style="width:7%;">
-                        <col style="width:10%;">
-        </colgroup>
-        <thead>
-            <tr>
-                <th colspan="2">
-                    <div class="ui breadcrumb">
-                        <a href="/#!/graphic" class="section">视觉稿</a>
-                        <span ng-repeat="bread in breadcrumb">
-                            <div class="divider"> / </div>
-                            <a class="section" href="{{bread[0] | decode }}">{{bread[1] | decode}}</a>
-                        </span>
-                    </div>
-                </th>
-                <th colspan="2">
-                    <div class="ui mini icon input searchBar">
-                        <input type="text">
-                        <i class="search icon"></i>
-                    </div>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="node in nodes | orderBy:['type', 'name']">
-                <td class="collapsing">
-                    <div ng-if="node.type == 'Directory'">
-                        <a href="/#!/graphic/{{node.down}}" title="{{node.down}}">
-                            <i class="folder icon"></i> {{node.name}}
-                        </a>
-                    </div>
-                    <div ng-if="node.type == 'File'">
-                        <a href="{{node.down}}" target="_blank">
-                            <i class="file image outline icon"></i> {{node.name}}
-                        </a>
-                    </div>
-                </td>
-                <td>
-                    <div ng-if="node.type == 'Directory'">
-                        <a ng-click="" />
-                            <i class="qrcode icon"></i>
-                        </a>
-                        <a ng-tooltip="ShortenForDir(node)">
-                            <i class="share alternate icon"></i>
-                        </a>
-                    </div>
-                    <div ng-if="node.type == 'File'">
-                        <a ng-click="" />
-                            <i class="qrcode icon"></i>
-                        </a>
-                        <a ng-click="ShowTooltip">
-                            <i class="share alternate icon"></i>
-                        </a>
-                    </div>
-                </td>
-                <td>
-                    <div class="subsidiary" ng-if="node.type == 'File'">{{node.size}}</div>
-                </td>
-                <td class="right aligned collapsing subsidiary">
-                    <span title="{{node.time}}">{{node.human_time}}</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <col style="width:10%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <div class="ui breadcrumb">
+                                <a href="/#!/graphic" class="section">视觉稿</a>
+                                <span ng-repeat="bread in breadcrumb">
+                                    <div class="divider"> / </div>
+                                    <a class="section" href="{{bread[0] | decode }}">{{bread[1] | decode}}</a>
+                                </span>
+                            </div>
+                        </th>
+                        <th colspan="2">
+                            <div class="ui mini icon input searchBar">
+                                <input type="text">
+                                <i class="search icon"></i>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="node in nodes | orderBy:['type', 'name']">
+                        <td class="collapsing">
+                            <div ng-if="node.type == 'Directory'">
+                                <a href="/#!/graphic/{{node.down}}">
+                                    <i class="folder icon"></i> {{node.name}}
+                                </a>
+                            </div>
+                            <div ng-if="node.type == 'File'">
+                                <a href="{{node.down}}" target="_blank">
+                                    <i class="file image outline icon"></i> {{node.name}}
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ui basic compact mini button" ng-click="ShowTooltip()" data-type="{{node.type}}" data-down="{{node.down}}">
+                                Link
+                            </div>
+                        </td>
+                        <td>
+                            <div class="subsidiary" ng-if="node.type == 'File'">{{node.size}}</div>
+                        </td>
+                        <td class="right aligned collapsing subsidiary">
+                            <span title="{{node.time}}">{{node.human_time}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="six wide column">
+            <div class="ui stacked segment">
+                <div class="MD" url="{{readme}}" />
+            </div>
+      </div>
+    </div>
 </div>
+
+
+<script type="text/ng-template" id="sam-dialog">
+    <div class="column cardwrap">
+        <div class="ui card">
+            <div class="image">
+                <qr text="link" size="260"></qr>
+            </div>
+            <div class="extra content">{{link}}</div>
+        </div>
+    </div>
+</script>

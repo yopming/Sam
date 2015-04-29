@@ -13,22 +13,13 @@ samDirectives.directive('samActive', ['$location',
                 path = path.substring(2); // '#!'
                 scope.location = $location;
                 scope.$watch('location.path()', function(newPath) {
-                    if (newPath.indexOf(path) == 0) {
+                    if (newPath.indexOf(path) === 0) {
                         element.addClass(classname);
                     } else {
                         element.removeClass(classname);
                     }
                 });
             }
-        }
-    }
-]);
-
-
-/*
- * Toggle Tooltip
- */
-samDirectives.directive('samTooltip', [,
-    function() {
+        };
     }
 ]);
