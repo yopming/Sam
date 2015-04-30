@@ -49,11 +49,12 @@
 			<div ng-if="topic.topic_deploy_channel_tmall">天猫</div>
 		</td>
 		<td>
-			<div class="ui tiny buttons">
-				<a href="#!/topic/edit/{{topic._id}}" class="ui button positive">编辑</a>
-				<div class="or"></div>
-				<a ng-click="deleteTopic(topic._id)" class="ui button">删除</a>
-			</div>
+			<a href="#!/topic/edit/{{topic._id}}"
+				class="ui button tiny compact">编辑</a>
+			<a ng-click="deleteTopic(topic._id)"
+				class="ui button icon tiny compact">
+				<i class="remove icon"></i>
+			</a>
 		</td>
 	</tr>
 	</tbody>

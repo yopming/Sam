@@ -17,61 +17,51 @@
 <table class="ui table segment">
 	<thead>
 		<tr>
-			<th>状态</th>
 			<th>应用</th>
 			<th>名称</th>
 			<th>JIRA</th>
 			<th>交互稿</th>
-			<th>Gandolf</th>
-			<th>开始时间</th>
-			<th>结束时间</th>
-			<th>产品</th>
-			<th>设计师</th>
+			<th>视觉稿</th>
+			<th>前端</th>
 			<th>版本</th>
 			<th>编辑</th>
 		</tr>
 	</thead>
 	<tbody>
 	<tr ng-repeat="project in filtered = (projects | orderBy: '-related_version') | filter:subSearch">
-		<td>{{project.status.name}}</td>
 		<td>{{project.program.name}}</td>
 		<td>{{project.name}}</td>
 		<td>
 			<a href="http://jira.vemic.com/browse/{{project.jira_uri}}" ng-if="project.jira_uri"  target="_blank">
 				{{project.jira_uri}}
 			</a>
+			<div class="sub">{{project.personnel_pd.name}}</div>
 		</td>
 		<td>
 			<a href="{{project.ix_uri}}" ng-if="project.ix_uri" target="_blank">
 				查看
 			</a>
+			<div class="sub">{{project.personnel_ia.name}}</div>
 		</td>
 		<td>
 			<a href="{{project.gandolf_uri}}" ng-if="project.gandolf_uri" target="_blank">
 				查看
 			</a>
+			<div class="sub">{{project.personnel_ga.name}}</div>
 		</td>
-		<td>{{project.start_time}}</td>
-		<td>{{project.end_time}}</td>
-		<td>{{project.personnel_pd.name}}</td>
 		<td>
-			<div ng-if="project.personnel_ia.name">
-				{{project.personnel_ia.name}}
-			</div>
-			<div ng-if="project.personnel_ga.name">
-				{{project.personnel_ga.name}}
-			</div>
 			<div ng-if="project.personnel_fe.name">
 				{{project.personnel_fe.name}}
 			</div>
 		</td>
 		<td>{{project.related_version}}</td>
 		<td>
-			<div class="ui tiny buttons">
-				<a href="#!/project/edit/{{project._id}}" class="ui button positive">编辑</a>
-				<div class="or"></div>
-				<a ng-click="deleteProject(project._id)" class="ui button">删除</a>
-			</div>
+			<a href="#!/project/edit/{{project._id}}"
+				class="ui button tiny compact">编辑</a>
+			<a ng-click="deleteProject(project._id)" 
+				class="ui button icon tiny compact">
+				<i class="remove icon"></i>
+			</a>
 		</td>
 	</tr>
 	</tbody>

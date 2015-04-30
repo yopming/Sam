@@ -29,11 +29,12 @@
 			<td>{{share.time}}</td>
 			<td>{{share.author.name}}</td>
 			<td>
-				<div class="ui tiny buttons">
-					<a href="#!/share/edit/{{share._id}}" class="ui button positive">编辑</a>
-					<div class="or"></div>
-					<a ng-click="deleteShare(share._id)" class="ui button">删除</a>
-				</div>
+				<a href="#!/share/edit/{{share._id}}"
+					class="ui button tiny compact">编辑</a>
+				<a ng-click="deleteShare(share._id)"
+					class="ui button icon tiny compact">
+					<i class="remove icon"></i>
+				</a>
 			</td>
 		</tr>
 	</tbody>

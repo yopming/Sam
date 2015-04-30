@@ -39,11 +39,12 @@
 			</i>
 		</td>
 		<td>
-			<div class="ui tiny buttons">
-				<a href="#!/mail/edit/{{mail._id}}" class="ui button positive">编辑</a>
-				<div class="or"></div>
-				<a ng-click="deleteMail(mail._id)" class="ui button">删除</a>
-			</div>
+			<a href="#!/mail/edit/{{mail._id}}"
+				class="ui button tiny compact">编辑</a>
+			<a ng-click="deleteMail(mail._id)"
+				class="ui button icon tiny compact">
+				<i class="remove icon"></i>
+			</a>
 		</td>
 	</tr>
 	</tbody>
