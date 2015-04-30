@@ -62,7 +62,7 @@ html(ng-app="admin")
 
 					div.userBar
 						div.ui.celled.horizontal.list
-							span.item= user.username
+							span.item= current_user.username
 						a.item.logout(href='/signout')
 							i.sign.out.icon
 							|登出
