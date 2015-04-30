@@ -10,19 +10,13 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th colspan="2">
+                        <th colspan="4">
                             <div class="ui breadcrumb">
                                 <a href="/#!/graphic" class="section">视觉稿</a>
                                 <span ng-repeat="bread in breadcrumb">
                                     <div class="divider"> / </div>
                                     <a class="section" href="{{bread[0] | decode }}">{{bread[1] | decode}}</a>
                                 </span>
-                            </div>
-                        </th>
-                        <th colspan="2">
-                            <div class="ui mini icon input searchBar">
-                                <input type="text">
-                                <i class="search icon"></i>
                             </div>
                         </th>
                     </tr>
@@ -58,7 +52,7 @@
         </div>
         <div class="six wide column">
             <div class="ui stacked segment">
-                <div class="MD" url="{{readme}}" />
+                <div class="MD" ng-bind-html="readme"></div>
             </div>
       </div>
     </div>

@@ -20,6 +20,7 @@ samGraphicControllers.controller('SamGraphicCtrl',
             for (var i=serial.length-1; i>0; i--) {
                 if (serial[i]['name'] == 'readme.txt') {
                     console.log(serial[i].content);
+                    $scope.readme = marked(serial[i].content);
                 }
             }
         });
