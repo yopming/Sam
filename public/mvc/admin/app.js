@@ -62,13 +62,11 @@ adminApp.config(['$locationProvider', '$routeProvider',
 		}).
 		when('/share/add', {
 			templateUrl: '/template/admin/share/share_add.html',
-			controller: 'AdminShareAddCtrl',
-			css: ['/css/simditor.css', '/css/simditor-fontAwesome.css']
+			controller: 'AdminShareAddCtrl'
 		}).
 		when('/share/edit/:id', {
 			templateUrl: '/template/admin/share/share_edit.html',
-			controller: 'AdminShareEditCtrl',
-			css: ['/css/simditor.css', '/css/simditor-fontAwesome.css']
+			controller: 'AdminShareEditCtrl'
 		}).
 
 		when('/media', {
