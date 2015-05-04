@@ -1,6 +1,6 @@
 <div class="sam-graphic">
     <div class="ui grid">
-        <div class="ten wide column">
+        <div class="sixteen wide column">
             <table class="ui compact striped table">
                 <colgroup>
                     <col style="">
@@ -50,11 +50,13 @@
                 </tbody>
             </table>
         </div>
-        <div class="six wide column">
+
+        <div class="sixteen wide column" ng-if="readme">
             <div class="ui stacked segment">
                 <div class="MD" ng-bind-html="readme"></div>
             </div>
-      </div>
+        </div>
+
     </div>
 </div>
 
