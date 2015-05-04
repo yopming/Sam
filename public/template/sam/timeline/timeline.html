@@ -1,33 +1,35 @@
 <div class="sam-timeline">
 
-		<ul class="timeline">
-			<li ng-repeat="timeline in timelines" ng-if="timeline.end_time">
+	<ul class="timeline">
+		<li ng-repeat="timeline in timelines" ng-if="timeline.end_time"
+			ng-class="{
+				'timeline-inverted': $index%2==0,
+				'timeline-blue': timeline.category=='project',
+				'timeline-red': timeline.category=='mail',
+				'timeline-green': timeline.category=='topic'}">
 
-				<div class="timeline-node">
-					{{timeline.end_time}}
+			<div class="timeline-badge" ng-switch on="timeline.category">
+				<div ng-switch-when="project" class="badge"></div>
+				<div ng-switch-when="mail" class="badge"></div>
+				<div ng-switch-when="topic" class="badge"></div>
+			</div>
+
+			<div class="timeline-panel" ng-switch on="timeline.category">
+
+				<div class="timeline-title">
+					{{timeline.name}}
 				</div>
-
-				<div class="timeline-badge" ng-switch on="timeline.category">
-					<i class="icon block layout circular inverted teal" ng-switch-when="project"></i>
-					<i class="icon mail circular inverted blue" ng-switch-when="mail"></i>
-					<i class="icon tasks circular inverted red" ng-switch-when="topic"></i>
+				<div class="timeline-time">
+					<span class="ui tiny blue horizontal label" ng-switch-when="project">项目</span>
+					<span class="ui tiny  red horizontal label" ng-switch-when="mail">邮件</span>
+					<span class="ui tiny  green horizontal label" ng-switch-when="topic">专题</span><br>
+					{{timeline.end_time}} |
+					<span ng-if="timeline.personnel_ia">{{timeline.personnel_ia.name}}</span>
+					<span ng-if="timeline.personnel_ga">{{timeline.personnel_ga.name}}</span>
+					<span ng-if="timeline.personnel_fe">{{timeline.personnel_fe.name}}</span>
 				</div>
+			</div>
+		</li>
+	</ul>
 
-				<div class="timeline-panel">
-					<div class="timeline-title">{{timeline.name}}</div>
-					<div class="timeline-body">
-						<span class="ui tiny label" ng-if="timeline.personnel_ia">
-							{{timeline.personnel_ia.name}}
-						</span>
-						<span class="ui label" ng-if="timeline.personnel_ga">
-							{{timeline.personnel_ga.name}}
-						</span>
-						<span class="ui label" ng-if="timeline.personnel_fe">
-							{{timeline.personnel_fe.name}}
-						</span>
-					</div>
-				</div>
-
-			</li>
-		</ul>
 </div>

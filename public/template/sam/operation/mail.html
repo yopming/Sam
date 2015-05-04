@@ -64,24 +64,22 @@
 	</div>
 
 	<div class="thirteen wide column">
-		<div class="ui cards">
+		<div class="ui blue cards">
 			<div class="card" ng-repeat="mail in filtered = (mails | orderBy: '-end_time' | SamOperationMailFilter:selected_atom) | filter:subSearch ">
-				<div class="image">
+				<div class="content">
+					<div class="header">
+						<a target="_blank" href="{{mail.mail_cover}}">{{mail.name}}</a>
+					</div>
+					<div class="meta">{{mail.end_time}}</div>
+				</div>
+				<div class="description image">
 					<a target="_blank" href="{{mail.mail_cover}}" title="查看大图">
 						<img width="290" ng-src="{{mail.mail_cover}}" />
 					</a>
 				</div>
-
-				<div class="content">
-					<span class="header">{{mail.name}}</span>
-					<div class="meta">
-						<span class="date">{{mail.end_time}}</span>
-					</div>
-				</div>
-
 				<div class="extra content">
+					<span class="left floated friends">{{mail.personnel_fe.name}}</span>
 					<span class="right floated created">{{mail.personnel_ga.name}}</span>
-					<span class="friends">{{mail.personnel_fe.name}}</span>
 				</div>
 			</div>
 		</div>

@@ -8,8 +8,8 @@
 @import "_module/_markdown/_markdown";
 
 #sam {
-	padding-top:33px;
 	.box-sizing(border-box);
+	padding-top:33px;
 	.sam-header {
 		border-radius:0;
 		margin-bottom:0;
@@ -19,6 +19,9 @@
 		width:100%;
 		.item {
 			font-size:0.9rem;
+			&:first-child {
+				border-radius: 0;
+			}
 		}
 		.sam-search {
 			padding:0;
@@ -38,6 +41,32 @@
 				.menu {
 					display:block;
 				}
+			}
+		}
+		.icon.layout.block {
+			color: #cb6817;
+		}
+		.icon.mail {
+			color: #00a8ff;
+		}
+		.icon.tasks {
+			color: #00a8ff;
+		}
+		.icon.book {
+			color: #b6c1c6;
+		}
+		.icon.file.image.outline {
+			color: #f07c00;
+		}
+		.icon.time {
+			color: #b14cb0;
+		}
+		.icon {
+			&.unhide,
+			&.exchange,
+			&.file.text.outline,
+			&.adjust {
+				color: #4cc159;
 			}
 		}
 	}
@@ -66,7 +95,7 @@
 			padding-top:0px;
 
 			&.three {
-				.box-shadow(0 0 20px #ccc);
+				border-right: 1px solid #ccc;
 				background:#fff;
 				padding-left:0;
 				padding-right:0;
@@ -82,6 +111,7 @@
 						    > .menu {
 						        > .item {
                                     padding:.3rem 1rem;
+                                    font-size: 14px;
                                 }
                             }
                         }
@@ -91,6 +121,9 @@
 				    overflow-y: auto;
 				    margin-top: 0;
 				    border-top: 1px solid #eee;
+				    .ui.label {
+				    	margin-bottom: 3px;
+				    }
                 }
 			}
 			&.thirteen {
@@ -120,10 +153,6 @@
 			.ui-match{
 				background:rgb(150, 185, 246);
 			}
-		}
-
-		.data_program {
-			margin-top:10px;
 		}
 	}
 
@@ -171,18 +200,30 @@
 		.cate_icon_mod {
 			background-image:url(/img/category/module.png);
 		}
+		.cate_icon_tmall {
+			background-image:url(/img/category/tmall.png);
+		}
 	}
 
 	.sam-mail,
 	.sam-topic {
-		.cards .card {
+		.ui.cards .card {
 			cursor: default;
-			margin-bottom:25px;
+			margin-bottom:10px;
+			border-radius: 0;
+			&:first-child {
+				border-radius: 0!important;
+			}
 			.image {
 				overflow:hidden;
 				margin:0 auto;
+				img {
+					border-radius: 0!important;
+					border-top: 1px solid rgba(0,0,0,0.05);
+				}
 			}
 			.content {
+				padding:.7em 1em .3em;
 				.header {
 					.text-overflow();
 					width:265px;
@@ -190,31 +231,21 @@
 				.meta {
 					height:17px;
 					overflow:hidden;
-					margin-bottom:10px;
 					font-size:12px;
 					color:#999;
 				}
 				.description{
-					a{
+					a {
 						text-decoration: none;
 					}
+				}
+				&.extra {
+					padding:.5em 1em .5em;
 				}
 			}
 			.attached {
 				text-align:center;
 				color:#888;
-				.belong,
-				.per {
-					color:#444;
-				}
-				.belong,
-				.time {
-					float:left;
-				}
-				.per {
-					float:right;
-					margin-left:15px;
-				}
 			}
 		}
 	}
@@ -222,10 +253,10 @@
 	.sam-mail {
 		.ui.cards {
 			.image {
-				.square(290px);
+				.size(290px, 190px);
 				a {
 					display:block;
-					height:290px;
+					height:190px;
 					overflow:hidden;
 				}
 			}
@@ -237,6 +268,18 @@
 			min-height:189px;
 			.image {
 				.size(290px, 103px);
+				position: relative;
+				.topicAction {
+					position:absolute;
+					bottom:8px;
+					right:8px;
+					.button {
+						background: white !important;
+						border:1px solid #999;
+						font-weight: bold;
+						padding:.5em 1em;
+					}
+				}
 			}
 		}
 	}
