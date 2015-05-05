@@ -2,4 +2,4 @@
 npm-debug.log
 *.swo
 *.swp
-node_moduels/*
+node_modules/*
