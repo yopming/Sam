@@ -24,6 +24,6 @@
         "morgan": "1.5.2",
         "method-override": "2.3.2",
         "errorhandler": "1.3.5",
-        "express-less-middleware": "1.4.2"
+        "less-middleware": "2.0.1"
     }
 }
