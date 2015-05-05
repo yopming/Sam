@@ -20,10 +20,10 @@
 					{{timeline.name}}
 				</div>
 				<div class="timeline-time">
-					<span class="ui tiny blue horizontal label" ng-switch-when="project">项目</span>
-					<span class="ui tiny  red horizontal label" ng-switch-when="mail">邮件</span>
-					<span class="ui tiny  green horizontal label" ng-switch-when="topic">专题</span><br>
-					{{timeline.end_time}} |
+					<span ng-switch-when="project">项目</span>
+					<span ng-switch-when="mail">邮件</span>
+					<span ng-switch-when="topic">专题</span>
+					| {{timeline.end_time}} |
 					<span ng-if="timeline.personnel_ia">{{timeline.personnel_ia.name}}</span>
 					<span ng-if="timeline.personnel_ga">{{timeline.personnel_ga.name}}</span>
 					<span ng-if="timeline.personnel_fe">{{timeline.personnel_fe.name}}</span>
