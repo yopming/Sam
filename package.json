@@ -6,6 +6,7 @@
         "start": "node app.js"
     },
     "dependencies": {
+        "forever": "",
         "supervisor": "0.6.0",
         "express": "4.12.3",
         "jade": "1.9.2",
