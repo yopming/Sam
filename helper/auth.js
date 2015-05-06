@@ -3,74 +3,82 @@
  */
 
 
-var crypto = require('crypto');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var SaltLength = 8;
+var SMTPConnection = require('smtp-connection');
 
 
-function md5(string) {
-    return crypto.createHash('md5').update(string).digest('hex');
-}
-
-function generateSalt(len) {
-    var sets = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var setsLen = sets.length;
-    var salt = '';
-    for (var i = 0; i < len; i++) {
-        var p = Math.floor(Math.random() * setsLen);
-        salt += sets[p];
-    }
-    return salt;
-}
-
-function createHash(password) {
-    var salt = generateSalt(SaltLength);
-    var hash = md5(password + salt);
-    return salt + hash;
-}
-
-function validateHash(hash, password) {
-    var salt = hash.substr(0, SaltLength);
-    var validHash = salt + md5(password + salt);
-    return hash === validHash;
-}
-
-
-function authenticate(username, password, fn) {
-    if (!module.parent)
-        console.log('Authenticating %s:%s', username, password);
-
-    User.findOne({
-        username: username
-    }, function (err, user) {
-        if (user) {
-            if (err) {
-                return fn(new Error('User is not exist.'));
-            }
-            if (validateHash(user.hash, password)) {
-                return fn(null, user);
-            } else {
-                fn(new Error('Invalid password.'));
-            }
-        } else {
-            return fn(new Error('User is not exist.'));
-        }
+exports.authenticate = function(username, password, fn) {
+    // Connect smtp server
+    var conn = new SMTPConnection({
+        port: 25,
+        host: 'mail3.focuschina.com',
+        secure: false,
+        ignoreTLS: true
     });
-}
+    conn.on('log', function(obj) {
+        console.log(obj);
+    });
+    conn.on('error', function(err) {
+        fn(err);
+    });
 
-function requiredAuth(req, res, next) {
+    conn.connect(function(err) {
+        if (err) {
+            console.log('-1');
+            fn(err);
+        }
+        var auth = {
+            user: username,
+            pass: password
+        };
+        conn.login(auth, function(err) {
+            if (err) {
+                console.log('0');
+                fn(err);
+            } else {
+                // Query the db, create user if it isn't in db
+                User.findOne({
+                    email: username
+                }, function(err, user) {
+                    if (err) {
+                        console.log('1');
+                        fn(err);
+                    }
+
+                    if (user) {
+                        fn('user', {
+                            email: user.email,
+                            group: user.group
+                        });
+                    } else {
+                        new User({
+                            email: username,
+                            group: '5'
+                        }).save(function(err, user) {
+                            if (err) {
+                                console.log('2');
+                                fn(err);
+                            }
+                            fn('user', {
+                                email: username,
+                                group: '5'
+                            });
+                        });
+                    }
+                });
+            }
+            conn.quit();
+        });
+    });
+};
+
+
+exports.requiredAuth = function(req, res, next) {
     if (req.session.user) {
         next();
     } else {
         req.flash('info', 'Please sign in first.');
         res.redirect('/sign');
     }
-}
-
-module.exports = {
-    'createHash': createHash,
-    'validateHash': validateHash,
-    'authenticate': authenticate,
-    'requiredAuth': requiredAuth
 };

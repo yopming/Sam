@@ -3,10 +3,7 @@
  * GET
  */
 
-var fs = require('fs');
-var hash = require('crypto').createHash('md5');
 var authenticate = require('../../helper/auth.js').authenticate;
-var query_mod = require('../../model/mod.js').queryNice;
 
 // sign
 exports.sign = function(req, res) {
@@ -19,19 +16,21 @@ exports.sign = function(req, res) {
 
 exports.signin = function(req, res, next) {
     authenticate(req.body.username, req.body.password, function(err, user) {
+        if (err) console.log(err);
         if (user) {
+            console.log(user);
             req.session.regenerate(function() {
-                req.session.user = user;
-                query_mod(user.group, function(group) {
-                    req.session.group = group;
-                    res.cookie('group', group.nice, {
-                        maxAge: 24 * 60 * 60 * 1000
-                    });
-                    res.redirect('/admin');
+                req.session.user = user.email;
+                req.session.group = user.group;
+                /*
+                res.cookie('group', user.group, {
+                    maxAge: 24 * 60 * 60 * 1000
                 });
+                */
+                res.redirect('/admin');
             });
         } else {
-            req.flash('info', 'Username or password is not corret.');
+            req.flash('info', '域帐号与密码不匹配');
             res.redirect('/sign');
         }
     });
@@ -39,21 +38,19 @@ exports.signin = function(req, res, next) {
 
 exports.signout = function(req, res) {
     req.session.destroy();
-    res.clearCookie('group');
+    //res.clearCookie('group');
     res.redirect('/');
 };
 
 
 // admin
 exports.admin = function(req, res) {
-    query_mod(req.session.user.group, function(group) {
-        res.cookie('group', group.nice, {
-            maxAge: 24 * 60 * 60 * 1000
-        });
-        res.render('admin/admin', {
-            current_user: req.session.user
-        });
+    /*
+    res.cookie('group', req.session.user.group, {
+        maxAge: 24 * 60 * 60 * 1000
     });
+    */
+    res.render('admin/admin', {current_user: req.session.user});
 };
 
 

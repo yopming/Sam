@@ -7,27 +7,24 @@ html(ng-app="admin")
 		meta(name='renderer', content='webkit')
 
 	body
-		div#sam-sign.ui.grid
-			div.five.wide.column
-			div.six.wide.column
-				h2.ui.header Sam
-				div.ui.tall.segment.stacked.form
-					form(action='/signin', method='POST')
-						- if (messages.info)
-							div.ui.error.message(style="display:block")
-								div=messages.info
+		div#sam-sign
+			div.ui.tall.segment.stacked.form
+				form(action='/signin', method='POST').signForm
+					- if (messages.info)
+						div.ui.error.message(style="display:block")
+							div=messages.info
 
-						div.field
-							label Username
-							div.ui.icon.input
-								input(type='text', name='username')
-								i.user.icon
-						div.field
-							label Password
-							div.ui.icon.input
-								input(type='password', name='password')
-								i.lock.icon
-						button.ui.small.red.submit.button(type='submit')
-							i.meh.icon
-							| Sign In
-			div.five.wide.column
+					h2.ui.dividing.header Sam
+					div.field
+						label 域帐号
+						div.ui.icon.input
+							input(type='text', name='username')
+							i.user.icon
+					div.field
+						label 密码
+						div.ui.icon.input
+							input(type='password', name='password')
+							i.lock.icon
+					button.ui.small.red.fluid.submit.button(type='submit')
+						i.meh.icon
+						| 登入

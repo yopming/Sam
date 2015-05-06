@@ -1,17 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var crypto = require('crypto');
-var salt = 'tincoparmacalmaquesse';
 
 
 // specific model
 var userSchema = new Schema({
-    workno: {type: Number, unique: true},
-    name: String,
-    username: {type: String, unique: true},
     email: {type: String, unique: true},
-    hash: String,
-    group: {type: Schema.Types.ObjectId, ref: 'Group'},
+    group: String,
     created: {type: Date, default: Date.now}
 });
 mongoose.model('User', userSchema);
@@ -123,17 +117,6 @@ var releasePipeSchema = new Schema({
 mongoose.model('ReleasePipe', releasePipeSchema);
 
 
-/*
- * user group
- * @example: root, user
- */
-var groupSchema = new Schema({
-    name: {type: String, unique: true},
-    nice: {type: String, unique: true}
-});
-mongoose.model('Group', groupSchema);
-
-
 // connect
-mongoose.connect('mongodb://192.168.28.107/sam');
+mongoose.connect('mongodb://127.0.0.1/sam');
 

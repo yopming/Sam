@@ -3,11 +3,8 @@
  * user
  */
 
-var createHash = require('../../helper/auth.js').createHash;
-
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var Group = mongoose.model('Group');
 
 
 exports.index = function (req, res) {
@@ -27,14 +24,9 @@ exports.indexOne = function (req, res) {
 };
 
 exports.create = function (req, res) {
-    var createdHash = createHash(req.body.password);
     new User({
         group: req.body.group,
-        workno: req.body.workno,
-        name: req.body.name,
-        username: req.body.username,
-        email: req.body.email,
-        hash: createdHash
+        email: req.body.email
     }).save(function (err, user, count) {
             if (err)
                 res.send(err);
@@ -61,14 +53,9 @@ exports.destroy = function (req, res) {
 };
 
 exports.update = function (req, res) {
-    var createdHash = createHash(req.body.password);
     User.findById(req.params.user_id, function (err, user) {
         user.group = req.body.group;
-        user.workno = req.body.workno;
-        user.name = req.body.name;
-        user.username = req.body.username;
         user.email = req.body.email;
-        user.hash = createdHash;
 
         user.save(function (err, user, count) {
             if (err)
