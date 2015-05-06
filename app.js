@@ -28,6 +28,7 @@ var helper_auth = require('./helper/auth.js');
 var app = express();
 
 // routes
+var routes_setup = require('./routes/setup/route.js');
 var routes_sam = require('./routes/sam/route.js');
 var routes_share = require('./routes/sam/share.js');
 var routes_admin = require('./routes/admin/route.js');
@@ -68,6 +69,8 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(serveFavicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // routers
+app.get('/setup', routes_setup.setup);
+
 app.get('/', routes_sam.index);
 app.get('/share/presentation/:share_id', routes_share.display);
 
