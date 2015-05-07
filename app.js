@@ -92,10 +92,6 @@ app.post('/api/share/destroy/:share_id', routes_api_share.destroy);
 app.post('/api/share/update/:share_id', routes_api_share.update);
 
 app.get('/api/domain/all', routes_api_domain.index);
-app.get('/api/domain/:domain_id', routes_api_domain.indexOne);
-app.post('/api/domain/add', routes_api_domain.create);
-app.post('/api/domain/destroy/:domain_id', routes_api_domain.destroy);
-app.post('/api/domain/update/:domain_id', routes_api_domain.update);
 
 app.get('/api/position/all', routes_api_position.index);
 app.post('/api/position/add', routes_api_position.create);

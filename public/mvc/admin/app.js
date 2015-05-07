@@ -78,17 +78,9 @@ adminApp.config(['$locationProvider', '$routeProvider',
 			controller: 'AdminMediaAddCtrl'
 		}).
 
-		when('/user', {
-			templateUrl: '/template/admin/user/user.html',
-			controller: 'AdminUserCtrl'
-		}).
-		when('/user/add', {
-			templateUrl: '/template/admin/user/user_add.html',
-			controller: 'AdminUserAddCtrl'
-		}).
-		when('/user/edit/:id', {
-			templateUrl: '/template/admin/user/user_edit.html',
-			controller: 'AdminUserEditCtrl'
+		when('/domain', {
+			templateUrl: '/template/admin/domain/domain.html',
+			controller: 'AdminDomainCtrl'
 		}).
 
 		when('/parameter', {

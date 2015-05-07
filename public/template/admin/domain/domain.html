@@ -1,0 +1,24 @@
+<div class="ui menu">
+    <span class="active item">用户</span>
+</div>
+
+<div class="ui segment domainList">
+    <div class="ui divided list">
+        <div class="item" ng-repeat="domain in domains" ng-switch="isRoot">
+            <div class="right floated red compact tiny ui button" data-id="{{domain._id}}"
+                ng-switch-when="false">
+                提升
+            </div>
+            <div class="right floated compact ui tiny button" data-id="{{domain._id}}"
+                ng-switch-when="true">
+                降级
+            </div>
+
+            <i class="icon user" ng-switch-when="false"></i>
+            <i class="icon spy" ng-switch-when="true"></i>
+            <div class="content">
+                <div class="header">{{domain.email}}</div>
+            </div>
+        </div>
+    </div>
+</div>
