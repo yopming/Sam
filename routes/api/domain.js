@@ -4,11 +4,11 @@
  */
 
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var Domain = mongoose.model('Domain');
 
 
 exports.index = function (req, res) {
-    User.find().populate('group').exec(function (err, users, count) {
+    Domain.find().populate('group').exec(function (err, users, count) {
         if (err)
             res.send(err);
         res.json(users);
@@ -16,7 +16,7 @@ exports.index = function (req, res) {
 };
 
 exports.indexOne = function (req, res) {
-    User.findById(req.params.user_id, function (err, user) {
+    Domain.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
         res.json(user);
@@ -24,13 +24,13 @@ exports.indexOne = function (req, res) {
 };
 
 exports.create = function (req, res) {
-    new User({
+    new Domain({
         group: req.body.group,
         email: req.body.email
     }).save(function (err, user, count) {
             if (err)
                 res.send(err);
-            User.find(function (err, users) {
+            Domain.find(function (err, users) {
                 if (err)
                     res.send(err);
                 res.json(users);
@@ -39,11 +39,11 @@ exports.create = function (req, res) {
 };
 
 exports.destroy = function (req, res) {
-    User.findById(req.params.user_id, function (err, user) {
+    Domain.findById(req.params.user_id, function (err, user) {
         user.remove(function (err, user) {
             if (err)
                 res.send(err);
-            User.find(function (err, users) {
+            Domain.find(function (err, users) {
                 if (err)
                     res.send(err);
                 res.json(users);
@@ -53,14 +53,14 @@ exports.destroy = function (req, res) {
 };
 
 exports.update = function (req, res) {
-    User.findById(req.params.user_id, function (err, user) {
+    Domain.findById(req.params.user_id, function (err, user) {
         user.group = req.body.group;
         user.email = req.body.email;
 
         user.save(function (err, user, count) {
             if (err)
                 res.send(err);
-            User.find(function (err, users) {
+            Domain.find(function (err, users) {
                 if (err)
                     res.send(err);
                 res.json(users);

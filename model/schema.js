@@ -3,12 +3,12 @@ var Schema = mongoose.Schema;
 
 
 // specific model
-var userSchema = new Schema({
+var domainSchema = new Schema({
     email: {type: String, unique: true},
     group: String,
     created: {type: Date, default: Date.now}
 });
-mongoose.model('User', userSchema);
+mongoose.model('Domain', domainSchema);
 
 
 // task include: project, mail, topic, etc.
@@ -48,7 +48,7 @@ mongoose.model('Task', taskSchema);
 var shareSchema = new Schema({
     name: String,
     content: String,
-    author: {type: Schema.Types.ObjectId, ref: 'User'},
+    author: {type: Schema.Types.ObjectId, ref: 'Domain'},
     time: String
 });
 mongoose.model('Share', shareSchema);
@@ -119,4 +119,3 @@ mongoose.model('ReleasePipe', releasePipeSchema);
 
 // connect
 mongoose.connect('mongodb://127.0.0.1/sam');
-

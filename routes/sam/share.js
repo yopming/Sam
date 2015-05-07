@@ -5,7 +5,7 @@
 
 var mongoose = require('mongoose');
 var Share = mongoose.model('Share');
-var User = mongoose.model('User');
+var Domain = mongoose.model('Domain');
 
 exports.display = function(req, res) {
 	Share.findById(req.params.share_id).populate('author').exec(function(err, share) {

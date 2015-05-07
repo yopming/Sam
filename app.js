@@ -33,7 +33,7 @@ var routes_share = require('./routes/sam/share.js');
 var routes_admin = require('./routes/admin/route.js');
 var routes_api_task = require('./routes/api/task.js');
 var routes_api_share = require('./routes/api/share.js');
-var routes_api_user = require('./routes/api/user.js');
+var routes_api_domain = require('./routes/api/domain.js');
 var routes_api_position = require('./routes/api/position.js');
 var routes_api_personnel = require('./routes/api/personnel.js');
 var routes_api_program = require('./routes/api/program.js');
@@ -91,11 +91,11 @@ app.post('/api/share/add', routes_api_share.create);
 app.post('/api/share/destroy/:share_id', routes_api_share.destroy);
 app.post('/api/share/update/:share_id', routes_api_share.update);
 
-app.get('/api/user/all', routes_api_user.index);
-app.get('/api/user/:user_id', routes_api_user.indexOne);
-app.post('/api/user/add', routes_api_user.create);
-app.post('/api/user/destroy/:user_id', routes_api_user.destroy);
-app.post('/api/user/update/:user_id', routes_api_user.update);
+app.get('/api/domain/all', routes_api_domain.index);
+app.get('/api/domain/:domain_id', routes_api_domain.indexOne);
+app.post('/api/domain/add', routes_api_domain.create);
+app.post('/api/domain/destroy/:domain_id', routes_api_domain.destroy);
+app.post('/api/domain/update/:domain_id', routes_api_domain.update);
 
 app.get('/api/position/all', routes_api_position.index);
 app.post('/api/position/add', routes_api_position.create);
@@ -129,10 +129,9 @@ app.get('/api/period/months', routes_api_period.months);
 app.get('/error', routes_sam.error);
 app.get('*', routes_sam.notfound);
 
-
 // jade session
 app.use(function (req, res, next) {
-	res.locals.user = req.session.user || null;
+	res.locals.email = req.session.email || null;
 	res.locals.group = req.session.group || null;
 	next();
 });

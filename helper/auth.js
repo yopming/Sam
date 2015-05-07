@@ -4,11 +4,11 @@
 
 
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var Domain = mongoose.model('Domain');
 var SMTPConnection = require('smtp-connection');
 
 
-exports.authenticate = function(username, password, fn) {
+exports.authenticate = function(domain, password, fn) {
     // Connect smtp server
     var conn = new SMTPConnection({
         port: 25,
@@ -17,51 +17,42 @@ exports.authenticate = function(username, password, fn) {
         ignoreTLS: true
     });
     conn.on('log', function(obj) {
-        console.log(obj);
+        console.log('obj: ', obj);
     });
     conn.on('error', function(err) {
-        fn(err);
+        fn(err, null);
     });
 
     conn.connect(function(err) {
         if (err) {
-            console.log('-1');
-            fn(err);
+            fn(err, null);
         }
         var auth = {
-            user: username,
+            user: domain,
             pass: password
         };
         conn.login(auth, function(err) {
             if (err) {
-                console.log('0');
-                fn(err);
+                fn(err, null);
             } else {
                 // Query the db, create user if it isn't in db
-                User.findOne({
-                    email: username
-                }, function(err, user) {
+                Domain.findOne({email: domain}, function(err, result) {
                     if (err) {
-                        console.log('1');
-                        fn(err);
+                        fn(err, null);
                     }
 
-                    if (user) {
-                        fn('user', {
-                            email: user.email,
-                            group: user.group
+                    if (result) {
+                        fn(null, {
+                            email: result.email,
+                            group: result.group
                         });
                     } else {
-                        new User({
-                            email: username,
-                            group: '5'
-                        }).save(function(err, user) {
+                        new Domain({email: domain, group: '5'}).save(function(err, result) {
                             if (err) {
-                                console.log('2');
-                                fn(err);
+                                fn(err, null);
                             }
-                            fn('user', {
-                                email: username,
+                            fn(null, {
+                                email: domain,
                                 group: '5'
                             });
                         });
@@ -75,10 +66,10 @@ exports.authenticate = function(username, password, fn) {
 
 
 exports.requiredAuth = function(req, res, next) {
-    if (req.session.user) {
+    if (req.session.email) {
         next();
     } else {
-        req.flash('info', 'Please sign in first.');
+        req.flash('info', '请重新登录');
         res.redirect('/sign');
     }
 };

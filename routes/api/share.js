@@ -5,7 +5,7 @@
 
 var mongoose = require('mongoose');
 var Share = mongoose.model('Share');
-var User = mongoose.model('User');
+var Domain = mongoose.model('Domain');
 
 
 // share operation
