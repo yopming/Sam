@@ -1,5 +1,6 @@
 var adminApp = angular.module('admin', [
 	'ngRoute',
+	'ngDialog',
 	'pickadate',
 	'simditor',
 	'routeStyles',

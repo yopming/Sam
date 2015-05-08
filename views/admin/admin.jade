@@ -14,55 +14,55 @@ html(ng-app="admin")
 		script(src="/js/chives/angular-route-styles/route-styles.js")
 		script(src="/js/chives/angular-editor/javascripts/simditor/simditor-all.js")
 		script(src="/js/chives/angular-editor/javascripts/angular-editor.js")
+		script(src="/js/chives/ngDialog/ngDialog.min.js")
 		script(src="/mvc/admin/app.js")
 		script(src="/mvc/admin/controller.js")
 		script(src="/mvc/admin/directive.js")
 
-	body
+	body#sam-admin
 
-		div#sam-admin
-			div.bottle.fence
-				div.yard-3
-					div.brand
-						a.home(href="#!/") Sam
-						a.front(href="/", target="_blank") 
-							i.unhide.icon
-							div 前台
+		div.bottle.fence
+			div.yard-3
+				div.brand
+					a.home(href="#!/") Sam
+					a.front(href="/", target="_blank") 
+						i.unhide.icon
+						div 前台
 
-					div.navigator
-						div.ui.menu.vertical
-							a.item(href="#!/project", admin-active="active")
-								i.block.layout.icon
-								| 项目
-							a.item(href="#!/mail", admin-active="active")
-								i.mail.icon
-								| 邮件
-							a.item(href="#!/topic", admin-active="active")
-								i.tasks.icon
-								| 专题
-							a.item(href="#!/share", admin-active="active")
-								i.book.icon
-								| 沙盒
-							a.item(href="#!/domain", admin-active="active")
-								i.users.icon
-								| 用户
-							div.item.header
-								i.settings.icon
-								| 参数
-								div.menu
-									a.item(href="#!/parameter", admin-active="active") 参数列表
-									a.item(href="#!/position-add", admin-active="active") 添加职位
-									a.item(href="#!/personnel-add", admin-active="active") 添加人员
-									a.item(href="#!/program-add", admin-active="active") 添加项目应用
-									a.item(href="#!/releasePipe-add", admin-active="active") 添加发布渠道
+				div.navigator
+					div.ui.menu.vertical
+						a.item(href="#!/project", admin-active="active")
+							i.block.layout.icon
+							| 项目
+						a.item(href="#!/mail", admin-active="active")
+							i.mail.icon
+							| 邮件
+						a.item(href="#!/topic", admin-active="active")
+							i.tasks.icon
+							| 专题
+						a.item(href="#!/share", admin-active="active")
+							i.book.icon
+							| 沙盒
+						a.item(href="#!/domain", admin-active="active")
+							i.users.icon
+							| 用户
+						div.item.header
+							i.settings.icon
+							| 参数
+							div.menu
+								a.item(href="#!/parameter", admin-active="active") 参数列表
+								a.item(href="#!/position-add", admin-active="active") 添加职位
+								a.item(href="#!/personnel-add", admin-active="active") 添加人员
+								a.item(href="#!/program-add", admin-active="active") 添加项目应用
+								a.item(href="#!/releasePipe-add", admin-active="active") 添加发布渠道
 
-					div.userBar
-						div.ui.celled.horizontal.list
-							span.item= current_user
-						a.item.logout(href='/signout')
-							i.sign.out.icon
-							|登出
+				div.userBar
+					div.ui.celled.horizontal.list
+						span.item= current_user
+					a.item.logout(href='/signout')
+						i.sign.out.icon
+						|登出
 
-				div.yard-13
-					div.facility
-						ng-view(show-default="true")
+			div.yard-13
+				div.facility
+					ng-view(show-default="true")

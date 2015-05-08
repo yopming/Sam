@@ -4,16 +4,31 @@ var adminControllers = angular.module('adminControllers', ['ngCookies']);
 /*
  * Project
  */
-adminControllers.controller('AdminProjectCtrl', ['$scope', '$http', '$location',
-    function($scope, $http, $location) {
+adminControllers.controller('AdminProjectCtrl', ['$scope', '$http', '$location', 'ngDialog',
+    function($scope, $http, $location, ngDialog) {
         $http.get('/api/task/project/all').success(function(data) {
             $scope.projects = data;
         });
+
+        $scope.deleteDialog = function(id) {
+            $http.get('/api/task/' + id).success(function(data) {
+                if (data) {
+                    $scope.item_name = data.name;
+                    $scope.item_id = id;
+                    ngDialog.open({
+                        template: 'sam-dialog',
+                        className: 'ngdialog-theme-default sam-dialog-admin',
+                        scope: $scope
+                    });
+                }
+            });
+        };
 
         $scope.deleteProject = function(id) {
             $http.post('/api/task/project/destroy/' + id).success(function(data) {
                 $scope.projects = data;
             });
+            ngDialog.close();
         };
     }
 ]);
@@ -146,16 +161,31 @@ adminControllers.controller('AdminProjectEditCtrl', ['$scope', '$http', '$routeP
 /*
  * Mail
  */
-adminControllers.controller('AdminMailCtrl', ['$scope', '$http', '$location',
-    function($scope, $http, $location) {
+adminControllers.controller('AdminMailCtrl', ['$scope', '$http', '$location', 'ngDialog',
+    function($scope, $http, $location, ngDialog) {
         $http.get('/api/task/mail/all').success(function(data) {
             $scope.mails = data;
         });
+
+        $scope.deleteDialog = function(id) {
+            $http.get('/api/task/' + id).success(function(data) {
+                if (data) {
+                    $scope.item_name = data.name;
+                    $scope.item_id = id;
+                    ngDialog.open({
+                        template: 'sam-dialog',
+                        className: 'ngdialog-theme-default sam-dialog-admin',
+                        scope: $scope
+                    });
+                }
+            });
+        };
 
         $scope.deleteMail = function(id) {
             $http.post('/api/task/mail/destroy/' + id).success(function(data) {
                 $scope.mails = data;
             });
+            ngDialog.close();
         };
     }
 ]);
@@ -204,16 +234,31 @@ adminControllers.controller('AdminMailEditCtrl', ['$scope', '$http', '$routePara
 /*
  * Topic
  */
-adminControllers.controller('AdminTopicCtrl', ['$scope', '$http', '$location',
-    function($scope, $http) {
+adminControllers.controller('AdminTopicCtrl', ['$scope', '$http', '$location', 'ngDialog',
+    function($scope, $http, $location, ngDialog) {
         $http.get('/api/task/topic/all').success(function(data) {
             $scope.topics = data;
         });
+
+        $scope.deleteDialog = function(id) {
+            $http.get('/api/task/' + id).success(function(data) {
+                if (data) {
+                    $scope.item_name = data.name;
+                    $scope.item_id = id;
+                    ngDialog.open({
+                        template: 'sam-dialog',
+                        className: 'ngdialog-theme-default sam-dialog-admin',
+                        scope: $scope
+                    });
+                }
+            });
+        };
 
         $scope.deleteTopic = function(id) {
             $http.post('/api/task/topic/destroy/' + id).success(function(data) {
                 $scope.topics = data;
             });
+            ngDialog.close();
         };
     }
 ]);
@@ -267,17 +312,31 @@ adminControllers.controller('AdminTopicEditCtrl', ['$scope', '$http', '$routePar
 /*
  * Share
  */
-adminControllers.controller('AdminShareCtrl', ['$scope', '$http',
-    function($scope, $http) {
+adminControllers.controller('AdminShareCtrl', ['$scope', '$http', 'ngDialog',
+    function($scope, $http, ngDialog) {
         $http.get('/api/share/all').success(function(data) {
             $scope.shares = data;
         });
 
+        $scope.deleteDialog = function(id) {
+            $http.get('/api/share/' + id).success(function(data) {
+                if (data) {
+                    $scope.item_name = data.name;
+                    $scope.item_id = id;
+                    ngDialog.open({
+                        template: 'sam-dialog',
+                        className: 'ngdialog-theme-default sam-dialog-admin',
+                        scope: $scope
+                    });
+                }
+            });
+        };
 
         $scope.deleteShare = function(id) {
             $http.post('/api/share/destroy/' + id).success(function(data) {
                 $scope.shares = data;
             });
+            ngDialog.close();
         };
     }
 ]);

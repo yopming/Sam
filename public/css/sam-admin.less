@@ -2,6 +2,9 @@
 @import "_module/_datepicker/_datepicker";
 @import "_module/_simditor/_simditor";
 @import "_module/_simditor/_simditor-fontAwesome";
+@import "_module/_dialog/_dialog";
+@import "_module/_dialog/_dialog-theme-default";
+@import "_module/_dialog/_dialog-theme-plain";
 
 #sam-sign {
 	padding-top:120px;
@@ -13,9 +16,10 @@
 
 
 #sam-admin {
-	height:100%;
 	.margin-vertical(auto);
+	height:100%;
 	font-size:13px;
+
 	.fence {
 		.clearfix();
 		.yard-3,
@@ -215,5 +219,37 @@
 			}
 		}
 	}
-}
 
+	// modal
+	.sam-dialog-admin {
+		.ngdialog-content {
+			border-radius: 0px;
+			padding:0;
+		    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+		    .header {
+		    	padding:.5em 1em;
+		    	background:#fafafa;
+		    }
+	    	.msg {
+	    		color: #796620;
+	    		padding: .7em 1em;
+	    		background-color: #f8eec7;
+	    		border-color: #f2e09a;
+	    	}
+		    .content {
+		    	padding: 1em;
+		    	background:#fff;
+		    	border-bottom:1px solid #ededed;
+		    	.itemname {
+		    		padding: 2px 6px;
+		    		background: #E8E8E8;
+		    		margin: 0 2px;
+		    		border-radius: 4px;
+		    	}
+		    }
+		    .actionButton {
+		    	border-radius:0;
+		    }
+		}
+	}
+}

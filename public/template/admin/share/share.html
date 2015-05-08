@@ -31,7 +31,7 @@
 			<td>
 				<a href="#!/share/edit/{{share._id}}"
 					class="ui button tiny compact">编辑</a>
-				<a ng-click="deleteShare(share._id)"
+				<a ng-click="deleteDialog(share._id)"
 					class="ui button icon tiny compact">
 					<i class="remove icon"></i>
 				</a>
@@ -44,3 +44,20 @@
 	<i class="edit basic icon"></i>
 	添加
 </a>
+
+
+<script type="text/ng-template" id="sam-dialog">
+	<div class="header">删除当前条目</div>
+	<div class="msg">此项操作 <strong>不能</strong> 撤销。</div>
+	<div class="content">
+		<p>这将彻底删除<strong class="itemname">{{item_name}}</strong>条目。 </p>
+		<p>请输入条目的名称来确认删除：</p>
+		<div class="ui fluid input">
+			<input type="text" ng-model="input_name">
+		</div>
+	</div>
+	<div class="ui fluid disabled button actionButton" ng-click="deleteShare(item_id)"
+		ng-class="{true: 'negative', false: 'disabled'}[input_name==item_name]">
+		删除
+	</div>
+</script>

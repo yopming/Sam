@@ -36,5 +36,5 @@ html(ng-app="sign")
 						div.ui.input
 							input(type='password', name='password', required)
 
-					button.ui.red.fluid.button(type="submit", ng-class="{true: 'submit', false: 'disabled'}[signForm.prefix.$valid]")
+					button.ui.fluid.button(type="submit", ng-class="{true: 'red', false: 'disabled'}[signForm.prefix.$valid]")
 						| 登入
