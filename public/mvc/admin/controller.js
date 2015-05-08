@@ -39,10 +39,6 @@ adminControllers.controller('AdminProjectAddCtrl', ['$scope', '$http', '$locatio
             $scope.personnels = data;
         });
 
-        $http.get('/api/status/all').success(function(data) {
-            $scope.statuses = data;
-        });
-
         $scope.projectSave = function() {
             // join two separated parameter: the version number consists of year and month and a solid string
             if ($scope.project.related_version_year != undefined && $scope.project.related_version_month != undefined) {
@@ -120,10 +116,6 @@ adminControllers.controller('AdminProjectEditCtrl', ['$scope', '$http', '$routeP
 
         $http.get('/api/personnel/all').success(function(data) {
             $scope.personnels = data;
-        });
-
-        $http.get('/api/status/all').success(function(data) {
-            $scope.statuses = data;
         });
 
         $http.get('/api/task/' + project_id).success(function(data) {
@@ -382,9 +374,6 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http', '$filter',
         $http.get('/api/program/all').success(function(data) {
             $scope.programs = data;
         });
-        $http.get('/api/status/all').success(function(data) {
-            $scope.statuses = data;
-        });
         $http.get('/api/pipe/all').success(function(data) {
             $scope.pipes = data;
         });
@@ -413,11 +402,6 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http', '$filter',
         $scope.deletePipe = function(id) {
             $http.post('/api/pipe/remove/' + id).success(function(data) {
                 $scope.pipes = data;
-            });
-        };
-        $scope.deleteStatus = function(id) {
-            $http.post('/api/status/remove/' + id).success(function(data) {
-                $scope.statuses = data;
             });
         };
     }
@@ -454,17 +438,6 @@ adminControllers.controller('AdminParameterProgramAddCtrl', ['$scope', '$http', 
     function($scope, $http, $location) {
         $scope.programSave = function() {
             $http.post('/api/program/add', $scope.program).success(function(data) {
-                $location.url('/parameter');
-            });
-        };
-    }
-]);
-
-// Parameter Status
-adminControllers.controller('AdminParameterStatusAddCtrl', ['$scope', '$http', '$location',
-    function($scope, $http, $location) {
-        $scope.statusSave = function() {
-            $http.post('/api/status/add', $scope.status).success(function(data) {
                 $location.url('/parameter');
             });
         };

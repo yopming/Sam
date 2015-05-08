@@ -38,7 +38,6 @@ var routes_api_position = require('./routes/api/position.js');
 var routes_api_personnel = require('./routes/api/personnel.js');
 var routes_api_program = require('./routes/api/program.js');
 var routes_api_pipe = require('./routes/api/pipe.js');
-var routes_api_status = require('./routes/api/status.js');
 var routes_api_period = require('./routes/api/period.js');
 
 // all environments
@@ -114,11 +113,6 @@ app.get('/api/pipe/all', routes_api_pipe.index);
 app.post('/api/pipe/add', routes_api_pipe.create);
 app.post('/api/pipe/remove/:pipe_id', routes_api_pipe.remove);
 app.post('/api/pipe/destroy/:pipe_id', routes_api_pipe.destroy);
-
-app.get('/api/status/all', routes_api_status.index);
-app.post('/api/status/add', routes_api_status.create);
-app.post('/api/status/remove/:status_id', routes_api_status.remove);
-app.post('/api/status/destroy/:status_id', routes_api_status.destroy);
 
 app.get('/api/period/years', routes_api_period.years);
 app.get('/api/period/months', routes_api_period.months);

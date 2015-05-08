@@ -33,15 +33,6 @@
 		<input type="text" name="gandolf_uri" ng-model="project.gandolf_uri" />
 	</div>
 
-	<div class="field">
-		<label>状态</label>
-		<select name="status" ng-model="project.status">
-			<option ng-repeat="status in statuses" value="{{status._id}}">
-			{{status.name}}
-			</option>
-		</select>
-	</div>
-
 	<div class="four fields">
 		<div class="field">
 			<label>产品</label>
@@ -83,13 +74,6 @@
 			</select>
 		</div>
 		<input type="hidden" ng-model="project.related_version">
-	</div>
-
-
-	<div class="field">
-		<label>开始时间</label>
-		<input type="text" readonly ng-model="project.start_time" placeholder="点击下面日历选择日期" />
-		<div pickadate ng-model="project.start_time"></div>
 	</div>
 
 	<a href="#!/project" class="ui animated button">
