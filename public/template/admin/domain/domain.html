@@ -2,20 +2,28 @@
     <span class="active item">用户</span>
 </div>
 
+<div class="ui info message">
+    <div class="header">用户提升之后可以进行以下动作：</div>
+    <ul class="list">
+        <li>用户的提升、降级</li>
+        <li>人员的添加、删除</li>
+    </ul>
+</div>
+
 <div class="ui segment domainList">
     <div class="ui divided list">
-        <div class="item" ng-repeat="domain in domains" ng-switch="isRoot">
-            <div class="right floated red compact tiny ui button" data-id="{{domain._id}}"
-                ng-switch-when="false">
+        <div class="item" ng-repeat="domain in domains" ng-switch="domain.group">
+            <div class="right floated compact tiny ui button" data-id="{{domain._id}}"
+                ng-switch-when="5" ng-click="domainPromote(domain._id)" ng-show="isRoot && domain.email != cookieEmail">
                 提升
             </div>
-            <div class="right floated compact ui tiny button" data-id="{{domain._id}}"
-                ng-switch-when="true">
+            <div class="right floated red compact ui tiny button" data-id="{{domain._id}}"
+                ng-switch-when="7" ng-click="domainDemote(domain._id)" ng-show="isRoot && domain.email != cookieEmail">
                 降级
             </div>
 
-            <i class="icon user" ng-switch-when="false"></i>
-            <i class="icon spy" ng-switch-when="true"></i>
+            <i class="icon user" ng-switch-when="5"></i>
+            <i class="icon doctor isRoot" ng-switch-when="7"></i>
             <div class="content">
                 <div class="header">{{domain.email}}</div>
             </div>

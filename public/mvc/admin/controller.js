@@ -326,13 +326,6 @@ adminControllers.controller('AdminShareEditCtrl', ['$scope', '$http', '$location
     }
 ]);
 
-/*
- * Media
- */
-adminControllers.controller('AdminMediaCtrl', ['$scope', '$http', '$location',
-    function($scope, $http, $location) {}
-]);
-
 
 /*
  * User
@@ -346,21 +339,21 @@ adminControllers.controller('AdminDomainCtrl', ['$scope', '$http', '$location', 
             $scope.isRoot = false;
         }
 
-        $scope.refresh = function() {
-	        $http.get('/api/domain/all').success(function(data) {
-	            $scope.domains = data;
-	        });
-	    });
+        $scope.cookieEmail = $cookies.email;
 
-        $scope.domainPromote = function() {
-        	$http.post('/api/domain/promte/' + 'id').success(function() {
-        		refresh();
+        $http.get('/api/domain/all').success(function(data) {
+            $scope.domains = data;
+        });
+
+        $scope.domainPromote = function(id) {
+        	$http.post('/api/domain/promote/' + id).success(function(data) {
+                $scope.domains = data;
         	});
         };
 
-        $scope.domainDemote = function() {
-        	$http.post('/api/domain/demote/' + 'id').success(function() {
-        		refresh();
+        $scope.domainDemote = function(id) {
+        	$http.post('/api/domain/demote/' + id).success(function(data) {
+                $scope.domains = data;
         	});
         };
 
@@ -380,9 +373,6 @@ adminControllers.controller('AdminParameterCtrl', ['$scope', '$http', '$filter',
             $scope.isRoot = false;
         }
 
-        $http.get('/api/group/all').success(function(data) {
-            $scope.groups = data;
-        });
         $http.get('/api/position/all').success(function(data) {
             $scope.positions = data;
         });

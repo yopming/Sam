@@ -69,15 +69,6 @@ adminApp.config(['$locationProvider', '$routeProvider',
 			controller: 'AdminShareEditCtrl'
 		}).
 
-		when('/media', {
-			templateUrl: '/template/admin/media/media.html',
-			controller: 'AdminMediaCtrl'
-		}).
-		when('/media/add', {
-			templateUrl: '/template/admin/media/media_add.html',
-			controller: 'AdminMediaAddCtrl'
-		}).
-
 		when('/domain', {
 			templateUrl: '/template/admin/domain/domain.html',
 			controller: 'AdminDomainCtrl'
