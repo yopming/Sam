@@ -15,7 +15,7 @@ exports.display = function(req, res) {
 			name: share.name,
 			content: share.content,
 			time: share.time,
-			author: share.author.name
+			author: share.author.email
 		});
 	});
 };
