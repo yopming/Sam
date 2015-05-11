@@ -66,10 +66,8 @@ html(ng-app="sam")
 				a.item(href="http://demo.vemic.com/demos/ins/old/", target="_blank")
 					i.adjust.icon
 					| 老原型库
-				span.item
-					| &nbsp;
 				if current_user
-					a.item(href='/admin')= current_user.username
+					a.item(href='/admin')= current_user
 				else
 					a.item(href='/sign')
 						i.sign.out.icon

@@ -7,7 +7,7 @@ var authenticate = require('../../helper/auth.js').authenticate;
 
 // sign
 exports.sign = function(req, res) {
-    if (req.session.user) {
+    if (req.session.email) {
         res.redirect('/admin');
     } else {
         res.render('admin/sign');
