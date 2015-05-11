@@ -3,7 +3,6 @@ html
 	head
 		title Sam
 		link(rel='stylesheet', href='/css/sam-presentation.css')
-		link(rel='stylesheet', href='/css/simditor.css')
 		link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
 		meta(name='renderer', content='webkit')
 
@@ -12,12 +11,12 @@ html
 			div.sixteen.wide.column
 				div.ui.stacked.tall.segment
 					div.ui.segment.heading
-						h3.ui.right.floated.header
-							= author
 						div.ui.left.floated.header
 							h1.ui.header
 								= name
-								div.sub.header
+								h4.sub.header.ui.blue
+									= author
+								h5.sub.header
 									= time
 					div.simditor
 						div.simditor-wrapper
