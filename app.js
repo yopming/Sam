@@ -38,7 +38,7 @@ var accessLogStream = FileStreamRotator.getStream({
 	filename: path.join(logDirectory, 'log-%DATE%.log'),
 	date_format: "YYYY-MM-DD",
 	frequency: 'daily',
-	verbose: true
+	verbose: false
 });
 
 // routes
