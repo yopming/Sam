@@ -34,18 +34,20 @@ exports.signin = function(req, res, next) {
                 req.flash('info', '系统错误，请稍后再尝试');
                 res.redirect('/sign');
             }
-        }
-        if (user) {
-            req.session.regenerate(function() {
-                req.session.email = user.email;
-                req.session.group = user.group;
-                res.cookie('email', user.email, {maxAge: 86400000});
-                res.cookie('group', user.group, {maxAge: 86400000});
-                res.redirect('/admin');
-            });
         } else {
-            req.flash('info', '域帐号与密码不匹配');
-            res.redirect('/sign');
+            // No error
+            if (user) {
+                req.session.regenerate(function() {
+                    req.session.email = user.email;
+                    req.session.group = user.group;
+                    res.cookie('email', user.email, {maxAge: 86400000});
+                    res.cookie('group', user.group, {maxAge: 86400000});
+                    res.redirect('/admin');
+                });
+            } else {
+                req.flash('info', '域帐号与密码不匹配');
+                res.redirect('/sign');
+            }
         }
     });
 };

@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser');
 var http = require('http');
@@ -14,6 +15,7 @@ var session = require('express-session');
 var serveStatic = require('serve-static');
 var serveFavicon = require('serve-favicon');
 var morgan = require('morgan');
+var FileStreamRotator = require('file-stream-rotator');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 var lessMiddleware = require('less-middleware');
@@ -24,21 +26,33 @@ require('./model/schema.js');
 // helper
 var helper_auth = require('./helper/auth.js');
 
-
+// application
 var app = express();
 
+// log directory
+var logDirectory = path.join(__dirname, 'log');
+// ensure log directory exists
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+var accessLogStream = FileStreamRotator.getStream({
+	skip: function(req, res) {return res.statusCode < 400; },
+	filename: path.join(logDirectory, 'log-%DATE%.log'),
+	date_format: "YYYY-MM-DD",
+	frequency: 'daily',
+	verbose: true
+});
+
 // routes
-var routes_sam = require('./routes/sam/route.js');
-var routes_share = require('./routes/sam/share.js');
-var routes_admin = require('./routes/admin/route.js');
-var routes_api_task = require('./routes/api/task.js');
-var routes_api_share = require('./routes/api/share.js');
-var routes_api_domain = require('./routes/api/domain.js');
-var routes_api_position = require('./routes/api/position.js');
-var routes_api_personnel = require('./routes/api/personnel.js');
-var routes_api_program = require('./routes/api/program.js');
-var routes_api_pipe = require('./routes/api/pipe.js');
-var routes_api_period = require('./routes/api/period.js');
+var routes_sam = require('./route/sam/route.js');
+var routes_share = require('./route/sam/share.js');
+var routes_admin = require('./route/admin/route.js');
+var routes_api_task = require('./route/api/task.js');
+var routes_api_share = require('./route/api/share.js');
+var routes_api_domain = require('./route/api/domain.js');
+var routes_api_position = require('./route/api/position.js');
+var routes_api_personnel = require('./route/api/personnel.js');
+var routes_api_program = require('./route/api/program.js');
+var routes_api_pipe = require('./route/api/pipe.js');
+var routes_api_period = require('./route/api/period.js');
 
 // all environments
 app.use(compression());
@@ -56,10 +70,10 @@ app.use(session({
 }));
 
 app.set('port', process.env.PORT || 1080);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'view'));
 app.set('view engine', 'jade');
 app.use(flash());
-app.use(morgan('dev'));
+app.use(morgan('combined', {stream: accessLogStream}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('X-HTTP-Method-Override'));
