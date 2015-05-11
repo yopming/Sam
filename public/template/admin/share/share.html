@@ -27,7 +27,7 @@
 		<tr ng-repeat="share in filtered = (shares | orderBy: '-time') | filter: subSearch">
 			<td>{{share.name}}</td>
 			<td>{{share.time}}</td>
-			<td>{{share.author.name}}</td>
+			<td>{{share.author.email}}</td>
 			<td>
 				<a href="#!/share/edit/{{share._id}}"
 					class="ui button tiny compact">编辑</a>

@@ -345,8 +345,8 @@ adminControllers.controller('AdminShareAddCtrl', ['$scope', '$http', '$location'
     function($scope, $http, $location) {
         $scope.share = {};
 
-        $http.get('/api/user/all').success(function(data) {
-            $scope.users = data;
+        $http.get('/api/domain/all').success(function(data) {
+            $scope.domains = data;
         });
 
         $scope.shareSave = function() {
@@ -365,8 +365,8 @@ adminControllers.controller('AdminShareEditCtrl', ['$scope', '$http', '$location
             $scope.share = data;
         });
 
-        $http.get('/api/user/all').success(function(data) {
-            $scope.users = data;
+        $http.get('/api/domain/all').success(function(data) {
+            $scope.domains = data;
         });
 
         $scope.shareUpdate = function() {
@@ -379,7 +379,7 @@ adminControllers.controller('AdminShareEditCtrl', ['$scope', '$http', '$location
 
 
 /*
- * User
+ * Domain
  */
 adminControllers.controller('AdminDomainCtrl', ['$scope', '$http', '$location', '$cookies',
     function($scope, $http, $location, $cookies) {

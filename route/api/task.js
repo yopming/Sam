@@ -15,7 +15,6 @@ var ProjectVersion = mongoose.model('ProjectVersion');
 // populate parameters
 var populater = [
     'program',
-    'status',
     'personnel_fe',
     'personnel_ga',
     'personnel_ia',

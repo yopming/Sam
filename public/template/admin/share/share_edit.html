@@ -20,7 +20,7 @@
 
 	<div class="field">
 		<label>作者</label>
-		<select ng-model="share.author" ng-options="user._id as user.name for user in users | filter: {username: '!sam'}">
+		<select ng-model="share.author" ng-options="domain._id as domain.email for domain in domains">
 		</select>
 	</div>
 
