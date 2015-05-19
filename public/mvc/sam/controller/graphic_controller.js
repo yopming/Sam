@@ -25,9 +25,9 @@ samGraphicControllers.controller('SamGraphicCtrl',
         });
 
         // internal page, the root page won't do this function
-        if (master != "") {
+        if (master !== "") {
             var crumbs = $location.url().split("/graphic/")[1].split("/");
-            var breadcrumb = new Array();
+            var breadcrumb = [];
             var link = "/#!/graphic";
             for (var i = 0; i < crumbs.length; i++) {
                 link += ("/" + crumbs[i]);
@@ -37,9 +37,10 @@ samGraphicControllers.controller('SamGraphicCtrl',
             $scope.breadcrumb = breadcrumb;
         }
 
-        $scope.ShowTooltip = function() {
+        $scope.ShowTooltip = function($event) {
+            console.log($event);
             var link = "";
-            var tar = angular.element(event.target)[0];
+            var tar = angular.element($event.target)[0];
             var type = tar.attributes['data-type'].value;
             var down = tar.attributes['data-down'].value;
 
